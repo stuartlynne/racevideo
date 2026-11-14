@@ -34,11 +34,21 @@ class LiveClientTests(unittest.IsolatedAsyncioTestCase):
         client.live_signature=None
         client.call=AsyncMock(side_effect=[identity,snap,inspected,reviewed])
         await client.live_session(object());self.assertEqual(client.call.await_count,4)
-    async def test_missing_or_unstarted_gui_is_not_replaced_by_an_archive(self):
-        for identity in [dict(instance='x',state='none',race_path=None),dict(instance='x',state='unstarted',race_path='/events/race.cmn')]:
-            client=Client(Configuration());client.call=AsyncMock(return_value=identity)
-            with self.assertRaises(ValueError):await client.live_session(object())
-            self.assertEqual(client.call.await_count,1)
+    async def test_missing_gui_is_not_replaced_by_an_archive(self):
+        identity=dict(instance='x',state='none',race_path=None)
+        client=Client(Configuration());client.call=AsyncMock(return_value=identity)
+        with self.assertRaises(ValueError):await client.live_session(object())
+        self.assertEqual(client.call.await_count,1)
+    async def test_unstarted_gui_returns_roster_categories_without_fake_timing(self):
+        identity=dict(instance='x',state='unstarted',race_path='/events/race.cmn')
+        snapshot=dict(identity,path='/private/live.cmn',snapshot_sha256='abc')
+        roster=dict(race=dict(date='2026-11-15',name='Test',total=2,categories=[dict(name='Women'),dict(name='Men')],rows=[]))
+        client=Client(Configuration());client.call=AsyncMock(side_effect=[identity,snapshot,roster])
+        result=await client.live_session(object())
+        self.assertEqual(result['payload']['live']['state'],'unstarted')
+        self.assertEqual([c['name'] for c in result['payload']['roster']['race']['categories']],['Women','Men'])
+        self.assertNotIn('review',result['payload'])
+        self.assertEqual([a.args[1] for a in client.call.call_args_list],['bridge.identity','bridge.snapshot','race.roster'])
     async def test_race_switch_and_input_mismatch_are_refused(self):
         identity=dict(instance='one',race_path='/events/a.cmn',state='running')
         client=Client(Configuration());client.call=AsyncMock(side_effect=[identity,dict(identity,path='/private/snapshot.cmn',race_path='/events/b.cmn',snapshot_sha256='a')])

@@ -16,6 +16,7 @@ class CompactPassings:
         self.app=app;self.visible=True;self.panel=None;self.signature=None;self.last_mode=app.mode
         self.review_live=False;self.restore_scroll=app.saved_session.get('compact_view',{});self.manual_archive=False;self.follow=tk.BooleanVar(value=app.mode=='live')
         self.jobs=queue.Queue(maxsize=1);self.results=queue.SimpleQueue();self.stop=threading.Event();self.force_live=True;self.live_state='';self.live_busy=False;self.live_error='';self.live_ready=False;self.next_live=0
+        self.prestart_categories=[];self.prestart_name='';self.prestart_total=0
         self.frame=ttk.Frame(parent,width=440);self.frame.pack_propagate(False)
         self.banner=tk.Frame(self.frame,bg='#080b10');self.banner.pack(fill='x')
         self.bib=tk.Label(self.banner,text='Live',bg='#080b10',fg='#ffe14a',font=('Sans',48,'bold'),anchor='w');self.bib.pack(fill='x',padx=14)
@@ -30,6 +31,7 @@ class CompactPassings:
         self.target_picker=ttk.Combobox(target_row,textvariable=self.target,values=Configuration.targets(),state='readonly')
         self.target_picker.pack(side='left',fill='x',expand=True)
         self.target_picker.bind('<<ComboboxSelected>>',self.choose_target)
+        self.race_name=tk.StringVar()
         self.generation=0
         self.selector=ttk.Frame(self.frame);self.selector.pack(fill='x',padx=4,pady=3)
         self.status=ttk.Label(self.frame,text='Loading passings…',wraplength=425);self.status.pack(fill='x',padx=6)
@@ -64,13 +66,17 @@ class CompactPassings:
         for child in self.actions.winfo_children()[3:]:child.destroy()
         for child in self.add_bar.winfo_children():child.destroy()
         for child in self.selector.winfo_children():child.destroy()
-        row=ttk.Frame(self.selector);row.pack(fill='x')
+        self.race_name_entry=ttk.Entry(self.selector,textvariable=self.race_name,state='readonly')
+        self.race_name_entry.pack(fill='x',pady=(0,2))
+        self.archive_controls=ttk.Frame(self.selector);self.archive_controls.pack(fill='x')
+        row=ttk.Frame(self.archive_controls);row.pack(fill='x')
         self.day_picker=ttk.Combobox(row,textvariable=panel.day,width=12,values=(),state='normal');self.day_picker.pack(side='left')
         self.day_picker.bind('<Return>',lambda e:self.choose_day());self.day_picker.bind('<<ComboboxSelected>>',lambda e:self.choose_day())
         self.load_button=ttk.Button(row,text='Load',style='Compact.TButton',command=self.choose_day);self.load_button.pack(side='left',padx=2)
         self.import_button=ttk.Button(row,text='Import date',style='Compact.TButton',command=lambda:self.archive('import'));self.import_button.pack(side='left')
-        self.event_picker=ttk.Combobox(self.selector,state='readonly');self.event_picker.pack(fill='x',pady=2);self.event_picker.bind('<<ComboboxSelected>>',self.choose_event)
-        self.category_picker=ttk.Combobox(self.selector,textvariable=panel.category,state='readonly');self.category_picker.pack(fill='x');self.category_picker.bind('<<ComboboxSelected>>',lambda e:panel.request('compare'))
+        self.event_picker=ttk.Combobox(self.archive_controls,state='readonly');self.event_picker.pack(fill='x',pady=2);self.event_picker.bind('<<ComboboxSelected>>',self.choose_event)
+        self.category_picker=ttk.Combobox(self.selector,textvariable=panel.category,state='readonly');self.category_picker.pack(fill='x');self.category_picker.bind('<<ComboboxSelected>>',self.choose_category)
+        self.update_mode_controls()
         self.correct_number=ttk.Entry(self.actions,textvariable=panel.review_number,width=5);self.correct_number.pack(side='left',padx=3)
         self.correct_number.bind('<Return>',lambda e:self.action('corrected'))
         ttk.Button(self.actions,text='Correct',style='Compact.TButton',command=lambda:self.action('corrected')).pack(side='left')
@@ -96,6 +102,7 @@ class CompactPassings:
         self.panel.config=config;self.panel.root_path.set(config.root)
         self.panel.model=None;self.panel.event_id=None;self.panel.competition_id=None
         self.panel.selected_cell=None;self.panel.events=[]
+        self.race_name.set('')
         self.generation+=1
         self.follow_current()
 
@@ -109,10 +116,19 @@ class CompactPassings:
 
     def follow_current(self):
         self.force_live=True;self.review_live=False;self.manual_archive=False;self.follow.set(True);self.live_error='';self.live_ready=False;self.next_live=0;self.signature=None
+        if hasattr(self,'archive_controls'):self.update_mode_controls()
 
     def follow_changed(self):
         self.force_live=True;self.manual_archive=not self.follow.get();self.live_error='';self.live_ready=False;self.signature=None
+        if hasattr(self,'archive_controls'):self.update_mode_controls()
         if self.follow.get():self.app.go_live();self.next_live=0
+
+    def update_mode_controls(self):
+        """Live selection is only target plus server-provided category."""
+        if self.follow.get():
+            self.archive_controls.pack_forget()
+        elif not self.archive_controls.winfo_manager():
+            self.archive_controls.pack(fill='x',before=self.category_picker)
 
     def archive(self,operation='events'):
         self.review_live=False;self.follow.set(False);self.manual_archive=True;self.live_error='';self.signature=None
@@ -129,6 +145,10 @@ class CompactPassings:
         chosen=self.event_options[index];self.follow.set(False);self.manual_archive=True
         self.panel.event_id=chosen['id'];self.panel.competition_id=chosen['competition_id'];self.panel.category.set('All categories');self.panel.request('compare')
 
+    def choose_category(self,event=None):
+        self.signature=None
+        if not (self.follow.get() and self.live_state=='unstarted'):self.panel.request('compare')
+
     def work(self):
         from .crossmgr_client import Client,Configuration
         from . import storage,passings
@@ -141,12 +161,18 @@ class CompactPassings:
                 if self.force_live:client.live_signature=None;self.force_live=False
                 result=client.fetch_live()
                 if self.stop.is_set():return
+                live=result['payload'].get('live',{})
+                if live.get('state')=='unstarted':
+                    race=result['payload']['roster']['race']
+                    categories=[c['name'] for c in race.get('categories',[])]
+                    self.results.put(('prestart',(result['day'],live.get('state','unstarted'),race.get('name','Current race'),race.get('total',0),categories),generation))
+                    continue
                 c=storage.connect(self.app.path)
                 try:
                     event=passings.cache_event(c,client.config,result['path'],result['day'],result['payload'])
                     competition=c.execute('SELECT competition_id FROM race_events WHERE id=?',(event,)).fetchone()[0]
                 finally:c.close()
-                self.results.put(('live',(event,competition,result['day'],result['payload'].get('live',{}).get('state','')),generation))
+                self.results.put(('live',(event,competition,result['day'],result['payload'].get('live',{}).get('state',''),result['payload']['review']['race'].get('name','')),generation))
             except Exception as exc:self.results.put(('error',str(exc),generation))
 
     def tick(self):
@@ -162,17 +188,32 @@ class CompactPassings:
                 if generation!=self.generation:continue
                 if not self.follow.get():continue
                 if kind=='error':self.live_error=value;self.live_ready=False;self.signature=None
+                elif kind=='prestart':
+                    day,state,name,total,categories=value
+                    self.live_error='';self.live_ready=True;self.live_state=state
+                    self.prestart_name=name;self.prestart_total=total;self.prestart_categories=categories
+                    self.race_name.set(name)
+                    panel.day.set(day);panel.event_id=None;panel.competition_id=None;panel.model=None;panel.selected_cell=None
+                    if panel.category.get() not in ['All categories']+categories:panel.category.set('All categories')
+                    self.signature=None
                 else:
-                    event,competition,day,state=value;self.live_state=state;changed=panel.event_id!=event
+                    event,competition,day,state,name=value;self.live_state=state;changed=panel.event_id!=event
                     self.live_error='';self.live_ready=True;panel.day.set(day);panel.event_id=event;panel.competition_id=competition
-                    if changed:panel.category.set('All categories')
+                    self.race_name.set(name)
+                    if changed and not self.prestart_categories:panel.category.set('All categories')
+                    self.prestart_categories=[];self.prestart_name='';self.prestart_total=0
                     panel.request('compare');self.signature=None
             if self.follow.get() and not self.live_busy and time.monotonic()>=self.next_live:
                 self.live_busy=True;self.next_live=time.monotonic()+15;self.jobs.put_nowait((self.generation,panel.config))
             self.event_options=panel.events
             values=[f"{e['name']} · {e['competition']}" for e in self.event_options]
-            categories=['All categories']+(panel.model['categories'] if panel.model else [])
+            if not self.follow.get():
+                name=panel.model['event']['name'] if panel.model and panel.model['event']['id']==panel.event_id else ''
+                if self.race_name.get()!=name:self.race_name.set(name)
+            elif not self.live_ready and self.race_name.get():self.race_name.set('')
+            categories=['All categories']+(self.prestart_categories if self.follow.get() and self.live_state=='unstarted' else panel.model['categories'] if panel.model else [])
             dates=[v for v in self.app.date_picker.cget('values') if v not in ('Today','All dates')]
+            self.update_mode_controls()
             controls=(self.follow.get(),values,panel.event_id,categories,dates)
             if controls!=getattr(self,'controls_signature',None):
                 self.controls_signature=controls
@@ -193,6 +234,10 @@ class CompactPassings:
         if self.follow.get() and (self.live_error or not self.live_ready):
             self.status.configure(text=(self.live_error+' · Uncheck Current race to browse saved events.') if self.live_error else 'Connecting to current CrossMgr race…')
             if self.signature!='unavailable':self.canvas.delete('all');self.header.delete('all');self.locations={};self.signature='unavailable'
+            return
+        if self.follow.get() and self.live_state=='unstarted':
+            self.status.configure(text=f'Current race (not started) · {self.prestart_name} · {self.prestart_total} registered')
+            if self.signature!='unstarted':self.canvas.delete('all');self.header.delete('all');self.locations={};self.signature='unstarted'
             return
         if model and model['event']['id']!=panel.event_id:model=None
         cells=panel.displayed_cells() if model else []

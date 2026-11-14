@@ -129,10 +129,14 @@ class Client:
         if self.config.live_race_path:selection['race_path']=self.config.live_race_path
         identity=await self.call(session,'bridge.identity',selection)
         if not identity.get('race_path'):raise ValueError('CrossMgr has no saved current race')
-        if identity.get('state') in ('none','unstarted'):raise ValueError('Current CrossMgr race has not started')
+        if identity.get('state')=='none':raise ValueError('Current CrossMgr race has not started')
         if identity.get('state')=='finished' and getattr(self,'live_state',None)=='finished' and getattr(self,'live_signature',None) and self.live_signature[:2]==(identity['instance'],identity['race_path']):return self.live_result
         snapshot=await self.call(session,'bridge.snapshot',dict(instance=identity['instance'],race_path=identity['race_path']))
         if snapshot['race_path']!=identity['race_path'] or snapshot['instance']!=identity['instance']:raise ValueError('CrossMgr changed race during snapshot; retry')
+        live=dict(state=identity.get('state'),instance=snapshot['instance'],race_path=identity['race_path'],snapshot_path=snapshot['path'],captured_at=snapshot.get('captured_at'),revision=snapshot.get('revision'))
+        if identity.get('state')=='unstarted':
+            roster=await self.call(session,'race.roster',dict(path=snapshot['path'],trusted_pickle=True,limit=500))
+            return dict(path=identity['race_path'],day=roster['race']['date'],payload=dict(roster=roster,live=live))
         signature=(snapshot['instance'],snapshot['race_path'],snapshot['snapshot_sha256'])
         if signature==getattr(self,'live_signature',None) and time.monotonic()-self.live_checked<60:return self.live_result
         args=dict(path=snapshot['path'],trusted_pickle=True)
@@ -143,8 +147,7 @@ class Client:
             page=await self.call(session,'race.review',dict(args,limit=500,offset=offset))
             if page['inputs']!=reviewed['inputs']:raise ValueError('Workbook changed while paging; retry')
             reviewed['race']['rows'].extend(page['race']['rows'])
-        result=dict(path=identity['race_path'],day=inspected['race']['date'],payload=dict(inspect=inspected,review=reviewed,
-            live=dict(state=identity.get('state'),instance=snapshot['instance'],race_path=identity['race_path'],snapshot_path=snapshot['path'],captured_at=snapshot.get('captured_at'),revision=snapshot.get('revision'))))
+        result=dict(path=identity['race_path'],day=inspected['race']['date'],payload=dict(inspect=inspected,review=reviewed,live=live))
         self.live_signature,self.live_result=signature,result;self.live_state=identity.get('state');self.live_checked=time.monotonic()
         return result
 

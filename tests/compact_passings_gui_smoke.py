@@ -26,6 +26,9 @@ def main():
             wait(lambda:app.compact_passings and app.compact_passings.panel and app.compact_passings.panel.model and app.compact_passings.locations)
             compact=app.compact_passings;panel=compact.panel
             assert compact.visible and compact.live_ready and compact.follow.get()
+            assert not compact.archive_controls.winfo_ismapped() and compact.category_picker.winfo_ismapped()
+            assert compact.race_name.get()==payload['review']['race']['name']
+            assert compact.target_picker.winfo_rooty()<compact.race_name_entry.winfo_rooty()<compact.category_picker.winfo_rooty()
             assert panel.window.state()=='withdrawn'
             assert app.viewer.winfo_rootx()>compact.frame.winfo_rootx()+250
             assert app.frame_label.winfo_viewable() and app.frame_label.winfo_rooty()+app.frame_label.winfo_height()<=root.winfo_rooty()+root.winfo_height()
@@ -67,10 +70,12 @@ def main():
             wait(lambda:not panel.busy and panel.event_id==other_id)
             panel.day.set('2026-11-08');compact.choose_day()
             wait(lambda:panel.model and panel.model['event']['id']==f.event and not panel.busy)
-            compact.follow_current();app.go_live();compact.results.put(('error','Live CrossMgr unavailable: test offline'))
+            compact.follow_current();app.go_live();compact.results.put(('error','Live CrossMgr unavailable: test offline',compact.generation))
             wait(lambda:'test offline' in compact.status.cget('text'))
+            assert not compact.archive_controls.winfo_ismapped() and compact.category_picker.winfo_ismapped()
             assert not compact.locations
-            compact.follow.set(False);compact.manual_archive=True;compact.signature=None;compact.render()
+            compact.follow.set(False);compact.follow_changed();compact.signature=None;compact.render()
+            wait(lambda:compact.archive_controls.winfo_ismapped())
             assert compact.locations
             state=app.session_snapshot();assert state['compact_passings'] and not state['passings_window_open']
             app.compact_enabled.set(False);app.toggle_compact_passings();root.update()
