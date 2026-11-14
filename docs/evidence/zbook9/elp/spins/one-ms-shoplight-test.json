@@ -1,0 +1,205 @@
+{
+  "exposure_absolute": 10,
+  "exposure_nominal_ms": 1,
+  "gain": 190,
+  "roi": [
+    0.34,
+    0.35,
+    0.6,
+    0.56
+  ],
+  "rotations": [
+    0
+  ],
+  "requested_ocr_fps": 15,
+  "results": [
+    {
+      "label": "new1",
+      "clip_id": 79,
+      "run_id": 24,
+      "state": "complete",
+      "summary": {
+        "sampled_frames": 33,
+        "total_samples": 33,
+        "raw_reads": 3,
+        "regions": 128,
+        "wall_seconds": 4.043,
+        "cpu_seconds": 3.975,
+        "engine": "mser-components-tesseract-v4",
+        "observations": 0
+      },
+      "observations": [],
+      "qualified_reads": []
+    },
+    {
+      "label": "new2",
+      "clip_id": 80,
+      "run_id": 25,
+      "state": "complete",
+      "summary": {
+        "sampled_frames": 40,
+        "total_samples": 40,
+        "raw_reads": 1,
+        "regions": 387,
+        "wall_seconds": 10.324,
+        "cpu_seconds": 10.223,
+        "engine": "mser-components-tesseract-v4",
+        "observations": 0
+      },
+      "observations": [],
+      "qualified_reads": []
+    },
+    {
+      "label": "new3",
+      "clip_id": 81,
+      "run_id": 26,
+      "state": "complete",
+      "summary": {
+        "sampled_frames": 27,
+        "total_samples": 27,
+        "raw_reads": 5,
+        "regions": 203,
+        "wall_seconds": 5.95,
+        "cpu_seconds": 5.916,
+        "engine": "mser-components-tesseract-v4",
+        "observations": 2
+      },
+      "observations": [
+        {
+          "id": 71,
+          "number": "735",
+          "first_ns": 1793924081484042046,
+          "last_ns": 1793924081484042046,
+          "frame_count": 1,
+          "confidence": 66,
+          "ordinal": 14,
+          "quad": "[[1788.5426940917969, 1046.6552124023438], [1951.2367553710938, 1014.6094055175781], [1974.3362426757812, 1131.8838195800781], [1811.6421813964844, 1163.9296264648438]]",
+          "status": "candidate"
+        },
+        {
+          "id": 72,
+          "number": "469",
+          "first_ns": 1793924082984011042,
+          "last_ns": 1793924083183923353,
+          "frame_count": 3,
+          "confidence": 96,
+          "ordinal": 65,
+          "quad": "[[1550.251937866211, 1122.2694396972656], [1727.3875732421875, 1060.27197265625], [1771.6589965820312, 1186.7617797851562], [1594.5233459472656, 1248.7592468261719]]",
+          "status": "repeated"
+        }
+      ],
+      "qualified_reads": [
+        {
+          "number": "735",
+          "ordinal": 14,
+          "confidence": 66
+        },
+        {
+          "number": "469",
+          "ordinal": 59,
+          "confidence": 95
+        },
+        {
+          "number": "469",
+          "ordinal": 62,
+          "confidence": 79
+        },
+        {
+          "number": "469",
+          "ordinal": 65,
+          "confidence": 96
+        }
+      ]
+    },
+    {
+      "label": "new4",
+      "clip_id": 82,
+      "run_id": 27,
+      "state": "complete",
+      "summary": {
+        "sampled_frames": 32,
+        "total_samples": 32,
+        "raw_reads": 12,
+        "regions": 113,
+        "wall_seconds": 3.863,
+        "cpu_seconds": 3.842,
+        "engine": "mser-components-tesseract-v4",
+        "observations": 4
+      },
+      "observations": [
+        {
+          "id": 73,
+          "number": "698",
+          "first_ns": 1793924089352142741,
+          "last_ns": 1793924089352142741,
+          "frame_count": 1,
+          "confidence": 67,
+          "ordinal": 7,
+          "quad": "[[1938.9434814453125, 1044.7266845703125], [2197.3689575195312, 1052.9306945800781], [2193.6713256835938, 1169.4039001464844], [1935.2459106445312, 1161.199951171875]]",
+          "status": "candidate"
+        },
+        {
+          "id": 74,
+          "number": "469",
+          "first_ns": 1793924089551838697,
+          "last_ns": 1793924089551838697,
+          "frame_count": 1,
+          "confidence": 67,
+          "ordinal": 13,
+          "quad": "[[1937.5435791015625, 1040.7282104492188], [2105.160400390625, 1048.5852355957031], [2099.5264282226562, 1168.7750549316406], [1931.90966796875, 1160.9179992675781]]",
+          "status": "candidate"
+        },
+        {
+          "id": 75,
+          "number": "659",
+          "first_ns": 1793924089551838697,
+          "last_ns": 1793924089551838697,
+          "frame_count": 1,
+          "confidence": 77,
+          "ordinal": 13,
+          "quad": "[[1937.5435791015625, 1040.7282104492188], [2105.160400390625, 1048.5852355957031], [2099.5264282226562, 1168.7750549316406], [1931.90966796875, 1160.9179992675781]]",
+          "status": "candidate"
+        },
+        {
+          "id": 76,
+          "number": "469",
+          "first_ns": 1793924091751807542,
+          "last_ns": 1793924091751807542,
+          "frame_count": 1,
+          "confidence": 86,
+          "ordinal": 79,
+          "quad": "[[1942.6102905273438, 1041.4620056152344], [2103.2908325195312, 1053.8220520019531], [2094.5131225585938, 1167.9320373535156], [1933.8325805664062, 1155.572021484375]]",
+          "status": "candidate"
+        }
+      ],
+      "qualified_reads": [
+        {
+          "number": "698",
+          "ordinal": 7,
+          "confidence": 67
+        },
+        {
+          "number": "469",
+          "ordinal": 13,
+          "confidence": 67
+        },
+        {
+          "number": "659",
+          "ordinal": 13,
+          "confidence": 77
+        },
+        {
+          "number": "469",
+          "ordinal": 79,
+          "confidence": 86
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Dim scene; spin appears slower than prior 4 ms test, so not a controlled shutter comparison.",
+    "Clip 81 correct moving 469 at source ordinals 59,62,65. 235 at ordinal14 scored46, below60 threshold; competing735 scored66.",
+    "Clips79 and82 include stationary/handling footage; their OCR is not fast-pass evidence.",
+    "All four clips ended quiet with zero recorded analysis overruns and bad packets; dark-scene motion detection continuity was not independently established."
+  ]
+}

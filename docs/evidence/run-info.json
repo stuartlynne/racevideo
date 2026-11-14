@@ -1,0 +1,14 @@
+{
+  "model": "tesseract-ocr/tessdata_best eng",
+  "model_sha256": "8280aed0782fe27257a68ea10fe7ef324ca0f8d85bd2fd145d1c2b560bcb66ba",
+  "decoded_frames": [
+    123,
+    160,
+    127
+  ],
+  "ocr_observations": 95,
+  "distinct_video_number_candidates": 62,
+  "repeated_candidates": 15,
+  "manually_checked_matching_examples": 7,
+  "scope": "Proof of concept; neither accuracy nor recall measured; no race results inferred"
+}

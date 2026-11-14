@@ -1,0 +1,19 @@
+{
+  "unit_tests": 35,
+  "schema": 7,
+  "main_store_clips_preserved": 142,
+  "original_clip_109_frame_0_sha256": "ff32aa715899b39a829bdd1aeb5d421916ec584ad50e265c5c85cdfae1fdaf26",
+  "checks": [
+    "date selection defaults Today; older dates and All dates available",
+    "three-digit ANY bib filtering from latest completed OCR",
+    "candidate encounter counts, intervals and source-frame navigation",
+    "original-pixel pointer zoom, pan, Fit, keyboard controls",
+    "frame caption follows displayed pixels",
+    "persistent stars and star-only filter",
+    "cleanup cancellation, starred/busy/new-clip protection and dependent evidence deletion",
+    "no clip ID reuse after deletion",
+    "HTTP MCP date/filter/star/sightings and existing reverse bridge",
+    "physical webcam concurrent capture/review and clean recorder independence"
+  ],
+  "note": "Deletion tests use temporary stores. No original development recordings were deleted. All dates use host local calendar boundaries."
+}

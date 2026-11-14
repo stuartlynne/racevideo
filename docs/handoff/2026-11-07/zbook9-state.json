@@ -1,0 +1,95 @@
+{
+  "state": "recording",
+  "fresh": true,
+  "recorder_running": true,
+  "clips": 90,
+  "capture_bad_packets": 21,
+  "dropped_clips": 0,
+  "analysis_lag_ms": 0.0,
+  "error": null,
+  "configuration": {
+    "device": "/dev/v4l/by-id/usb-4K_U3_Camera_4K_U3_Camera_2601230006-video-index0",
+    "width": 3840,
+    "height": 2160,
+    "fps": 30,
+    "trigger": "motion",
+    "interval": 10.0,
+    "seconds": 2.0,
+    "buffer_mb": 256,
+    "pre_roll": 0.5,
+    "post_roll": 2.0,
+    "motion_gap": 0.2,
+    "motion_fps": 15.0,
+    "motion_delta": 18,
+    "motion_fraction": 0.025,
+    "event_mb": 512,
+    "event_seconds": 30.0
+  },
+  "checked_utc": "2026-11-08T01:46:23.845600+00:00",
+  "camera_controls": [
+    {
+      "id": 9963795,
+      "name": "Gain",
+      "value": 190,
+      "display_value": "190"
+    },
+    {
+      "id": 10094849,
+      "name": "Auto Exposure",
+      "value": 1,
+      "display_value": "1"
+    },
+    {
+      "id": 10094850,
+      "name": "Exposure Time, Absolute",
+      "value": 10,
+      "display_value": "1 ms \u00b7 1/1000s"
+    }
+  ],
+  "ocr_area": [
+    0.34,
+    0.35,
+    0.6,
+    0.56
+  ],
+  "ocr_rotations": [
+    0
+  ],
+  "timezone": "America/Vancouver",
+  "ntp_synchronized": true,
+  "gpu": {
+    "known_hardware": "RTX A1000 Laptop GPU,4096MiB",
+    "loaded_driver": "595.91.07",
+    "nvml_library": "595.99",
+    "nvidia_smi": "Driver/library version mismatch",
+    "cuda_matmul": "passed",
+    "paddle_recognition": {
+      "clip": 81,
+      "gui_frame": 69,
+      "text": "235",
+      "score": 0.9879477620124817
+    },
+    "paddlepaddle_gpu": "3.2.2",
+    "paddleocr": "3.3.2"
+  },
+  "app_instances": [
+    {
+      "instance": "f9f6fa612f4647398c914efff7a42aa3",
+      "responsive": true,
+      "mode": "live",
+      "clip": 81,
+      "camera_drafts": [],
+      "camera_pending": false,
+      "motion_editing": false,
+      "ocr_area_editing": false,
+      "preview_age_p95_ms": 98.66,
+      "callback_delay_p95_ms": 0.54
+    }
+  ],
+  "motion_roi": [
+    0.3714033850493653,
+    0.09486215538847118,
+    0.5214033850493652,
+    0.7948621553884712
+  ]
+}

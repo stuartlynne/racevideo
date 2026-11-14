@@ -1,0 +1,71 @@
+{
+  "gui": {
+    "uptime_seconds": 7.8,
+    "counters": {
+      "preview_worker_alive": true,
+      "preview_superseded": 8,
+      "preview_worker_produced": 119,
+      "preview_pid": 253933,
+      "preview_presented": 111
+    },
+    "callback_delay_ms": {
+      "last": 2.89,
+      "p50": 1.68,
+      "p95": 3.42,
+      "max": 587.69,
+      "samples": 225
+    },
+    "callback_work_ms": {
+      "last": 1.03,
+      "p50": 0.56,
+      "p95": 3.93,
+      "max": 6.8,
+      "samples": 225
+    },
+    "preview_decode_ms": {
+      "last": 12.61,
+      "p50": 12.79,
+      "p95": 14.25,
+      "max": 18.39,
+      "samples": 111
+    },
+    "preview_handoff_ms": {
+      "last": 17.74,
+      "p50": 17.56,
+      "p95": 31.12,
+      "max": 44.43,
+      "samples": 111
+    },
+    "tk_image_submit_ms": {
+      "last": 0.75,
+      "p50": 1.03,
+      "p95": 3.5,
+      "max": 6.02,
+      "samples": 123
+    },
+    "preview_age_ms": {
+      "last": 67.83,
+      "p50": 54.43,
+      "p95": 81.01,
+      "max": 98.07,
+      "samples": 111
+    },
+    "preview_interval_ms": {
+      "last": 96.15,
+      "p50": 63.38,
+      "p95": 125.06,
+      "max": 617.69,
+      "samples": 110
+    }
+  },
+  "recorder": {
+    "capture_frames": 223,
+    "frames": 55,
+    "analysis_lag_ms": 1400.048995,
+    "analysis_overrun_frames": 126,
+    "ring_bytes": 1034596,
+    "ring_capacity_bytes": 1048576,
+    "motion_analysis_ms": 181.52204601210542
+  },
+  "source": "Synthetic 1920x1080 JPEG at 30fps; 180ms added per motion analysis; one 600ms GUI stall"
+}

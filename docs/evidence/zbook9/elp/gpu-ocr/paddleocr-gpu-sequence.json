@@ -1,0 +1,3993 @@
+{
+  "engine": "paddleocr",
+  "version": "3.3.2",
+  "python": "3.12.16",
+  "device": "NVIDIA RTX A1000 Laptop GPU",
+  "initialization_seconds": 2.1316453749896027,
+  "notes": [
+    "Unlabelled sequence diagnostic, not passing-level accuracy. Expected list empty means no exhaustive frame annotation.",
+    "Two physical fixture bibs are 235 and469; these are not passed to recognition.",
+    "Every third source frame by default: approximately10fps on30fps capture."
+  ],
+  "results": [
+    {
+      "id": "clip-71-frame-0",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.27128897700458765,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-0",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.01644199399743229,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-3",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01710357703268528,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-3",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015777540975250304,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-6",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.0168141609756276,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-6",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.13590330397710204,
+      "readings": [
+        {
+          "text": "=",
+          "score": 0.3796963095664978
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-9",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.019104515959043056,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-9",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.016668404976371676,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-12",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.019203895004466176,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-12",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.016772799950558692,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-15",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.018765473971143365,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-15",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.02088763302890584,
+      "readings": [
+        {
+          "text": "1",
+          "score": 0.15540112555027008
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-18",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.019147396029438823,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-18",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.021277751016896218,
+      "readings": [
+        {
+          "text": "8",
+          "score": 0.1285504400730133
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-21",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01797676703426987,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-21",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.016668774012941867,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-24",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.017306480964180082,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-24",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015686550992541015,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-27",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.018844603036995977,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-27",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015807692951057106,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-30",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.017034526041243225,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-30",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.021042746026068926,
+      "readings": [
+        {
+          "text": "-",
+          "score": 0.09523964673280716
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-33",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.016913362953346223,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-33",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.014943634974770248,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-36",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01914354501059279,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-36",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.017019434017129242,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-39",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.017323474981822073,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-39",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015641959034837782,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-42",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.016886346973478794,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-42",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015435066015925258,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-45",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.024072206986602396,
+      "readings": [
+        {
+          "text": "\u8bdd",
+          "score": 0.08804065734148026
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-45",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.016057303990237415,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-48",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.017402304045390338,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-48",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.021438984957057983,
+      "readings": [
+        {
+          "text": "745",
+          "score": 0.2982802391052246
+        }
+      ],
+      "numbers": [
+        "745"
+      ],
+      "matched": [],
+      "unexpected": [
+        "745"
+      ]
+    },
+    {
+      "id": "clip-71-frame-51",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.017665693012531847,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-51",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.02076485101133585,
+      "readings": [
+        {
+          "text": "2",
+          "score": 0.10725681483745575
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-54",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.019018680963199586,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-54",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015476094034966081,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-57",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.017002856999170035,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-57",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015337843971792608,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-60",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01675968599738553,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-60",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015359830053057522,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-63",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01863573002628982,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-63",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015947295003570616,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-66",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.017714738962240517,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-66",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015772929997183383,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-69",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.017190417042002082,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-69",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015354515984654427,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-72",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01806043100077659,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-72",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015764198964461684,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-75",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01691905496409163,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-75",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.014831169974058867,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-78",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01717426598770544,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-78",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015549945004750043,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-81",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.023390655987896025,
+      "readings": [
+        {
+          "text": "\u4e00",
+          "score": 0.49464160203933716
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-81",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015174663974903524,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-84",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.016458892030641437,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-84",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.01581726100994274,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-87",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.016912370978388935,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-87",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.01968177198432386,
+      "readings": [
+        {
+          "text": "O",
+          "score": 0.37357890605926514
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-90",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.018736361991614103,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-90",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.020444291993044317,
+      "readings": [
+        {
+          "text": "URD",
+          "score": 0.41619500517845154
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-93",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.017061121005099267,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-93",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.020186518027912825,
+      "readings": [
+        {
+          "text": "ONO",
+          "score": 0.40324196219444275
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-96",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01657967403298244,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-96",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015339726000092924,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-99",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.017819384986069053,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-99",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015518564032390714,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-102",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.016512008965946734,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-102",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.01487617997918278,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-105",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.016770457033999264,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-105",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.01955003698822111,
+      "readings": [
+        {
+          "text": "-",
+          "score": 0.24166211485862732
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-108",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.017635328986216336,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-108",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015437488036695868,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-111",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01622759405290708,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-111",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015022225969005376,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-114",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.016572301974520087,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-114",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.014679046988021582,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-117",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.017663976992480457,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-117",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015254562022164464,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-120",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.015947162988595665,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-120",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.03295509802410379,
+      "readings": [
+        {
+          "text": "\u53e3",
+          "score": 0.3798353374004364
+        },
+        {
+          "text": "",
+          "score": 0.0
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-123",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.019239943008869886,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-123",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.019530783989466727,
+      "readings": [
+        {
+          "text": "C",
+          "score": 0.14772632718086243
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-126",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01826594799058512,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-126",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.01925224799197167,
+      "readings": [
+        {
+          "text": "\u4e2dNO",
+          "score": 0.29932940006256104
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-129",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01780657103518024,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-129",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.023244159994646907,
+      "readings": [
+        {
+          "text": "0",
+          "score": 0.23570616543293
+        },
+        {
+          "text": "",
+          "score": 0.0
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-132",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.0181607780396007,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-132",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.019554394006263465,
+      "readings": [
+        {
+          "text": "0",
+          "score": 0.32844430208206177
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-135",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01722979499027133,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-135",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015113519970327616,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-138",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.022518065001349896,
+      "readings": [
+        {
+          "text": "-235",
+          "score": 0.8701368570327759
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-138",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015363876998890191,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-141",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.022986342024523765,
+      "readings": [
+        {
+          "text": "469",
+          "score": 0.9336800575256348
+        }
+      ],
+      "numbers": [
+        "469"
+      ],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-141",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.01482248998945579,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-144",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.017793679027818143,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-144",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.019017752958461642,
+      "readings": [
+        {
+          "text": "-",
+          "score": 0.6694760918617249
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-147",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.018166189023759216,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-147",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015533689002040774,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-150",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.016721337975468487,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-150",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.019840233027935028,
+      "readings": [
+        {
+          "text": "",
+          "score": 0.0
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-153",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.015852042997721583,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-153",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.018907006015069783,
+      "readings": [
+        {
+          "text": "-",
+          "score": 0.7690436244010925
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-156",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.017917501972988248,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-156",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.014912051963619888,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-159",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.016122110013384372,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-159",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.019023857021238655,
+      "readings": [
+        {
+          "text": "\u4e2dO",
+          "score": 0.29318273067474365
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-162",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.015984916011802852,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-162",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.0231347749941051,
+      "readings": [
+        {
+          "text": "O",
+          "score": 0.2926653325557709
+        },
+        {
+          "text": "-",
+          "score": 0.5155706405639648
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-165",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.018249470042064786,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-165",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.01554936496540904,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-168",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01653219200670719,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-168",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.014972474018577486,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-171",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.02021337900077924,
+      "readings": [
+        {
+          "text": "T",
+          "score": 0.6021143794059753
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-171",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.014989728981163353,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-174",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.02254803600953892,
+      "readings": [
+        {
+          "text": "235",
+          "score": 0.7944374084472656
+        }
+      ],
+      "numbers": [
+        "235"
+      ],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-174",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015418882947415113,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-177",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.018181435007136315,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-177",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015342004015110433,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-180",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01747951895231381,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-180",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.0230362459551543,
+      "readings": [
+        {
+          "text": "O",
+          "score": 0.2115536481142044
+        },
+        {
+          "text": "",
+          "score": 0.0
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-183",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01717154000652954,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-183",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.01920972397783771,
+      "readings": [
+        {
+          "text": "NC",
+          "score": 0.434905469417572
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-186",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.017727534053847194,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-186",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.01919584395363927,
+      "readings": [
+        {
+          "text": "CO",
+          "score": 0.1992124319076538
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-189",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.016060441033914685,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-189",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.018838368996512145,
+      "readings": [
+        {
+          "text": "UNO",
+          "score": 0.17878365516662598
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-192",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.017684725986327976,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-192",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.01939256797777489,
+      "readings": [
+        {
+          "text": "NC",
+          "score": 0.7166248559951782
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-195",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01802369300276041,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-195",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.02041663002455607,
+      "readings": [
+        {
+          "text": "NO",
+          "score": 0.24113360047340393
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-198",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.015757084009237587,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-198",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.0192235890426673,
+      "readings": [
+        {
+          "text": "",
+          "score": 0.0
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-201",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01710741000715643,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-201",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.018892170977778733,
+      "readings": [
+        {
+          "text": "\u53e3",
+          "score": 0.3160994052886963
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-204",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.017983963945880532,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-204",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.01497266802471131,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-207",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.020595479989424348,
+      "readings": [
+        {
+          "text": "235",
+          "score": 0.9809128642082214
+        }
+      ],
+      "numbers": [
+        "235"
+      ],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-207",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.01982390898047015,
+      "readings": [
+        {
+          "text": "235",
+          "score": 0.9677199721336365
+        }
+      ],
+      "numbers": [
+        "235"
+      ],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-210",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.017443146964069456,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-210",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.014648990996647626,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-213",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.0173321720212698,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-213",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.01898427598644048,
+      "readings": [
+        {
+          "text": "-",
+          "score": 0.3325662314891815
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-216",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.015562321001198143,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-216",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.019236035994254053,
+      "readings": [
+        {
+          "text": "\u53e3",
+          "score": 0.4058224558830261
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-219",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.017433360044378787,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-219",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.01917927502654493,
+      "readings": [
+        {
+          "text": "\u53e3",
+          "score": 0.638954758644104
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-222",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.017366978980135173,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-222",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.018815034010913223,
+      "readings": [
+        {
+          "text": "ENO",
+          "score": 0.32926231622695923
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-225",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.0159719159710221,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-225",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.014838227012660354,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-228",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01721238298341632,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-228",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.019025844987481833,
+      "readings": [
+        {
+          "text": "NO",
+          "score": 0.3171270787715912
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-231",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01737009600037709,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-231",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.019108758016955107,
+      "readings": [
+        {
+          "text": "\u53e3",
+          "score": 0.3372105658054352
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-234",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.016239666962064803,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-234",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.01929539703996852,
+      "readings": [
+        {
+          "text": "0",
+          "score": 0.25124600529670715
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-237",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.017107178980950266,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-237",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.019257896987255663,
+      "readings": [
+        {
+          "text": "O",
+          "score": 0.31162402033805847
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-240",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.02223894401686266,
+      "readings": [
+        {
+          "text": "235",
+          "score": 0.9900453686714172
+        }
+      ],
+      "numbers": [
+        "235"
+      ],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-240",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.01529414497781545,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-243",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.025145007006358355,
+      "readings": [
+        {
+          "text": "469",
+          "score": 0.8745976090431213
+        },
+        {
+          "text": "235",
+          "score": 0.9398765563964844
+        }
+      ],
+      "numbers": [
+        "469",
+        "235"
+      ],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-243",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.01873093203175813,
+      "readings": [
+        {
+          "text": "25",
+          "score": 0.5019516944885254
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-246",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.017791583959478885,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-246",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.014358368003740907,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-249",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01740441902074963,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-249",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015194077976047993,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-252",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.016072736005298793,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-252",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.018911543011199683,
+      "readings": [
+        {
+          "text": "D",
+          "score": 0.3115830421447754
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-255",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01774092996492982,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-255",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.019157333998009562,
+      "readings": [
+        {
+          "text": "D",
+          "score": 0.22046945989131927
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-258",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01702866703271866,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-258",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.023482682998292148,
+      "readings": [
+        {
+          "text": "",
+          "score": 0.0
+        },
+        {
+          "text": "-",
+          "score": 0.46836361289024353
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-261",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.015637285017874092,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-261",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.019496676977723837,
+      "readings": [
+        {
+          "text": "CNO",
+          "score": 0.2867925465106964
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-264",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.017504673975054175,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-264",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.019104339997284114,
+      "readings": [
+        {
+          "text": "\u53e3",
+          "score": 0.15128017961978912
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-267",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01757950201863423,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-267",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.01880029001040384,
+      "readings": [
+        {
+          "text": "D",
+          "score": 0.4477135241031647
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-270",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.015783965005539358,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-270",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.018697119958233088,
+      "readings": [
+        {
+          "text": "",
+          "score": 0.0
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-273",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.02186537004308775,
+      "readings": [
+        {
+          "text": "-735",
+          "score": 0.5502911806106567
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-273",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015062019985634834,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-276",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.02659787202719599,
+      "readings": [
+        {
+          "text": "235",
+          "score": 0.8799905180931091
+        },
+        {
+          "text": "69",
+          "score": 0.7352189421653748
+        }
+      ],
+      "numbers": [
+        "235"
+      ],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-276",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.019435734022408724,
+      "readings": [
+        {
+          "text": "235",
+          "score": 0.8553531765937805
+        }
+      ],
+      "numbers": [
+        "235"
+      ],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-279",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.020227633009199053,
+      "readings": [
+        {
+          "text": "469",
+          "score": 0.9817545413970947
+        }
+      ],
+      "numbers": [
+        "469"
+      ],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-279",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.014544046018272638,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-282",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.017793148988857865,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-282",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.019070430018473417,
+      "readings": [
+        {
+          "text": "\u4e2d",
+          "score": 0.11967664211988449
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-285",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.017240487970411777,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-285",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.01895895303459838,
+      "readings": [
+        {
+          "text": "\u54c1",
+          "score": 0.16480174660682678
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-288",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01570171199273318,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-288",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.023051786003634334,
+      "readings": [
+        {
+          "text": "\u53e3",
+          "score": 0.4628221094608307
+        },
+        {
+          "text": "-",
+          "score": 0.3926655948162079
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-291",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.018381209985818714,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-291",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.019413115980569273,
+      "readings": [
+        {
+          "text": "-",
+          "score": 0.7024606466293335
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-294",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.017380913021042943,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-294",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.023104813997633755,
+      "readings": [
+        {
+          "text": "C",
+          "score": 0.21139933168888092
+        },
+        {
+          "text": "",
+          "score": 0.0
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-297",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01655619597295299,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-297",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.019459266040939838,
+      "readings": [
+        {
+          "text": "\u4e2dD",
+          "score": 0.15806546807289124
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-300",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01783431100193411,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-300",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.019467961974442005,
+      "readings": [
+        {
+          "text": "\u53e3",
+          "score": 0.2684932053089142
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-303",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.018003345001488924,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-303",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.02294862497365102,
+      "readings": [
+        {
+          "text": "",
+          "score": 0.0
+        },
+        {
+          "text": "",
+          "score": 0.0
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-306",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.016524381993804127,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-306",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.019116286013741046,
+      "readings": [
+        {
+          "text": "\u4e2d",
+          "score": 0.09678138792514801
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-309",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.022939156973734498,
+      "readings": [
+        {
+          "text": "739",
+          "score": 0.5632110834121704
+        }
+      ],
+      "numbers": [
+        "739"
+      ],
+      "matched": [],
+      "unexpected": [
+        "739"
+      ]
+    },
+    {
+      "id": "clip-71-frame-309",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015401611977722496,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-312",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.02787874103523791,
+      "readings": [
+        {
+          "text": "235",
+          "score": 0.6280983686447144
+        },
+        {
+          "text": "469",
+          "score": 0.8017485737800598
+        }
+      ],
+      "numbers": [
+        "235",
+        "469"
+      ],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-312",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.020006127015221864,
+      "readings": [
+        {
+          "text": "",
+          "score": 0.0
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-315",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.022515463002491742,
+      "readings": [
+        {
+          "text": "469",
+          "score": 0.954089343547821
+        }
+      ],
+      "numbers": [
+        "469"
+      ],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-315",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.014768018969334662,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-318",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.018488926987629384,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-318",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.02049460296984762,
+      "readings": [
+        {
+          "text": "-",
+          "score": 0.600261926651001
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-321",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01816871896153316,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-321",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.020670277997851372,
+      "readings": [
+        {
+          "text": "",
+          "score": 0.0
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-324",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01690997596597299,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-324",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.020488670037593693,
+      "readings": [
+        {
+          "text": "D",
+          "score": 0.3246577978134155
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-327",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.018397264007944614,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-327",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.020703690010122955,
+      "readings": [
+        {
+          "text": "D",
+          "score": 0.29159268736839294
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-330",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01845036499435082,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-330",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.02358183602336794,
+      "readings": [
+        {
+          "text": "",
+          "score": 0.0
+        },
+        {
+          "text": "",
+          "score": 0.0
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-333",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.016847779974341393,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-333",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.023853442980907857,
+      "readings": [
+        {
+          "text": "\u53e3",
+          "score": 0.26848748326301575
+        },
+        {
+          "text": "",
+          "score": 0.0
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-336",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.019357320968993008,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-336",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.020958481007255614,
+      "readings": [
+        {
+          "text": "O",
+          "score": 0.23086756467819214
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-339",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01907032902818173,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-339",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.02112863294314593,
+      "readings": [
+        {
+          "text": "D",
+          "score": 0.4781591594219208
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-342",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.017167966987472028,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-342",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.021526557044126093,
+      "readings": [
+        {
+          "text": "K",
+          "score": 0.23703478276729584
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-345",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.019199731992557645,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-345",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.01572394696995616,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-348",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.025439319026190788,
+      "readings": [
+        {
+          "text": "735",
+          "score": 0.8211889863014221
+        }
+      ],
+      "numbers": [
+        "735"
+      ],
+      "matched": [],
+      "unexpected": [
+        "735"
+      ]
+    },
+    {
+      "id": "clip-71-frame-348",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015807945048436522,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-351",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.023378711950499564,
+      "readings": [
+        {
+          "text": "14631",
+          "score": 0.7415046691894531
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-351",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015693092020228505,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-354",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.022347740014083683,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-354",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.021353335003368556,
+      "readings": [
+        {
+          "text": "CE",
+          "score": 0.25557851791381836
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-357",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01948721701046452,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-357",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.02217793499585241,
+      "readings": [
+        {
+          "text": "",
+          "score": 0.0
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-360",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.017354656010866165,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-360",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.021471128042321652,
+      "readings": [
+        {
+          "text": "\u53e3",
+          "score": 0.2922845780849457
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-363",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.020535018004011363,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-363",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.022578902018722147,
+      "readings": [
+        {
+          "text": "\u53e3",
+          "score": 0.244968980550766
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-366",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.02005391998682171,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-366",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.0223010050249286,
+      "readings": [
+        {
+          "text": "D",
+          "score": 0.22136510908603668
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-369",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.018437415012158453,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-369",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.022548214008565992,
+      "readings": [
+        {
+          "text": "",
+          "score": 0.0
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-372",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.02078188903396949,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-71-frame-372",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.02198171301279217,
+      "readings": [
+        {
+          "text": "ND",
+          "score": 0.2642098665237427
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-0",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.020104877010453492,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-0",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.016583281045313925,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-3",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.018313217035029083,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-3",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.01624683104455471,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-6",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.02070250199176371,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-6",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.016763727995567024,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-9",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.026880414981860667,
+      "readings": [
+        {
+          "text": "469",
+          "score": 0.9961812496185303
+        }
+      ],
+      "numbers": [
+        "469"
+      ],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-9",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.022843043028842658,
+      "readings": [
+        {
+          "text": "469",
+          "score": 0.9951851963996887
+        }
+      ],
+      "numbers": [
+        "469"
+      ],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-12",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.029578262998256832,
+      "readings": [
+        {
+          "text": "235",
+          "score": 0.9965558052062988
+        },
+        {
+          "text": "469",
+          "score": 0.9953164458274841
+        }
+      ],
+      "numbers": [
+        "235",
+        "469"
+      ],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-12",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.026528186979703605,
+      "readings": [
+        {
+          "text": "235",
+          "score": 0.9975231289863586
+        },
+        {
+          "text": "469",
+          "score": 0.9977660179138184
+        }
+      ],
+      "numbers": [
+        "235",
+        "469"
+      ],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-15",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.026062026037834585,
+      "readings": [
+        {
+          "text": "1235",
+          "score": 0.8448218107223511
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-15",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.022788185975514352,
+      "readings": [
+        {
+          "text": "235",
+          "score": 0.9956126809120178
+        }
+      ],
+      "numbers": [
+        "235"
+      ],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-18",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.019699914031662047,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-18",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.01644906704314053,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-21",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.017567494011018425,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-21",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015542165958322585,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-24",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.019330543000251055,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-24",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015778695000335574,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-27",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.019289360963739455,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-27",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.021226371987722814,
+      "readings": [
+        {
+          "text": "",
+          "score": 0.0
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-30",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.017818171007093042,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-30",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015650904970243573,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-33",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.019185802957508713,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-33",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.01603748300112784,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-36",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.019240155001170933,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-36",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.016449799994006753,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-39",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.017540725995786488,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-39",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.01542220899136737,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-42",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.019139179959893227,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-42",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.01555438997456804,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-45",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01968418003525585,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-45",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.01629246596712619,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-48",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.017708691011648625,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-48",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015303422987926751,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-51",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01904568000463769,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-51",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015615330019500107,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-54",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.01893661404028535,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-54",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015657423995435238,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-57",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.017170975042972714,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-57",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015477527980692685,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-60",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.024737478990573436,
+      "readings": [
+        {
+          "text": "469",
+          "score": 0.9960810542106628
+        }
+      ],
+      "numbers": [
+        "469"
+      ],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-60",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.021493409003596753,
+      "readings": [
+        {
+          "text": "469",
+          "score": 0.9956331849098206
+        }
+      ],
+      "numbers": [
+        "469"
+      ],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-63",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.024935495981480926,
+      "readings": [
+        {
+          "text": "469",
+          "score": 0.9964067935943604
+        }
+      ],
+      "numbers": [
+        "469"
+      ],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-63",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.02111152798170224,
+      "readings": [
+        {
+          "text": "469",
+          "score": 0.9937513470649719
+        }
+      ],
+      "numbers": [
+        "469"
+      ],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-66",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.02248730300925672,
+      "readings": [
+        {
+          "text": "235",
+          "score": 0.9952111840248108
+        }
+      ],
+      "numbers": [
+        "235"
+      ],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-66",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.02170563500840217,
+      "readings": [
+        {
+          "text": "235",
+          "score": 0.9963817596435547
+        }
+      ],
+      "numbers": [
+        "235"
+      ],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-69",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.024318401992786676,
+      "readings": [
+        {
+          "text": "235",
+          "score": 0.995522677898407
+        }
+      ],
+      "numbers": [
+        "235"
+      ],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-69",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.021130745008122176,
+      "readings": [
+        {
+          "text": "235",
+          "score": 0.9939389228820801
+        }
+      ],
+      "numbers": [
+        "235"
+      ],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-72",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.023949653026647866,
+      "readings": [
+        {
+          "text": "235",
+          "score": 0.9740011096000671
+        }
+      ],
+      "numbers": [
+        "235"
+      ],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-72",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.02037856198148802,
+      "readings": [
+        {
+          "text": "35",
+          "score": 0.9750580787658691
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-75",
+      "kind": "region",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.0172296860255301,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "clip-81-frame-75",
+      "kind": "region",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015055722033139318,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    }
+  ],
+  "peak_gpu_allocated_bytes": 70045696
+}

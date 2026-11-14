@@ -1,0 +1,63 @@
+{
+  "device": "AMD Radeon RX 6800 XT (RADV NAVI21)",
+  "device_index": 0,
+  "ncnn_version": "1.0.20261020",
+  "fp16": false,
+  "test": "Known 3x3 convolution + ReLU; not OCR or a performance benchmark",
+  "recording_database_opened": false,
+  "results": {
+    "cpu": {
+      "shape": [
+        3,
+        128,
+        128
+      ],
+      "max_abs_error": 2.9802322387695312e-08,
+      "seconds_including_first_inference": 0.08247373718768358,
+      "layers": [
+        {
+          "name": "input",
+          "type": "Input",
+          "supports_vulkan": true
+        },
+        {
+          "name": "average",
+          "type": "Convolution",
+          "supports_vulkan": false
+        },
+        {
+          "name": "relu",
+          "type": "ReLU",
+          "supports_vulkan": false
+        }
+      ]
+    },
+    "vulkan": {
+      "shape": [
+        3,
+        128,
+        128
+      ],
+      "max_abs_error": 8.940696716308594e-08,
+      "seconds_including_first_inference": 0.010393505915999413,
+      "layers": [
+        {
+          "name": "input",
+          "type": "Input",
+          "supports_vulkan": true
+        },
+        {
+          "name": "average",
+          "type": "Convolution",
+          "supports_vulkan": true
+        },
+        {
+          "name": "relu",
+          "type": "ReLU",
+          "supports_vulkan": true
+        }
+      ]
+    }
+  },
+  "passed": true
+}

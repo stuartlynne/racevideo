@@ -1,0 +1,35 @@
+{
+  "upstream_commit": "95dc316a8490a350c1d1fcf3bc80bf83d4e52450",
+  "artifacts": {
+    "baseline_cached": {
+      "path": "/home/sl/.paddlex/official_models/PP-OCRv5_mobile_rec/inference.pdiparams",
+      "bytes": 16458665,
+      "sha256": "2460da90875937c94db97eba74ae3d9e5d4c4c57c42f1f41531c09a26bcc771a"
+    },
+    "initial_checkpoint": {
+      "path": "/home/sl/racevideo/data/training/PP-OCRv5_mobile_rec_pretrained.pdparams",
+      "bytes": 133890015,
+      "sha256": "04745475b97a1faf029c7442a4c4421b156249b9395814e509bf4a9804e37750"
+    },
+    "best_tuned_checkpoint": {
+      "path": "/home/sl/racevideo/data/training/din-v1-model/best_accuracy.pdparams",
+      "bytes": 133890018,
+      "sha256": "425c6a6d575b4cd5aeea6c2690a82f94507ba5c329a46eb6b105392241d13797"
+    },
+    "bn_restored_checkpoint": {
+      "path": "/home/sl/racevideo/data/training/din-v1-bn-reset.pdparams",
+      "bytes": 133890018,
+      "sha256": "bb639793bde31ba96703843ca6c3ef31e03b726340038b3d1fbf05ea717d46d2"
+    },
+    "tuned_export": {
+      "path": "/home/sl/racevideo/data/training/din-v1-export/inference.pdiparams",
+      "bytes": 16458665,
+      "sha256": "5e5fc85c7bed306cd1db458a72f44285c83a0d5d300e5ecc2c0442ce72d68ed9"
+    },
+    "bn_restored_export": {
+      "path": "/home/sl/racevideo/data/training/din-v1-bn-reset-export/inference.pdiparams",
+      "bytes": 16458665,
+      "sha256": "d806bbda67be89b5c0055a5d73418e008a744962d15cd16ab5772bcb5a67abff"
+    }
+  }
+}

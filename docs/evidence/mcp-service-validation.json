@@ -1,0 +1,17 @@
+{
+  "mcp_service": "racevideo-mcp.service",
+  "url": "http://127.0.0.1:8766/mcp",
+  "independent_recorder_survived_restart": true,
+  "frames_before": 3,
+  "frames_after": 27,
+  "offline_frame_tool_verified": true,
+  "headless_live_sample_verified": true,
+  "validation": [
+    "24 unit tests",
+    "HTTP MCP + real reverse GUI bridge integration",
+    "physical camera tune/restore/operator takeover"
+  ],
+  "note": "Development Linux host and Logitech C615. Credentials excluded. Race-speed OCR/optical shutter calibration not established.",
+  "deployed_gui_reverse_control": true,
+  "tool_count": 26
+}

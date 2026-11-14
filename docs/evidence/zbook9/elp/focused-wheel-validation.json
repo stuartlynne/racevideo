@@ -1,0 +1,152 @@
+{
+  "clip_id": 16,
+  "starred": true,
+  "runs": [
+    {
+      "id": 1,
+      "state": "complete",
+      "parameters": {
+        "fps": 4.0
+      },
+      "summary": {
+        "sampled_frames": 8,
+        "total_samples": 8,
+        "raw_reads": 19,
+        "regions": 160,
+        "wall_seconds": 15.457,
+        "cpu_seconds": 15.425,
+        "engine": "mser-components-tesseract-v1",
+        "observations": 2
+      },
+      "observations": [
+        {
+          "number": "235",
+          "frame_count": 8,
+          "status": "repeated"
+        },
+        {
+          "number": "469",
+          "frame_count": 3,
+          "status": "repeated"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "state": "complete",
+      "parameters": {
+        "fps": 4.0,
+        "roi": [
+          0.3,
+          0.32,
+          0.83,
+          0.69
+        ]
+      },
+      "summary": {
+        "sampled_frames": 8,
+        "total_samples": 8,
+        "raw_reads": 8,
+        "regions": 160,
+        "wall_seconds": 12.387,
+        "cpu_seconds": 12.345,
+        "engine": "mser-components-tesseract-v1",
+        "observations": 1
+      },
+      "observations": [
+        {
+          "number": "965",
+          "frame_count": 1,
+          "status": "candidate"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "state": "complete",
+      "parameters": {
+        "fps": 4.0
+      },
+      "summary": {
+        "sampled_frames": 8,
+        "total_samples": 8,
+        "raw_reads": 19,
+        "regions": 160,
+        "wall_seconds": 15.409,
+        "cpu_seconds": 15.385,
+        "engine": "mser-components-tesseract-v1",
+        "observations": 2
+      },
+      "observations": [
+        {
+          "number": "235",
+          "frame_count": 8,
+          "status": "repeated"
+        },
+        {
+          "number": "469",
+          "frame_count": 3,
+          "status": "repeated"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "state": "complete",
+      "parameters": {
+        "fps": 4.0,
+        "roi": [
+          0.3,
+          0.32,
+          0.83,
+          0.69
+        ]
+      },
+      "summary": {
+        "sampled_frames": 8,
+        "total_samples": 8,
+        "raw_reads": 20,
+        "regions": 160,
+        "wall_seconds": 7.969,
+        "cpu_seconds": 7.949,
+        "engine": "mser-components-tesseract-v2",
+        "observations": 3
+      },
+      "observations": [
+        {
+          "number": "235",
+          "frame_count": 8,
+          "status": "repeated"
+        },
+        {
+          "number": "469",
+          "frame_count": 1,
+          "status": "candidate"
+        },
+        {
+          "number": "469",
+          "frame_count": 2,
+          "status": "repeated"
+        }
+      ]
+    }
+  ],
+  "capture": {
+    "width": 3840,
+    "height": 2160,
+    "fps": 29.985635111446296,
+    "capture_frames": 5676,
+    "capture_bad_packets": 0,
+    "analysis_lag_ms": 0.0,
+    "dropped_clips": 0,
+    "error": null
+  },
+  "conclusions": [
+    "Opening the manual iris restored scene illumination; manual focus made both labels readable.",
+    "Both plates read from original 4K clip; no bib whitelist supplied.",
+    "Original cropped v1 trial failed; v2 preserves full-frame detector scale and reads both.",
+    "469 observations fragmented into multiple tracks; encounter counts are not lap counts.",
+    "Stationary/slow repositioning reference only. Moving wheel and fixed short exposure remain to be tested."
+  ],
+  "unit_tests": 42
+}

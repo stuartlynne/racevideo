@@ -1,0 +1,91 @@
+{
+  "clips": 786,
+  "declared_frames": 90679,
+  "recorded_seconds": 2997.687262823,
+  "span_seconds": 18691.147375368,
+  "local_first": "2026-11-08T10:15:43.574743-07:00",
+  "local_last": "2026-11-08T15:27:14.722119-07:00",
+  "clips_reporting_bad_packets_in_segment": [],
+  "clips_with_nonzero_cumulative_analysis_overruns": [],
+  "clips_missing_bad_packet_metadata": [],
+  "hours": {
+    "2026-11-08 10:00": {
+      "clips": 106,
+      "frames": 14894,
+      "exposure_values": {
+        "40": 37,
+        "43": 69
+      },
+      "gain_values": {
+        "190": 106
+      }
+    },
+    "2026-11-08 11:00": {
+      "clips": 111,
+      "frames": 11781,
+      "exposure_values": {
+        "1": 2,
+        "8": 32,
+        "4": 1,
+        "6": 5,
+        "12": 6,
+        "25": 19,
+        "22": 2,
+        "30": 8,
+        "34": 11,
+        "21": 25
+      },
+      "gain_values": {
+        "190": 111
+      }
+    },
+    "2026-11-08 12:00": {
+      "clips": 219,
+      "frames": 28848,
+      "exposure_values": {
+        "40": 2,
+        "20": 10,
+        "10": 54,
+        "7": 1,
+        "4": 152
+      },
+      "gain_values": {
+        "190": 219
+      }
+    },
+    "2026-11-08 13:00": {
+      "clips": 125,
+      "frames": 13303,
+      "exposure_values": {
+        "4": 125
+      },
+      "gain_values": {
+        "190": 125
+      }
+    },
+    "2026-11-08 14:00": {
+      "clips": 151,
+      "frames": 14955,
+      "exposure_values": {
+        "4": 151
+      },
+      "gain_values": {
+        "190": 151
+      }
+    },
+    "2026-11-08 15:00": {
+      "clips": 74,
+      "frames": 6898,
+      "exposure_values": {
+        "4": 74
+      },
+      "gain_values": {
+        "190": 74
+      }
+    }
+  },
+  "timezone": "America/Vancouver",
+  "timezone_data": "zbook9 tzdata 2026e; imported TZif, no host timezone changes",
+  "first_utc": "2026-11-08T17:15:43.574743+00:00",
+  "last_utc": "2026-11-08T22:27:14.722119+00:00"
+}

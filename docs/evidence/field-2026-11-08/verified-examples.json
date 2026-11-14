@@ -1,0 +1,175 @@
+{
+  "notes": "Selected diagnostic successes, not a recall/accuracy benchmark. Detector saw broad full search region, not ground-truth crops.",
+  "examples": [
+    {
+      "clip": 212,
+      "ordinal": 19,
+      "gui_frame": 20,
+      "visually_verified_number": "155",
+      "read": {
+        "quad": [
+          [
+            1928.0,
+            1186.0
+          ],
+          [
+            2079.0,
+            1161.0
+          ],
+          [
+            2096.0,
+            1261.0
+          ],
+          [
+            1945.0,
+            1286.0
+          ]
+        ],
+        "detector_score": 0.8681437334186692,
+        "text": "155",
+        "score": 0.9851630330085754,
+        "crop_file": "212-19-tiles960-0-155.png"
+      },
+      "crop_file": "clip-212-gui-frame-20-155.png",
+      "source_jpeg_sha256": "3ec91c7b4d6939ab91da2b093ae494f801a53bd3051393fb50d0417e7e44bbcd",
+      "probe": "probe-v3",
+      "method": "tiles960",
+      "received_ns": 1794162150717616425,
+      "whole_search_region": [
+        0.05,
+        0.4,
+        0.98,
+        0.9
+      ],
+      "manual_crop_used_as_detector_input": false
+    },
+    {
+      "clip": 508,
+      "ordinal": 19,
+      "gui_frame": 20,
+      "visually_verified_number": "826",
+      "read": {
+        "quad": [
+          [
+            2132.0,
+            1436.0
+          ],
+          [
+            2232.0,
+            1434.0
+          ],
+          [
+            2233.0,
+            1498.0
+          ],
+          [
+            2133.0,
+            1500.0
+          ]
+        ],
+        "detector_score": 0.9169984792544296,
+        "text": "826",
+        "score": 0.9911370277404785,
+        "crop_file": "508-19-tiles960-0-826.png"
+      },
+      "crop_file": "clip-508-gui-frame-20-826.png",
+      "source_jpeg_sha256": "d05bb282166cbaa7ca0d065acf6040c85d64a1a711c889bdc74bb16958167493",
+      "probe": "probe-v3",
+      "method": "tiles960",
+      "received_ns": 1794167460658287477,
+      "whole_search_region": [
+        0.05,
+        0.4,
+        0.98,
+        0.9
+      ],
+      "manual_crop_used_as_detector_input": false
+    },
+    {
+      "clip": 670,
+      "ordinal": 19,
+      "gui_frame": 20,
+      "visually_verified_number": "730",
+      "read": {
+        "quad": [
+          [
+            2309.0,
+            1456.0
+          ],
+          [
+            2268.0,
+            1562.0
+          ],
+          [
+            2201.0,
+            1536.0
+          ],
+          [
+            2242.0,
+            1430.0
+          ]
+        ],
+        "detector_score": 0.8486508978831421,
+        "detector_rotation": 90,
+        "rotation": 180,
+        "text": "730",
+        "score": 0.9885425567626953,
+        "crop_file": "670-19-tiles960-2-730.png"
+      },
+      "crop_file": "clip-670-gui-frame-20-730.png",
+      "source_jpeg_sha256": "c0c76b78e7f0730cc0e5e61564c7262ecc998106aed5b980fc1f69c20b648b34",
+      "probe": "probe-v5",
+      "method": "tiles960",
+      "received_ns": 1794171867376090571,
+      "whole_search_region": [
+        0.05,
+        0.4,
+        0.98,
+        0.9
+      ],
+      "manual_crop_used_as_detector_input": false
+    },
+    {
+      "clip": 800,
+      "ordinal": 19,
+      "gui_frame": 20,
+      "visually_verified_number": "480",
+      "read": {
+        "quad": [
+          [
+            2378.0,
+            1528.0
+          ],
+          [
+            2498.0,
+            1543.0
+          ],
+          [
+            2488.0,
+            1621.0
+          ],
+          [
+            2368.0,
+            1606.0
+          ]
+        ],
+        "detector_score": 0.9067173116756759,
+        "text": "480",
+        "score": 0.9876106381416321,
+        "crop_file": "800-19-tiles960-0-480.png"
+      },
+      "crop_file": "clip-800-gui-frame-20-480.png",
+      "source_jpeg_sha256": "a0ed18aa4a068372ccf152c780d74716ea402f2e9e1be3b14a521976557dd356",
+      "probe": "probe-v3",
+      "method": "tiles960",
+      "received_ns": 1794175081160303972,
+      "whole_search_region": [
+        0.05,
+        0.4,
+        0.98,
+        0.9
+      ],
+      "manual_crop_used_as_detector_input": false
+    }
+  ]
+}

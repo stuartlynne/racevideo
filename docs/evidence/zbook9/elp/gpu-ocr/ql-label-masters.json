@@ -1,0 +1,207 @@
+{
+  "source": "/home/sl/work25/qlmux/qllabels/qllabels/qllabels.py",
+  "source_sha256": "5c1eb5a497976d9b6b495f4e07c959a2e1530858d828850a14d4738ace6c3f8a",
+  "font": "/home/sl/work25/qlmux/qllabels/qllabels/fonts/TGL_0-1451Eng.ttf",
+  "font_sha256": "69463a90044fd69df7a775d517befb1d17228ac6fec5c2712fa19044af0875d5",
+  "dpi": 300,
+  "items": [
+    {
+      "number": "000",
+      "kind": "Frame",
+      "side": "left",
+      "labelsize": "62x100",
+      "size": [
+        1109,
+        696
+      ],
+      "file": "Frame-000-62x100-left.png"
+    },
+    {
+      "number": "000",
+      "kind": "Frame",
+      "side": "right",
+      "labelsize": "62x100",
+      "size": [
+        1109,
+        696
+      ],
+      "file": "Frame-000-62x100-right.png"
+    },
+    {
+      "number": "000",
+      "kind": "Body",
+      "side": null,
+      "labelsize": "102x152",
+      "size": [
+        1660,
+        1164
+      ],
+      "file": "Body-000-102x152.png"
+    },
+    {
+      "number": "235",
+      "kind": "Frame",
+      "side": "left",
+      "labelsize": "62x100",
+      "size": [
+        1109,
+        696
+      ],
+      "file": "Frame-235-62x100-left.png"
+    },
+    {
+      "number": "235",
+      "kind": "Frame",
+      "side": "right",
+      "labelsize": "62x100",
+      "size": [
+        1109,
+        696
+      ],
+      "file": "Frame-235-62x100-right.png"
+    },
+    {
+      "number": "235",
+      "kind": "Body",
+      "side": null,
+      "labelsize": "102x152",
+      "size": [
+        1660,
+        1164
+      ],
+      "file": "Body-235-102x152.png"
+    },
+    {
+      "number": "469",
+      "kind": "Frame",
+      "side": "left",
+      "labelsize": "62x100",
+      "size": [
+        1109,
+        696
+      ],
+      "file": "Frame-469-62x100-left.png"
+    },
+    {
+      "number": "469",
+      "kind": "Frame",
+      "side": "right",
+      "labelsize": "62x100",
+      "size": [
+        1109,
+        696
+      ],
+      "file": "Frame-469-62x100-right.png"
+    },
+    {
+      "number": "469",
+      "kind": "Body",
+      "side": null,
+      "labelsize": "102x152",
+      "size": [
+        1660,
+        1164
+      ],
+      "file": "Body-469-102x152.png"
+    },
+    {
+      "number": "609",
+      "kind": "Frame",
+      "side": "left",
+      "labelsize": "62x100",
+      "size": [
+        1109,
+        696
+      ],
+      "file": "Frame-609-62x100-left.png"
+    },
+    {
+      "number": "609",
+      "kind": "Frame",
+      "side": "right",
+      "labelsize": "62x100",
+      "size": [
+        1109,
+        696
+      ],
+      "file": "Frame-609-62x100-right.png"
+    },
+    {
+      "number": "609",
+      "kind": "Body",
+      "side": null,
+      "labelsize": "102x152",
+      "size": [
+        1660,
+        1164
+      ],
+      "file": "Body-609-102x152.png"
+    },
+    {
+      "number": "906",
+      "kind": "Frame",
+      "side": "left",
+      "labelsize": "62x100",
+      "size": [
+        1109,
+        696
+      ],
+      "file": "Frame-906-62x100-left.png"
+    },
+    {
+      "number": "906",
+      "kind": "Frame",
+      "side": "right",
+      "labelsize": "62x100",
+      "size": [
+        1109,
+        696
+      ],
+      "file": "Frame-906-62x100-right.png"
+    },
+    {
+      "number": "906",
+      "kind": "Body",
+      "side": null,
+      "labelsize": "102x152",
+      "size": [
+        1660,
+        1164
+      ],
+      "file": "Body-906-102x152.png"
+    },
+    {
+      "number": "999",
+      "kind": "Frame",
+      "side": "left",
+      "labelsize": "62x100",
+      "size": [
+        1109,
+        696
+      ],
+      "file": "Frame-999-62x100-left.png"
+    },
+    {
+      "number": "999",
+      "kind": "Frame",
+      "side": "right",
+      "labelsize": "62x100",
+      "size": [
+        1109,
+        696
+      ],
+      "file": "Frame-999-62x100-right.png"
+    },
+    {
+      "number": "999",
+      "kind": "Body",
+      "side": null,
+      "labelsize": "102x152",
+      "size": [
+        1660,
+        1164
+      ],
+      "file": "Body-999-102x152.png"
+    }
+  ]
+}

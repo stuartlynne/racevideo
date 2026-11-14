@@ -1,0 +1,28 @@
+{
+  "architecture_version": 2,
+  "unit_tests": 29,
+  "synthetic_full_hd": {
+    "preview_age_p50_ms": 94.25,
+    "preview_age_p95_ms": 131.87,
+    "callback_delay_p95_ms": 3.33,
+    "analysis_lag_ms": 4833.309267,
+    "ring_bytes": 8002064,
+    "ring_budget_bytes": 8388608
+  },
+  "forced_overwrite_frames": 130,
+  "checks": [
+    "deterministic motion/pre-post-roll/source timestamps",
+    "real Tk GUI navigation and ROI",
+    "HTTP MCP + reverse GUI integration",
+    "physical webcam ordered control/readback, tuning restore and operator takeover",
+    "synthetic full-HD delayed analysis and GUI stall",
+    "ring overwrite reported in UI and clip metadata",
+    "preview worker termination: stale warning and responsive resize",
+    "invalid device exits with visible error"
+  ],
+  "limitations": [
+    "Synthetic timings use the development desktop, not the target laptop or 4K camera.",
+    "Host receipt to Tk submission is measured; sensor-to-display latency is not calibrated.",
+    "Sustained target-laptop CPU budget and race-speed OCR accuracy remain unmeasured."
+  ]
+}

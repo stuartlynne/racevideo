@@ -1,0 +1,268 @@
+{
+  "date": "2026-11-05",
+  "roi": [
+    0.34,
+    0.35,
+    0.6,
+    0.56
+  ],
+  "rotations": [
+    0
+  ],
+  "fps": 8,
+  "scope": "Physical wheel recordings; candidate OCR, not confirmed passings. Existing runs retained.",
+  "results": [
+    {
+      "label": "medium1",
+      "clip_id": 46,
+      "run_id": 16,
+      "state": "complete",
+      "summary": {
+        "sampled_frames": 21,
+        "total_samples": 21,
+        "raw_reads": 3,
+        "regions": 133,
+        "wall_seconds": 3.443,
+        "cpu_seconds": 3.408,
+        "engine": "mser-components-tesseract-v4",
+        "observations": 1
+      },
+      "observations": [
+        {
+          "id": 60,
+          "number": "469",
+          "first_ns": 1793919747705315278,
+          "last_ns": 1793919747837442073,
+          "frame_count": 2,
+          "confidence": 92,
+          "ordinal": 28,
+          "quad": "[[1382.6408233642578, 941.8661804199219], [1651.3876342773438, 868.5716018676758], [1703.7052917480469, 1060.4030456542969], [1434.958480834961, 1133.6976318359375]]",
+          "status": "repeated"
+        }
+      ],
+      "qualified_reads": [
+        {
+          "number": "469",
+          "ordinal": 24,
+          "confidence": 91
+        },
+        {
+          "number": "469",
+          "ordinal": 28,
+          "confidence": 92
+        }
+      ]
+    },
+    {
+      "label": "medium2",
+      "clip_id": 48,
+      "run_id": 17,
+      "state": "complete",
+      "summary": {
+        "sampled_frames": 21,
+        "total_samples": 21,
+        "raw_reads": 4,
+        "regions": 325,
+        "wall_seconds": 8.118,
+        "cpu_seconds": 8.095,
+        "engine": "mser-components-tesseract-v4",
+        "observations": 1
+      },
+      "observations": [
+        {
+          "id": 61,
+          "number": "409",
+          "first_ns": 1793919759441410278,
+          "last_ns": 1793919759441410278,
+          "frame_count": 1,
+          "confidence": 62,
+          "ordinal": 20,
+          "quad": "[[1969.107666015625, 920.4804992675781], [2184.06787109375, 918.2177581787109], [2185.1610107421875, 1022.06396484375], [1970.2008056640625, 1024.3267211914062]]",
+          "status": "candidate"
+        }
+      ],
+      "qualified_reads": [
+        {
+          "number": "409",
+          "ordinal": 20,
+          "confidence": 62
+        }
+      ]
+    },
+    {
+      "label": "slow1",
+      "clip_id": 50,
+      "run_id": 18,
+      "state": "complete",
+      "summary": {
+        "sampled_frames": 21,
+        "total_samples": 21,
+        "raw_reads": 15,
+        "regions": 133,
+        "wall_seconds": 4.264,
+        "cpu_seconds": 4.239,
+        "engine": "mser-components-tesseract-v4",
+        "observations": 2
+      },
+      "observations": [
+        {
+          "id": 62,
+          "number": "235",
+          "first_ns": 1793919771777190641,
+          "last_ns": 1793919772177227907,
+          "frame_count": 4,
+          "confidence": 96,
+          "ordinal": 12,
+          "quad": "[[2075.4067993164062, 842.5249557495117], [2345.098388671875, 879.8227386474609], [2318.446044921875, 1072.5398254394531], [2048.7544555664062, 1035.2420349121094]]",
+          "status": "repeated"
+        },
+        {
+          "id": 63,
+          "number": "469",
+          "first_ns": 1793919772309264978,
+          "last_ns": 1793919772441688901,
+          "frame_count": 2,
+          "confidence": 95,
+          "ordinal": 28,
+          "quad": "[[2066.4551391601562, 839.7579574584961], [2332.420166015625, 876.1531753540039], [2306.4855346679688, 1065.6760559082031], [2040.5204467773438, 1029.2808227539062]]",
+          "status": "candidate"
+        }
+      ],
+      "qualified_reads": [
+        {
+          "number": "235",
+          "ordinal": 12,
+          "confidence": 96
+        },
+        {
+          "number": "235",
+          "ordinal": 16,
+          "confidence": 96
+        },
+        {
+          "number": "235",
+          "ordinal": 20,
+          "confidence": 96
+        },
+        {
+          "number": "235",
+          "ordinal": 24,
+          "confidence": 95
+        },
+        {
+          "number": "469",
+          "ordinal": 28,
+          "confidence": 95
+        },
+        {
+          "number": "469",
+          "ordinal": 32,
+          "confidence": 92
+        },
+        {
+          "number": "469",
+          "ordinal": 32,
+          "confidence": 76
+        }
+      ]
+    },
+    {
+      "label": "slow2",
+      "clip_id": 52,
+      "run_id": 19,
+      "state": "complete",
+      "summary": {
+        "sampled_frames": 21,
+        "total_samples": 21,
+        "raw_reads": 13,
+        "regions": 184,
+        "wall_seconds": 4.676,
+        "cpu_seconds": 4.632,
+        "engine": "mser-components-tesseract-v4",
+        "observations": 3
+      },
+      "observations": [
+        {
+          "id": 64,
+          "number": "235",
+          "first_ns": 1793919783677037473,
+          "last_ns": 1793919783809144327,
+          "frame_count": 2,
+          "confidence": 96,
+          "ordinal": 16,
+          "quad": "[[2056.6296997070312, 845.8303451538086], [2319.8905639648438, 876.3131790161133], [2298.1791381835938, 1063.8211975097656], [2034.918212890625, 1033.33837890625]]",
+          "status": "candidate"
+        },
+        {
+          "id": 65,
+          "number": "469",
+          "first_ns": 1793919784077098862,
+          "last_ns": 1793919784345019641,
+          "frame_count": 3,
+          "confidence": 96,
+          "ordinal": 28,
+          "quad": "[[1928.2344970703125, 836.859504699707], [2176.5476684570312, 847.3147888183594], [2168.7681274414062, 1032.0774536132812], [1920.4550170898438, 1021.6221313476562]]",
+          "status": "repeated"
+        },
+        {
+          "id": 66,
+          "number": "463",
+          "first_ns": 1793919784609018601,
+          "last_ns": 1793919784609018601,
+          "frame_count": 1,
+          "confidence": 62,
+          "ordinal": 44,
+          "quad": "[[1238.4067993164062, 1013.1221313476562], [1517.0786895751953, 907.5201416015625], [1589.6559753417969, 1099.0435180664062], [1310.9840712547302, 1204.6455078125]]",
+          "status": "candidate"
+        }
+      ],
+      "qualified_reads": [
+        {
+          "number": "235",
+          "ordinal": 16,
+          "confidence": 96
+        },
+        {
+          "number": "235",
+          "ordinal": 20,
+          "confidence": 83
+        },
+        {
+          "number": "235",
+          "ordinal": 20,
+          "confidence": 96
+        },
+        {
+          "number": "469",
+          "ordinal": 28,
+          "confidence": 96
+        },
+        {
+          "number": "469",
+          "ordinal": 28,
+          "confidence": 86
+        },
+        {
+          "number": "469",
+          "ordinal": 32,
+          "confidence": 96
+        },
+        {
+          "number": "469",
+          "ordinal": 36,
+          "confidence": 92
+        },
+        {
+          "number": "469",
+          "ordinal": 36,
+          "confidence": 76
+        },
+        {
+          "number": "463",
+          "ordinal": 44,
+          "confidence": 62
+        }
+      ]
+    }
+  ]
+}

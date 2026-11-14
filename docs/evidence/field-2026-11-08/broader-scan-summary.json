@@ -1,0 +1,947 @@
+{
+  "source_snapshot_sha256": "46818cab16a6edeef2ced6d000bc9485a6dcd1eb9f315bf15fb729d85bf44140",
+  "results_sha256": "1b1c813e8f336be0af03fc5dafba7ad40a89e8c70e4ded4d3fffb1442ba68ee7",
+  "metrics": {
+    "store": "/home/sl/racevideo/data/exports/2026-11-09/racevideo-20261109.sqlite3",
+    "state": "complete",
+    "model_initialization_seconds": 1.8610860589978984,
+    "cpu_affinity": [
+      0,
+      1
+    ],
+    "device": "gpu:0",
+    "threads": 2,
+    "roi": [
+      0.05,
+      0.4,
+      0.98,
+      0.9
+    ],
+    "try_rotations": true,
+    "detector_rotations": [
+      0,
+      90
+    ],
+    "enable_mkldnn": false,
+    "notes": [
+      "No valid bib list supplied to models. Exact three-digit outputs remain candidates.",
+      "Methods and rotations are separate diagnostics, not independent votes."
+    ],
+    "total_wall_seconds": 284.8449000059991,
+    "total_cpu_seconds": 279.613534065,
+    "peak_rss_bytes": 2198544384
+  },
+  "scanned_clips": [
+    202,
+    232,
+    262,
+    292,
+    322,
+    352,
+    382,
+    412,
+    442,
+    472,
+    502,
+    532,
+    562,
+    592,
+    622,
+    652,
+    682,
+    712,
+    742,
+    772,
+    802,
+    832,
+    862
+  ],
+  "frames": 2946,
+  "candidate_tracks": 19,
+  "candidate_tracks_are_not_rider_count": true,
+  "association_issues": [
+    "Capture 412 combines neighboring plates 838 and 826 into one ambiguous track; visually checked against original frames 20 and 24.",
+    "Capture 562 originally split one geometrically consistent 200 traversal across a five-frame OCR gap. An eight-frame gap with native-frame exit prediction joins it; this does not validate all occlusion handling."
+  ],
+  "encounters": [
+    {
+      "clip": 412,
+      "method": "riders960",
+      "track": 3,
+      "first_ordinal": 14,
+      "last_ordinal": 33,
+      "first_received_ns": 1794165736536584403,
+      "last_received_ns": 1794165737168478534,
+      "first_observed_utc": "2026-11-08T19:22:16.536584+00:00",
+      "frames": 19,
+      "travel_pixels": 3149.7233608683796,
+      "consensus": {
+        "status": "repeated_candidate",
+        "number": "803",
+        "alternatives": [
+          {
+            "number": "803",
+            "frames": [
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              33
+            ],
+            "frame_count": 19,
+            "mean_score": 0.9868306266634088
+          },
+          {
+            "number": "808",
+            "frames": [
+              33
+            ],
+            "frame_count": 1,
+            "mean_score": 0.9088819622993469
+          }
+        ]
+      }
+    },
+    {
+      "clip": 412,
+      "method": "riders960",
+      "track": 4,
+      "first_ordinal": 14,
+      "last_ordinal": 28,
+      "first_received_ns": 1794165736536584403,
+      "last_received_ns": 1794165737004487958,
+      "first_observed_utc": "2026-11-08T19:22:16.536584+00:00",
+      "frames": 13,
+      "travel_pixels": 2625.810839055243,
+      "consensus": {
+        "status": "ambiguous",
+        "number": null,
+        "alternatives": [
+          {
+            "number": "838",
+            "frames": [
+              15,
+              16,
+              17,
+              18,
+              19,
+              21,
+              22
+            ],
+            "frame_count": 7,
+            "mean_score": 0.9940350992338998
+          },
+          {
+            "number": "826",
+            "frames": [
+              24,
+              25,
+              26
+            ],
+            "frame_count": 3,
+            "mean_score": 0.9396951794624329
+          },
+          {
+            "number": "888",
+            "frames": [
+              14,
+              17,
+              21
+            ],
+            "frame_count": 3,
+            "mean_score": 0.9025477965672811
+          },
+          {
+            "number": "026",
+            "frames": [
+              27,
+              28
+            ],
+            "frame_count": 2,
+            "mean_score": 0.9367562234401703
+          }
+        ]
+      }
+    },
+    {
+      "clip": 412,
+      "method": "riders960",
+      "track": 5,
+      "first_ordinal": 25,
+      "last_ordinal": 36,
+      "first_received_ns": 1794165736904485194,
+      "last_received_ns": 1794165737268481324,
+      "first_observed_utc": "2026-11-08T19:22:16.904485+00:00",
+      "frames": 11,
+      "travel_pixels": 2878.6628189143653,
+      "consensus": {
+        "status": "repeated_candidate",
+        "number": "827",
+        "alternatives": [
+          {
+            "number": "827",
+            "frames": [
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              32,
+              33,
+              34,
+              35,
+              36
+            ],
+            "frame_count": 11,
+            "mean_score": 0.983703152699904
+          },
+          {
+            "number": "178",
+            "frames": [
+              33
+            ],
+            "frame_count": 1,
+            "mean_score": 0.8675315976142883
+          }
+        ]
+      }
+    },
+    {
+      "clip": 412,
+      "method": "riders960",
+      "track": 9,
+      "first_ordinal": 35,
+      "last_ordinal": 38,
+      "first_received_ns": 1794165737236492738,
+      "last_received_ns": 1794165737336490612,
+      "first_observed_utc": "2026-11-08T19:22:17.236493+00:00",
+      "frames": 4,
+      "travel_pixels": 479.6900040651254,
+      "consensus": {
+        "status": "repeated_candidate",
+        "number": "807",
+        "alternatives": [
+          {
+            "number": "807",
+            "frames": [
+              35,
+              36,
+              37,
+              38
+            ],
+            "frame_count": 4,
+            "mean_score": 0.9781466722488403
+          }
+        ]
+      }
+    },
+    {
+      "clip": 412,
+      "method": "riders960",
+      "track": 10,
+      "first_ordinal": 39,
+      "last_ordinal": 53,
+      "first_received_ns": 1794165737368650392,
+      "last_received_ns": 1794165737836548337,
+      "first_observed_utc": "2026-11-08T19:22:17.368650+00:00",
+      "frames": 14,
+      "travel_pixels": 3165.536486916554,
+      "consensus": {
+        "status": "ambiguous",
+        "number": null,
+        "alternatives": [
+          {
+            "number": "108",
+            "frames": [
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              49,
+              50,
+              51,
+              52,
+              53
+            ],
+            "frame_count": 14,
+            "mean_score": 0.9821292374815259
+          },
+          {
+            "number": "801",
+            "frames": [
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              49,
+              51,
+              52,
+              53
+            ],
+            "frame_count": 13,
+            "mean_score": 0.9953457713127136
+          }
+        ]
+      }
+    },
+    {
+      "clip": 412,
+      "method": "riders960",
+      "track": 11,
+      "first_ordinal": 45,
+      "last_ordinal": 65,
+      "first_received_ns": 1794165737568727747,
+      "last_received_ns": 1794165738236455291,
+      "first_observed_utc": "2026-11-08T19:22:17.568728+00:00",
+      "frames": 19,
+      "travel_pixels": 2986.858100496239,
+      "consensus": {
+        "status": "ambiguous",
+        "number": null,
+        "alternatives": [
+          {
+            "number": "008",
+            "frames": [
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              58,
+              60,
+              61,
+              64,
+              65
+            ],
+            "frame_count": 16,
+            "mean_score": 0.9631203040480614
+          },
+          {
+            "number": "800",
+            "frames": [
+              45,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56,
+              57,
+              58,
+              60,
+              65
+            ],
+            "frame_count": 13,
+            "mean_score": 0.9475939686481769
+          },
+          {
+            "number": "000",
+            "frames": [
+              62
+            ],
+            "frame_count": 1,
+            "mean_score": 0.8923739790916443
+          }
+        ]
+      }
+    },
+    {
+      "clip": 412,
+      "method": "riders960",
+      "track": 12,
+      "first_ordinal": 47,
+      "last_ordinal": 61,
+      "first_received_ns": 1794165737636582910,
+      "last_received_ns": 1794165738105084834,
+      "first_observed_utc": "2026-11-08T19:22:17.636583+00:00",
+      "frames": 15,
+      "travel_pixels": 2522.574738734216,
+      "consensus": {
+        "status": "ambiguous",
+        "number": null,
+        "alternatives": [
+          {
+            "number": "845",
+            "frames": [
+              47,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56,
+              57,
+              58,
+              59,
+              60,
+              61
+            ],
+            "frame_count": 15,
+            "mean_score": 0.9914578517278035
+          },
+          {
+            "number": "578",
+            "frames": [
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              56,
+              57
+            ],
+            "frame_count": 8,
+            "mean_score": 0.9232185631990433
+          }
+        ]
+      }
+    },
+    {
+      "clip": 412,
+      "method": "riders960",
+      "track": 13,
+      "first_ordinal": 55,
+      "last_ordinal": 60,
+      "first_received_ns": 1794165737904531165,
+      "last_received_ns": 1794165738068690545,
+      "first_observed_utc": "2026-11-08T19:22:17.904531+00:00",
+      "frames": 6,
+      "travel_pixels": 1136.6894089855857,
+      "consensus": {
+        "status": "repeated_candidate",
+        "number": "821",
+        "alternatives": [
+          {
+            "number": "821",
+            "frames": [
+              55,
+              56,
+              57,
+              58,
+              59,
+              60
+            ],
+            "frame_count": 6,
+            "mean_score": 0.9962908923625946
+          }
+        ]
+      }
+    },
+    {
+      "clip": 412,
+      "method": "riders960",
+      "track": 15,
+      "first_ordinal": 64,
+      "last_ordinal": 82,
+      "first_received_ns": 1794165738204502427,
+      "last_received_ns": 1794165738804516912,
+      "first_observed_utc": "2026-11-08T19:22:18.204503+00:00",
+      "frames": 16,
+      "travel_pixels": 3240.7778387294616,
+      "consensus": {
+        "status": "repeated_candidate",
+        "number": "818",
+        "alternatives": [
+          {
+            "number": "818",
+            "frames": [
+              64,
+              65,
+              66,
+              67,
+              68,
+              69,
+              70,
+              71,
+              72,
+              73,
+              74,
+              75,
+              76,
+              77,
+              80
+            ],
+            "frame_count": 15,
+            "mean_score": 0.966255537668864
+          },
+          {
+            "number": "018",
+            "frames": [
+              82
+            ],
+            "frame_count": 1,
+            "mean_score": 0.8810594081878662
+          }
+        ]
+      }
+    },
+    {
+      "clip": 412,
+      "method": "riders960",
+      "track": 18,
+      "first_ordinal": 70,
+      "last_ordinal": 88,
+      "first_received_ns": 1794165738404781118,
+      "last_received_ns": 1794165739004678232,
+      "first_observed_utc": "2026-11-08T19:22:18.404781+00:00",
+      "frames": 10,
+      "travel_pixels": 2748.8363447102483,
+      "consensus": {
+        "status": "ambiguous",
+        "number": null,
+        "alternatives": [
+          {
+            "number": "806",
+            "frames": [
+              70,
+              71,
+              72,
+              74,
+              75,
+              77,
+              83,
+              88
+            ],
+            "frame_count": 8,
+            "mean_score": 0.9354171082377434
+          },
+          {
+            "number": "908",
+            "frames": [
+              70,
+              71,
+              72,
+              74,
+              75,
+              83
+            ],
+            "frame_count": 6,
+            "mean_score": 0.9335265159606934
+          },
+          {
+            "number": "808",
+            "frames": [
+              73,
+              76
+            ],
+            "frame_count": 2,
+            "mean_score": 0.9236060380935669
+          }
+        ]
+      }
+    },
+    {
+      "clip": 502,
+      "method": "riders960",
+      "track": 1,
+      "first_ordinal": 14,
+      "last_ordinal": 31,
+      "first_received_ns": 1794167300707478220,
+      "last_received_ns": 1794167301275320882,
+      "first_observed_utc": "2026-11-08T19:48:20.707478+00:00",
+      "frames": 18,
+      "travel_pixels": 2954.837135951828,
+      "consensus": {
+        "status": "ambiguous",
+        "number": null,
+        "alternatives": [
+          {
+            "number": "800",
+            "frames": [
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30
+            ],
+            "frame_count": 17,
+            "mean_score": 0.9801211181808921
+          },
+          {
+            "number": "008",
+            "frames": [
+              14,
+              15,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31
+            ],
+            "frame_count": 17,
+            "mean_score": 0.9764897016917958
+          }
+        ]
+      }
+    },
+    {
+      "clip": 532,
+      "method": "riders960",
+      "track": 1,
+      "first_ordinal": 9,
+      "last_ordinal": 23,
+      "first_received_ns": 1794168261179233863,
+      "last_received_ns": 1794168261647192690,
+      "first_observed_utc": "2026-11-08T20:04:21.179234+00:00",
+      "frames": 7,
+      "travel_pixels": 2145.0778103602674,
+      "consensus": {
+        "status": "repeated_candidate",
+        "number": "827",
+        "alternatives": [
+          {
+            "number": "827",
+            "frames": [
+              9,
+              10,
+              14,
+              18,
+              19,
+              20,
+              23
+            ],
+            "frame_count": 7,
+            "mean_score": 0.9945720774786813
+          }
+        ]
+      }
+    },
+    {
+      "clip": 562,
+      "method": "riders960",
+      "track": 1,
+      "first_ordinal": 80,
+      "last_ordinal": 98,
+      "first_received_ns": 1794169612627664757,
+      "last_received_ns": 1794169613227989185,
+      "first_observed_utc": "2026-11-08T20:26:52.627665+00:00",
+      "frames": 14,
+      "travel_pixels": 2739.341446862731,
+      "consensus": {
+        "status": "ambiguous",
+        "number": null,
+        "alternatives": [
+          {
+            "number": "200",
+            "frames": [
+              80,
+              81,
+              82,
+              83,
+              84,
+              85,
+              86,
+              87,
+              93,
+              94,
+              95,
+              97,
+              98
+            ],
+            "frame_count": 13,
+            "mean_score": 0.9650984360621526
+          },
+          {
+            "number": "007",
+            "frames": [
+              81,
+              96
+            ],
+            "frame_count": 2,
+            "mean_score": 0.8786038756370544
+          }
+        ]
+      }
+    },
+    {
+      "clip": 592,
+      "method": "riders960",
+      "track": 1,
+      "first_ordinal": 12,
+      "last_ordinal": 21,
+      "first_received_ns": 1794170198594621810,
+      "last_received_ns": 1794170198895161638,
+      "first_observed_utc": "2026-11-08T20:36:38.594622+00:00",
+      "frames": 9,
+      "travel_pixels": 1570.5497445162314,
+      "consensus": {
+        "status": "repeated_candidate",
+        "number": "217",
+        "alternatives": [
+          {
+            "number": "217",
+            "frames": [
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              21
+            ],
+            "frame_count": 9,
+            "mean_score": 0.9963920712471008
+          }
+        ]
+      }
+    },
+    {
+      "clip": 622,
+      "method": "riders960",
+      "track": 1,
+      "first_ordinal": 12,
+      "last_ordinal": 35,
+      "first_received_ns": 1794170816929271189,
+      "last_received_ns": 1794170817693274742,
+      "first_observed_utc": "2026-11-08T20:46:56.929271+00:00",
+      "frames": 21,
+      "travel_pixels": 3194.8834877034246,
+      "consensus": {
+        "status": "repeated_candidate",
+        "number": "763",
+        "alternatives": [
+          {
+            "number": "763",
+            "frames": [
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              35
+            ],
+            "frame_count": 21,
+            "mean_score": 0.9807691403797695
+          }
+        ]
+      }
+    },
+    {
+      "clip": 622,
+      "method": "riders960",
+      "track": 5,
+      "first_ordinal": 45,
+      "last_ordinal": 49,
+      "first_received_ns": 1794170818029283636,
+      "last_received_ns": 1794170818161255938,
+      "first_observed_utc": "2026-11-08T20:46:58.029284+00:00",
+      "frames": 5,
+      "travel_pixels": 609.7685011543315,
+      "consensus": {
+        "status": "repeated_candidate",
+        "number": "210",
+        "alternatives": [
+          {
+            "number": "210",
+            "frames": [
+              45,
+              46,
+              47,
+              48,
+              49
+            ],
+            "frame_count": 5,
+            "mean_score": 0.9941875457763671
+          },
+          {
+            "number": "017",
+            "frames": [
+              47
+            ],
+            "frame_count": 1,
+            "mean_score": 0.909430742263794
+          }
+        ]
+      }
+    },
+    {
+      "clip": 652,
+      "method": "riders960",
+      "track": 1,
+      "first_ordinal": 13,
+      "last_ordinal": 17,
+      "first_received_ns": 1794171570110870205,
+      "last_received_ns": 1794171570242747569,
+      "first_observed_utc": "2026-11-08T20:59:30.110870+00:00",
+      "frames": 5,
+      "travel_pixels": 686.1875199244008,
+      "consensus": {
+        "status": "repeated_candidate",
+        "number": "200",
+        "alternatives": [
+          {
+            "number": "200",
+            "frames": [
+              13,
+              14,
+              15,
+              16,
+              17
+            ],
+            "frame_count": 5,
+            "mean_score": 0.9946076154708863
+          }
+        ]
+      }
+    },
+    {
+      "clip": 682,
+      "method": "riders960",
+      "track": 1,
+      "first_ordinal": 10,
+      "last_ordinal": 23,
+      "first_received_ns": 1794172168109626308,
+      "last_received_ns": 1794172168541529268,
+      "first_observed_utc": "2026-11-08T21:09:28.109626+00:00",
+      "frames": 13,
+      "travel_pixels": 2012.9974695711865,
+      "consensus": {
+        "status": "repeated_candidate",
+        "number": "201",
+        "alternatives": [
+          {
+            "number": "201",
+            "frames": [
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              20,
+              21,
+              22,
+              23
+            ],
+            "frame_count": 13,
+            "mean_score": 0.9825310752942011
+          }
+        ]
+      }
+    },
+    {
+      "clip": 772,
+      "method": "riders960",
+      "track": 1,
+      "first_ordinal": 12,
+      "last_ordinal": 32,
+      "first_received_ns": 1794174547537217345,
+      "last_received_ns": 1794174548204793084,
+      "first_observed_utc": "2026-11-08T21:49:07.537217+00:00",
+      "frames": 20,
+      "travel_pixels": 3357.3723356220116,
+      "consensus": {
+        "status": "repeated_candidate",
+        "number": "422",
+        "alternatives": [
+          {
+            "number": "422",
+            "frames": [
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              32
+            ],
+            "frame_count": 20,
+            "mean_score": 0.9910211473703384
+          }
+        ]
+      }
+    }
+  ]
+}

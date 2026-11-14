@@ -1,0 +1,27 @@
+{
+  "snapshot": "/home/sl/work26/sprinttimer/racevideo/data/imports/zbook9/2026-11-09/racevideo-20261109.sqlite3",
+  "bytes": 175081676800,
+  "sha256": "46818cab16a6edeef2ced6d000bc9485a6dcd1eb9f315bf15fb729d85bf44140",
+  "hash_matches": true,
+  "source_quick_check": "ok",
+  "daily_counts": [
+    [
+      "2026-11-05",
+      90,
+      6760
+    ],
+    [
+      "2026-11-07",
+      1,
+      96
+    ],
+    [
+      "2026-11-08",
+      786,
+      90679
+    ]
+  ],
+  "stored_frames": 97535,
+  "completed_utc": "2026-11-09T17:50:44.241503+00:00",
+  "wall_seconds": 447.0713501693681
+}

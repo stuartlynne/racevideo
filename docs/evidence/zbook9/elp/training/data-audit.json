@@ -1,0 +1,13 @@
+{
+  "train_images": 3232,
+  "validation_images": 384,
+  "train_numbers": 808,
+  "validation_numbers": 192,
+  "overlap": [],
+  "held_out_real_numbers": [
+    "235",
+    "469"
+  ],
+  "train_list_sha256": "2fd9c57ff3ba2f729dba855d86d9d993123dd08142e1d2e96c69db9d504c64fc",
+  "validation_list_sha256": "7ee141dc173b7a3c4ad205f04f688981fa529882f9fd0b4f648d2ad2e5a21f64"
+}

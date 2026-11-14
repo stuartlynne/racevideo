@@ -1,0 +1,848 @@
+{
+  "engine": "easyocr",
+  "version": "1.7.2",
+  "python": "3.12.16",
+  "device": "NVIDIA RTX A1000 Laptop GPU",
+  "initialization_seconds": 8.557905053021386,
+  "notes": [
+    "Selected diagnostic examples, not a held-out accuracy benchmark.",
+    "No expected numbers are passed to recognition engines. Only a digit character allowlist is used.",
+    "Regions annotate one clear target and permit the two actual fixture bibs; not exhaustive object annotations."
+  ],
+  "results": [
+    {
+      "id": "slow-50-235",
+      "kind": "plate",
+      "expected": [
+        "235"
+      ],
+      "variant": "raw",
+      "seconds": 0.17256692197406664,
+      "readings": [
+        {
+          "text": "235",
+          "score": 0.6462580037717339,
+          "box": [
+            [
+              0,
+              0
+            ],
+            [
+              148,
+              0
+            ],
+            [
+              148,
+              100
+            ],
+            [
+              0,
+              100
+            ]
+          ]
+        }
+      ],
+      "numbers": [
+        "235"
+      ],
+      "matched": [
+        "235"
+      ],
+      "unexpected": []
+    },
+    {
+      "id": "slow-50-235",
+      "kind": "plate",
+      "expected": [
+        "235"
+      ],
+      "variant": "contrast",
+      "seconds": 0.0034898879821412265,
+      "readings": [
+        {
+          "text": "235",
+          "score": 0.898345912090227,
+          "box": [
+            [
+              0,
+              0
+            ],
+            [
+              148,
+              0
+            ],
+            [
+              148,
+              100
+            ],
+            [
+              0,
+              100
+            ]
+          ]
+        }
+      ],
+      "numbers": [
+        "235"
+      ],
+      "matched": [
+        "235"
+      ],
+      "unexpected": []
+    },
+    {
+      "id": "slow-50-469",
+      "kind": "plate",
+      "expected": [
+        "469"
+      ],
+      "variant": "raw",
+      "seconds": 0.0031194789917208254,
+      "readings": [
+        {
+          "text": "469",
+          "score": 0.5918674864789089,
+          "box": [
+            [
+              0,
+              0
+            ],
+            [
+              142,
+              0
+            ],
+            [
+              142,
+              100
+            ],
+            [
+              0,
+              100
+            ]
+          ]
+        }
+      ],
+      "numbers": [
+        "469"
+      ],
+      "matched": [
+        "469"
+      ],
+      "unexpected": []
+    },
+    {
+      "id": "slow-50-469",
+      "kind": "plate",
+      "expected": [
+        "469"
+      ],
+      "variant": "contrast",
+      "seconds": 0.0028545409440994263,
+      "readings": [
+        {
+          "text": "4691",
+          "score": 0.8856646564795055,
+          "box": [
+            [
+              0,
+              0
+            ],
+            [
+              142,
+              0
+            ],
+            [
+              142,
+              100
+            ],
+            [
+              0,
+              100
+            ]
+          ]
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "slow-52-235",
+      "kind": "plate",
+      "expected": [
+        "235"
+      ],
+      "variant": "raw",
+      "seconds": 0.0028780309949070215,
+      "readings": [
+        {
+          "text": "335",
+          "score": 0.9351053237915039,
+          "box": [
+            [
+              0,
+              0
+            ],
+            [
+              139,
+              0
+            ],
+            [
+              139,
+              100
+            ],
+            [
+              0,
+              100
+            ]
+          ]
+        }
+      ],
+      "numbers": [
+        "335"
+      ],
+      "matched": [],
+      "unexpected": [
+        "335"
+      ]
+    },
+    {
+      "id": "slow-52-235",
+      "kind": "plate",
+      "expected": [
+        "235"
+      ],
+      "variant": "contrast",
+      "seconds": 0.002814441977534443,
+      "readings": [
+        {
+          "text": "335",
+          "score": 0.9071926270378545,
+          "box": [
+            [
+              0,
+              0
+            ],
+            [
+              139,
+              0
+            ],
+            [
+              139,
+              100
+            ],
+            [
+              0,
+              100
+            ]
+          ]
+        }
+      ],
+      "numbers": [
+        "335"
+      ],
+      "matched": [],
+      "unexpected": [
+        "335"
+      ]
+    },
+    {
+      "id": "slow-52-469",
+      "kind": "plate",
+      "expected": [
+        "469"
+      ],
+      "variant": "raw",
+      "seconds": 0.0028243749984540045,
+      "readings": [
+        {
+          "text": "469",
+          "score": 0.693222630010785,
+          "box": [
+            [
+              0,
+              0
+            ],
+            [
+              137,
+              0
+            ],
+            [
+              137,
+              100
+            ],
+            [
+              0,
+              100
+            ]
+          ]
+        }
+      ],
+      "numbers": [
+        "469"
+      ],
+      "matched": [
+        "469"
+      ],
+      "unexpected": []
+    },
+    {
+      "id": "slow-52-469",
+      "kind": "plate",
+      "expected": [
+        "469"
+      ],
+      "variant": "contrast",
+      "seconds": 0.003097090986557305,
+      "readings": [
+        {
+          "text": "469",
+          "score": 0.9836666913212615,
+          "box": [
+            [
+              0,
+              0
+            ],
+            [
+              137,
+              0
+            ],
+            [
+              137,
+              100
+            ],
+            [
+              0,
+              100
+            ]
+          ]
+        }
+      ],
+      "numbers": [
+        "469"
+      ],
+      "matched": [
+        "469"
+      ],
+      "unexpected": []
+    },
+    {
+      "id": "dim-81-frame69-235",
+      "kind": "plate",
+      "expected": [
+        "235"
+      ],
+      "variant": "raw",
+      "seconds": 0.006197477981913835,
+      "readings": [
+        {
+          "text": "0235",
+          "score": 0.706634048391438,
+          "box": [
+            [
+              0,
+              0
+            ],
+            [
+              260,
+              0
+            ],
+            [
+              260,
+              160
+            ],
+            [
+              0,
+              160
+            ]
+          ]
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "dim-81-frame69-235",
+      "kind": "plate",
+      "expected": [
+        "235"
+      ],
+      "variant": "contrast",
+      "seconds": 0.002945900021586567,
+      "readings": [
+        {
+          "text": "435",
+          "score": 0.14543622732162476,
+          "box": [
+            [
+              0,
+              0
+            ],
+            [
+              260,
+              0
+            ],
+            [
+              260,
+              160
+            ],
+            [
+              0,
+              160
+            ]
+          ]
+        }
+      ],
+      "numbers": [
+        "435"
+      ],
+      "matched": [],
+      "unexpected": [
+        "435"
+      ]
+    },
+    {
+      "id": "dim-81-frame63-469",
+      "kind": "plate",
+      "expected": [
+        "469"
+      ],
+      "variant": "raw",
+      "seconds": 0.006129401968792081,
+      "readings": [
+        {
+          "text": "469",
+          "score": 0.9805512428283691,
+          "box": [
+            [
+              0,
+              0
+            ],
+            [
+              135,
+              0
+            ],
+            [
+              135,
+              100
+            ],
+            [
+              0,
+              100
+            ]
+          ]
+        }
+      ],
+      "numbers": [
+        "469"
+      ],
+      "matched": [
+        "469"
+      ],
+      "unexpected": []
+    },
+    {
+      "id": "dim-81-frame63-469",
+      "kind": "plate",
+      "expected": [
+        "469"
+      ],
+      "variant": "contrast",
+      "seconds": 0.002933789975941181,
+      "readings": [
+        {
+          "text": "469",
+          "score": 0.943392435208153,
+          "box": [
+            [
+              0,
+              0
+            ],
+            [
+              135,
+              0
+            ],
+            [
+              135,
+              100
+            ],
+            [
+              0,
+              100
+            ]
+          ]
+        }
+      ],
+      "numbers": [
+        "469"
+      ],
+      "matched": [
+        "469"
+      ],
+      "unexpected": []
+    },
+    {
+      "id": "blur-71-frame110-469",
+      "kind": "plate",
+      "expected": [
+        "469"
+      ],
+      "variant": "raw",
+      "seconds": 0.002883673005271703,
+      "readings": [
+        {
+          "text": "2",
+          "score": 0.17690796757023364,
+          "box": [
+            [
+              0,
+              0
+            ],
+            [
+              230,
+              0
+            ],
+            [
+              230,
+              150
+            ],
+            [
+              0,
+              150
+            ]
+          ]
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "blur-71-frame110-469",
+      "kind": "plate",
+      "expected": [
+        "469"
+      ],
+      "variant": "contrast",
+      "seconds": 0.003277459996752441,
+      "readings": [
+        {
+          "text": "0",
+          "score": 0.27586053215458506,
+          "box": [
+            [
+              0,
+              0
+            ],
+            [
+              230,
+              0
+            ],
+            [
+              230,
+              150
+            ],
+            [
+              0,
+              150
+            ]
+          ]
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "region-81-68",
+      "kind": "region",
+      "expected": [
+        "235"
+      ],
+      "variant": "raw",
+      "seconds": 0.1747859999886714,
+      "readings": [
+        {
+          "text": "1235",
+          "score": 0.5830690565697844,
+          "box": [
+            [
+              479,
+              263
+            ],
+            [
+              675,
+              263
+            ],
+            [
+              675,
+              402
+            ],
+            [
+              479,
+              402
+            ]
+          ]
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "region-81-68",
+      "kind": "region",
+      "expected": [
+        "235"
+      ],
+      "variant": "contrast",
+      "seconds": 0.13947853399440646,
+      "readings": [
+        {
+          "text": "235",
+          "score": 0.34568358462746207,
+          "box": [
+            [
+              484,
+              267
+            ],
+            [
+              666,
+              267
+            ],
+            [
+              666,
+              392
+            ],
+            [
+              484,
+              392
+            ]
+          ]
+        }
+      ],
+      "numbers": [
+        "235"
+      ],
+      "matched": [
+        "235"
+      ],
+      "unexpected": []
+    },
+    {
+      "id": "region-81-62",
+      "kind": "region",
+      "expected": [
+        "469"
+      ],
+      "variant": "raw",
+      "seconds": 0.15199923899490386,
+      "readings": [
+        {
+          "text": "4",
+          "score": 0.2955318962249862,
+          "box": [
+            [
+              481,
+              282
+            ],
+            [
+              694,
+              282
+            ],
+            [
+              694,
+              408
+            ],
+            [
+              481,
+              408
+            ]
+          ]
+        },
+        {
+          "text": "2",
+          "score": 0.08973111119999633,
+          "box": [
+            [
+              939,
+              334
+            ],
+            [
+              998,
+              334
+            ],
+            [
+              998,
+              429
+            ],
+            [
+              939,
+              429
+            ]
+          ]
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "region-81-62",
+      "kind": "region",
+      "expected": [
+        "469"
+      ],
+      "variant": "contrast",
+      "seconds": 0.1372256359900348,
+      "readings": [
+        {
+          "text": "269",
+          "score": 0.5032060617143604,
+          "box": [
+            [
+              484,
+              282
+            ],
+            [
+              692,
+              282
+            ],
+            [
+              692,
+              406
+            ],
+            [
+              484,
+              406
+            ]
+          ]
+        }
+      ],
+      "numbers": [
+        "269"
+      ],
+      "matched": [],
+      "unexpected": [
+        "269"
+      ]
+    },
+    {
+      "id": "region-71-109",
+      "kind": "region",
+      "expected": [
+        "469"
+      ],
+      "variant": "raw",
+      "seconds": 0.1311728380387649,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "region-71-109",
+      "kind": "region",
+      "expected": [
+        "469"
+      ],
+      "variant": "contrast",
+      "seconds": 0.1335486859898083,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "empty-71-95",
+      "kind": "negative",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.13205776899121702,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "empty-71-95",
+      "kind": "negative",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.13043514295713976,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "empty-81-30",
+      "kind": "negative",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.13249201700091362,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "empty-81-30",
+      "kind": "negative",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.14863185700960457,
+      "readings": [
+        {
+          "text": "4",
+          "score": 0.04173241430019936,
+          "box": [
+            [
+              607,
+              265
+            ],
+            [
+              634,
+              265
+            ],
+            [
+              634,
+              283
+            ],
+            [
+              607,
+              283
+            ]
+          ]
+        },
+        {
+          "text": "3",
+          "score": 0.07227355953884373,
+          "box": [
+            [
+              596,
+              282
+            ],
+            [
+              612,
+              282
+            ],
+            [
+              612,
+              300
+            ],
+            [
+              596,
+              300
+            ]
+          ]
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    }
+  ],
+  "peak_gpu_allocated_bytes": 561450496
+}

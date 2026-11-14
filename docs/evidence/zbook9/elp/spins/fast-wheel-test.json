@@ -1,0 +1,237 @@
+{
+  "method": "Repeated top-wheel bright-plate groups, checked against consecutive source frames; frame acquisition monotonic timestamps. Two nearby plates travel together, one group per revolution. Intervals with hands/stopping/detached plate excluded.",
+  "diameter_inches": 48,
+  "assumptions": [
+    "Approximate plate radius 24 inches; not calibrated crossing timing.",
+    "No claim of a measured maximum outside these selected intervals."
+  ],
+  "speed": [
+    {
+      "clip": 71,
+      "peak_ordinals": [
+        48,
+        80,
+        108,
+        140,
+        175,
+        209,
+        243,
+        277,
+        313,
+        350
+      ],
+      "period_seconds": [
+        1.06805526901735,
+        0.931927171011921,
+        1.0680572650162503,
+        1.168045450001955,
+        1.131886336952448,
+        1.1319589129998349,
+        1.1368780710035935,
+        1.1994018080295064,
+        1.2317107790149748
+      ],
+      "mean_rps": 0.8939283436609956,
+      "mean_speed_kmh": 12.326223413192714,
+      "speed_range_kmh": [
+        11.194857902235174,
+        14.796035115868134
+      ]
+    },
+    {
+      "clip": 72,
+      "peak_ordinals": [
+        12,
+        43,
+        76,
+        102
+      ],
+      "period_seconds": [
+        1.036001306027174,
+        1.0999239530065097,
+        0.8640113020082936
+      ],
+      "mean_rps": 1.0000211467665172,
+      "mean_speed_kmh": 13.789118736832272,
+      "speed_range_kmh": [
+        12.536164077556393,
+        15.959081919036835
+      ]
+    }
+  ],
+  "ocr": [
+    {
+      "label": "fast1",
+      "clip_id": 70,
+      "run_id": 20,
+      "state": "complete",
+      "summary": {
+        "sampled_frames": 38,
+        "total_samples": 38,
+        "raw_reads": 0,
+        "regions": 285,
+        "wall_seconds": 7.657,
+        "cpu_seconds": 7.605,
+        "engine": "mser-components-tesseract-v4",
+        "observations": 0
+      },
+      "observations": [],
+      "qualified_reads": []
+    },
+    {
+      "label": "fast2-part1",
+      "clip_id": 71,
+      "run_id": 21,
+      "state": "complete",
+      "summary": {
+        "sampled_frames": 126,
+        "total_samples": 126,
+        "raw_reads": 2,
+        "regions": 480,
+        "wall_seconds": 14.838,
+        "cpu_seconds": 14.72,
+        "engine": "mser-components-tesseract-v4",
+        "observations": 0
+      },
+      "observations": [],
+      "qualified_reads": []
+    },
+    {
+      "label": "fast2-part2",
+      "clip_id": 72,
+      "run_id": 22,
+      "state": "complete",
+      "summary": {
+        "sampled_frames": 82,
+        "total_samples": 82,
+        "raw_reads": 1,
+        "regions": 574,
+        "wall_seconds": 16.873,
+        "cpu_seconds": 16.758,
+        "engine": "mser-components-tesseract-v4",
+        "observations": 0
+      },
+      "observations": [],
+      "qualified_reads": []
+    },
+    {
+      "label": "tail",
+      "clip_id": 73,
+      "run_id": 23,
+      "state": "complete",
+      "summary": {
+        "sampled_frames": 31,
+        "total_samples": 31,
+        "raw_reads": 25,
+        "regions": 104,
+        "wall_seconds": 3.456,
+        "cpu_seconds": 3.412,
+        "engine": "mser-components-tesseract-v4",
+        "observations": 4
+      },
+      "observations": [
+        {
+          "id": 67,
+          "number": "235",
+          "first_ns": 1793923546555906922,
+          "last_ns": 1793923547491373318,
+          "frame_count": 5,
+          "confidence": 84,
+          "ordinal": 19,
+          "quad": "[[2178.7799072265625, 972.53564453125], [2347.33935546875, 1069.3677062988281], [2282.4331665039062, 1182.3526916503906], [2113.8736572265625, 1085.5206298828125]]",
+          "status": "repeated"
+        },
+        {
+          "id": 68,
+          "number": "194",
+          "first_ns": 1793923547191367402,
+          "last_ns": 1793923547191367402,
+          "frame_count": 1,
+          "confidence": 67,
+          "ordinal": 19,
+          "quad": "[[2189.45263671875, 982.2772064208984], [2287.57861328125, 1046.0590515136719], [2252.3099365234375, 1100.3185424804688], [2154.1839599609375, 1036.5366821289062]]",
+          "status": "candidate"
+        },
+        {
+          "id": 69,
+          "number": "199",
+          "first_ns": 1793923547191367402,
+          "last_ns": 1793923547191367402,
+          "frame_count": 1,
+          "confidence": 75,
+          "ordinal": 19,
+          "quad": "[[2189.45263671875, 982.2772064208984], [2287.57861328125, 1046.0590515136719], [2252.3099365234375, 1100.3185424804688], [2154.1839599609375, 1036.5366821289062]]",
+          "status": "candidate"
+        },
+        {
+          "id": 70,
+          "number": "235",
+          "first_ns": 1793923548591380242,
+          "last_ns": 1793923549191699068,
+          "frame_count": 2,
+          "confidence": 75,
+          "ordinal": 79,
+          "quad": "[[2176.462158203125, 973.6377105712891], [2353.870849609375, 1067.7729187011719], [2292.8672485351562, 1182.7412414550781], [2115.4585571289062, 1088.6060180664062]]",
+          "status": "repeated"
+        }
+      ],
+      "qualified_reads": [
+        {
+          "number": "235",
+          "ordinal": 0,
+          "confidence": 71
+        },
+        {
+          "number": "235",
+          "ordinal": 5,
+          "confidence": 60
+        },
+        {
+          "number": "235",
+          "ordinal": 11,
+          "confidence": 74
+        },
+        {
+          "number": "235",
+          "ordinal": 11,
+          "confidence": 66
+        },
+        {
+          "number": "194",
+          "ordinal": 19,
+          "confidence": 67
+        },
+        {
+          "number": "199",
+          "ordinal": 19,
+          "confidence": 75
+        },
+        {
+          "number": "235",
+          "ordinal": 19,
+          "confidence": 84
+        },
+        {
+          "number": "235",
+          "ordinal": 19,
+          "confidence": 72
+        },
+        {
+          "number": "235",
+          "ordinal": 28,
+          "confidence": 74
+        },
+        {
+          "number": "235",
+          "ordinal": 61,
+          "confidence": 66
+        },
+        {
+          "number": "235",
+          "ordinal": 79,
+          "confidence": 75
+        }
+      ]
+    }
+  ]
+}

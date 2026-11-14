@@ -1,0 +1,50 @@
+{
+  "host": "i7-14700K, NOT target laptop",
+  "affinity": [
+    0,
+    2
+  ],
+  "workers": [
+    {
+      "regions": 43,
+      "calls": 172,
+      "wall_s": 1.3023220538161695,
+      "cpu_s": 1.260727269
+    },
+    {
+      "regions": 43,
+      "calls": 172,
+      "wall_s": 1.5517464959993958,
+      "cpu_s": 1.49828838
+    }
+  ],
+  "ocr_wall_s": 1.5987578541971743,
+  "regions_per_wall_s": 53.791760756156165,
+  "ocr_cpu_s": 2.759015649,
+  "cpu_ms_per_region_four_variants": 32.081577313953495,
+  "synthetic_4k_jpeg_decode": {
+    "frames": 60,
+    "cpu_ms_per_frame": 20.27087895,
+    "wall_ms_per_frame": 21.137339582977194,
+    "jpeg_bytes": 1264309
+  },
+  "limits": "Component microbenchmark using previously detected crops; excludes camera IO, detection, tracking, full live stream and CrossMgr; synthetic JPEG is not camera output.",
+  "synthetic_4k_jpeg_decode_comparison": {
+    "full": {
+      "cpu_ms_per_frame": 15.902503650000002,
+      "shape": [
+        3840,
+        2160,
+        3
+      ]
+    },
+    "quarter_dimensions": {
+      "cpu_ms_per_frame": 8.625652083333332,
+      "shape": [
+        960,
+        540,
+        3
+      ]
+    }
+  }
+}

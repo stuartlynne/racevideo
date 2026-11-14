@@ -1,0 +1,20 @@
+{
+  "schema": 8,
+  "unit_tests": 39,
+  "main_clips_preserved": 142,
+  "source_frame_sha256": "ff32aa715899b39a829bdd1aeb5d421916ec584ad50e265c5c85cdfae1fdaf26",
+  "backfill_missing_pairs": 0,
+  "backfill_extra_pairs": 0,
+  "checks": [
+    "multiple bibs in one clip; one bib across several clips",
+    "combined day/bib lookups return each shared clip once",
+    "leading zeroes preserved",
+    "new completed OCR atomically replaces current pairs",
+    "running/failed reruns retain prior completed pairs",
+    "historical observation evidence retained",
+    "observation edits/deletes refresh summaries",
+    "cleanup removes dependent matches",
+    "schema7 migration backfills current OCR without touching video",
+    "GUI review and HTTP MCP integration"
+  ]
+}

@@ -1,0 +1,3 @@
+# Preserve raw validation logs byte-for-byte.
+docs/evidence/**/*.log -whitespace
+handoff/**/*.log -whitespace

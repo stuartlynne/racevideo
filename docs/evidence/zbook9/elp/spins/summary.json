@@ -1,0 +1,38 @@
+[
+  {
+    "label": "Medium 1",
+    "clip_id": 46,
+    "frames": {
+      "235": 6,
+      "469": 7
+    },
+    "run_id": 12
+  },
+  {
+    "label": "Medium 2",
+    "clip_id": 48,
+    "frames": {
+      "235": 2,
+      "469": 4
+    },
+    "run_id": 13
+  },
+  {
+    "label": "Slow 1",
+    "clip_id": 50,
+    "frames": {
+      "235": 10,
+      "469": 11
+    },
+    "run_id": 14
+  },
+  {
+    "label": "Slow 2",
+    "clip_id": 52,
+    "frames": {
+      "235": 9,
+      "469": 9
+    },
+    "run_id": 15
+  }
+]

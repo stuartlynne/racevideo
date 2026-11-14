@@ -1,0 +1,478 @@
+{
+  "engine": "paddleocr",
+  "version": "3.3.2",
+  "python": "3.12.16",
+  "device": "NVIDIA RTX A1000 Laptop GPU",
+  "initialization_seconds": 4.638395529007539,
+  "notes": [
+    "Selected diagnostic examples, not a held-out accuracy benchmark.",
+    "No expected numbers are passed to recognition engines. Only a digit character allowlist is used.",
+    "Regions annotate one clear target and permit the two actual fixture bibs; not exhaustive object annotations."
+  ],
+  "results": [
+    {
+      "id": "slow-50-235",
+      "kind": "plate",
+      "expected": [
+        "235"
+      ],
+      "variant": "raw",
+      "seconds": 0.22101854800712317,
+      "readings": [
+        {
+          "text": "235",
+          "score": 0.9970656037330627
+        }
+      ],
+      "numbers": [
+        "235"
+      ],
+      "matched": [
+        "235"
+      ],
+      "unexpected": []
+    },
+    {
+      "id": "slow-50-235",
+      "kind": "plate",
+      "expected": [
+        "235"
+      ],
+      "variant": "contrast",
+      "seconds": 0.004682099970523268,
+      "readings": [
+        {
+          "text": "235",
+          "score": 0.9972581267356873
+        }
+      ],
+      "numbers": [
+        "235"
+      ],
+      "matched": [
+        "235"
+      ],
+      "unexpected": []
+    },
+    {
+      "id": "slow-50-469",
+      "kind": "plate",
+      "expected": [
+        "469"
+      ],
+      "variant": "raw",
+      "seconds": 0.0040407979977317154,
+      "readings": [
+        {
+          "text": "469",
+          "score": 0.997422993183136
+        }
+      ],
+      "numbers": [
+        "469"
+      ],
+      "matched": [
+        "469"
+      ],
+      "unexpected": []
+    },
+    {
+      "id": "slow-50-469",
+      "kind": "plate",
+      "expected": [
+        "469"
+      ],
+      "variant": "contrast",
+      "seconds": 0.004011422977782786,
+      "readings": [
+        {
+          "text": "469",
+          "score": 0.9963559508323669
+        }
+      ],
+      "numbers": [
+        "469"
+      ],
+      "matched": [
+        "469"
+      ],
+      "unexpected": []
+    },
+    {
+      "id": "slow-52-235",
+      "kind": "plate",
+      "expected": [
+        "235"
+      ],
+      "variant": "raw",
+      "seconds": 0.003798654011916369,
+      "readings": [
+        {
+          "text": "235",
+          "score": 0.9967089295387268
+        }
+      ],
+      "numbers": [
+        "235"
+      ],
+      "matched": [
+        "235"
+      ],
+      "unexpected": []
+    },
+    {
+      "id": "slow-52-235",
+      "kind": "plate",
+      "expected": [
+        "235"
+      ],
+      "variant": "contrast",
+      "seconds": 0.003801061015110463,
+      "readings": [
+        {
+          "text": "235",
+          "score": 0.9975318908691406
+        }
+      ],
+      "numbers": [
+        "235"
+      ],
+      "matched": [
+        "235"
+      ],
+      "unexpected": []
+    },
+    {
+      "id": "slow-52-469",
+      "kind": "plate",
+      "expected": [
+        "469"
+      ],
+      "variant": "raw",
+      "seconds": 0.003942510986234993,
+      "readings": [
+        {
+          "text": "469",
+          "score": 0.9954743385314941
+        }
+      ],
+      "numbers": [
+        "469"
+      ],
+      "matched": [
+        "469"
+      ],
+      "unexpected": []
+    },
+    {
+      "id": "slow-52-469",
+      "kind": "plate",
+      "expected": [
+        "469"
+      ],
+      "variant": "contrast",
+      "seconds": 0.0039024099824018776,
+      "readings": [
+        {
+          "text": "469",
+          "score": 0.9956192970275879
+        }
+      ],
+      "numbers": [
+        "469"
+      ],
+      "matched": [
+        "469"
+      ],
+      "unexpected": []
+    },
+    {
+      "id": "dim-81-frame69-235",
+      "kind": "plate",
+      "expected": [
+        "235"
+      ],
+      "variant": "raw",
+      "seconds": 0.004296985978726298,
+      "readings": [
+        {
+          "text": "235",
+          "score": 0.9879477620124817
+        }
+      ],
+      "numbers": [
+        "235"
+      ],
+      "matched": [
+        "235"
+      ],
+      "unexpected": []
+    },
+    {
+      "id": "dim-81-frame69-235",
+      "kind": "plate",
+      "expected": [
+        "235"
+      ],
+      "variant": "contrast",
+      "seconds": 0.0038337750011123717,
+      "readings": [
+        {
+          "text": "235",
+          "score": 0.9917615056037903
+        }
+      ],
+      "numbers": [
+        "235"
+      ],
+      "matched": [
+        "235"
+      ],
+      "unexpected": []
+    },
+    {
+      "id": "dim-81-frame63-469",
+      "kind": "plate",
+      "expected": [
+        "469"
+      ],
+      "variant": "raw",
+      "seconds": 0.00401025201426819,
+      "readings": [
+        {
+          "text": "469",
+          "score": 0.9982051253318787
+        }
+      ],
+      "numbers": [
+        "469"
+      ],
+      "matched": [
+        "469"
+      ],
+      "unexpected": []
+    },
+    {
+      "id": "dim-81-frame63-469",
+      "kind": "plate",
+      "expected": [
+        "469"
+      ],
+      "variant": "contrast",
+      "seconds": 0.0039698799955658615,
+      "readings": [
+        {
+          "text": "469",
+          "score": 0.9981649518013
+        }
+      ],
+      "numbers": [
+        "469"
+      ],
+      "matched": [
+        "469"
+      ],
+      "unexpected": []
+    },
+    {
+      "id": "blur-71-frame110-469",
+      "kind": "plate",
+      "expected": [
+        "469"
+      ],
+      "variant": "raw",
+      "seconds": 0.0045309209963306785,
+      "readings": [
+        {
+          "text": "\u56fd",
+          "score": 0.38453197479248047
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "blur-71-frame110-469",
+      "kind": "plate",
+      "expected": [
+        "469"
+      ],
+      "variant": "contrast",
+      "seconds": 0.003997807973064482,
+      "readings": [
+        {
+          "text": "\u56fd",
+          "score": 0.3573691248893738
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "region-81-68",
+      "kind": "region",
+      "expected": [
+        "235"
+      ],
+      "variant": "raw",
+      "seconds": 0.1003089000005275,
+      "readings": [
+        {
+          "text": "1235",
+          "score": 0.8996721506118774
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "region-81-68",
+      "kind": "region",
+      "expected": [
+        "235"
+      ],
+      "variant": "contrast",
+      "seconds": 0.021137129981070757,
+      "readings": [
+        {
+          "text": "235",
+          "score": 0.9955441355705261
+        }
+      ],
+      "numbers": [
+        "235"
+      ],
+      "matched": [
+        "235"
+      ],
+      "unexpected": []
+    },
+    {
+      "id": "region-81-62",
+      "kind": "region",
+      "expected": [
+        "469"
+      ],
+      "variant": "raw",
+      "seconds": 0.02014050801517442,
+      "readings": [
+        {
+          "text": "469",
+          "score": 0.9918818473815918
+        }
+      ],
+      "numbers": [
+        "469"
+      ],
+      "matched": [
+        "469"
+      ],
+      "unexpected": []
+    },
+    {
+      "id": "region-81-62",
+      "kind": "region",
+      "expected": [
+        "469"
+      ],
+      "variant": "contrast",
+      "seconds": 0.01991407701279968,
+      "readings": [
+        {
+          "text": "469",
+          "score": 0.9908266663551331
+        }
+      ],
+      "numbers": [
+        "469"
+      ],
+      "matched": [
+        "469"
+      ],
+      "unexpected": []
+    },
+    {
+      "id": "region-71-109",
+      "kind": "region",
+      "expected": [
+        "469"
+      ],
+      "variant": "raw",
+      "seconds": 0.015776096028275788,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "region-71-109",
+      "kind": "region",
+      "expected": [
+        "469"
+      ],
+      "variant": "contrast",
+      "seconds": 0.014830505999270827,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "empty-71-95",
+      "kind": "negative",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.014731161994859576,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "empty-71-95",
+      "kind": "negative",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.030224409012589604,
+      "readings": [
+        {
+          "text": "C",
+          "score": 0.23443064093589783
+        },
+        {
+          "text": "-",
+          "score": 0.17626485228538513
+        }
+      ],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "empty-81-30",
+      "kind": "negative",
+      "expected": [],
+      "variant": "raw",
+      "seconds": 0.015559557999949902,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    },
+    {
+      "id": "empty-81-30",
+      "kind": "negative",
+      "expected": [],
+      "variant": "contrast",
+      "seconds": 0.015566508052870631,
+      "readings": [],
+      "numbers": [],
+      "matched": [],
+      "unexpected": []
+    }
+  ],
+  "peak_gpu_allocated_bytes": 73171712
+}

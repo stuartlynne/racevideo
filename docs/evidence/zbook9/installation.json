@@ -1,0 +1,44 @@
+{
+  "host": "zbook9",
+  "os": "Ubuntu 26.04.1 LTS",
+  "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+  "free_threaded": false,
+  "sqlite": "3.46.1",
+  "packages": {
+    "racevideo": "0.1.0",
+    "av": "19.0.2",
+    "Pillow": "13.0.0",
+    "numpy": "2.5.4",
+    "opencv-python-headless": "4.14.0.94",
+    "tesserocr": "2.12.0",
+    "mcp": "1.30.0",
+    "uvicorn": "0.54.0",
+    "websockets": "16.1.1"
+  },
+  "power_profile": "performance",
+  "database": "/home/sl/.local/share/racevideo/racevideo.sqlite3",
+  "service": "racevideo-mcp.service",
+  "mcp_url": "http://127.0.0.1:8766/mcp",
+  "real_camera_test": "Pending arrival of external camera",
+  "synthetic_stress": {
+    "preview_age_p50_ms": 62.91,
+    "preview_age_p95_ms": 91.19,
+    "gui_delay_p95_ms": 3.41,
+    "analysis_lag_ms": 4832.709088
+  },
+  "unit_tests": 39,
+  "timezone": "America/Vancouver",
+  "ntp_synchronized": true,
+  "validated": [
+    "OCR/schema unit tests",
+    "HTTP MCP and reverse GUI bridge",
+    "date/bib/star/cleanup/zoom UI",
+    "production-store GUI and preview-worker liveness",
+    "timestamped motion/pre-post-roll recording",
+    "synthetic full-HD backlog and forced overwrite",
+    "preview worker termination and clean shutdown"
+  ],
+  "recordings_copied": false,
+  "camera_opened": false,
+  "source_flags_fix": "Nonblocking monotonic process flags avoid Event condition-lock abandonment after worker termination"
+}

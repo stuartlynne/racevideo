@@ -1,0 +1,211 @@
+/home/sl/racevideo/.venv-ocr-train/lib/python3.12/site-packages/paddle/utils/cpp_extension/extension_utils.py:718: UserWarning: No ccache found. Please be aware that recompiling all source files may be required. You can download and install ccache from: https://github.com/ccache/ccache/blob/master/doc/INSTALL.md
+  warnings.warn(warning_message)
+WARNING: OMP_NUM_THREADS set to 2, not 1. The computation speed will not be optimized if you use data parallel. It will fail if this PaddlePaddle binary is compiled with OpenBlas since OpenBlas does not support multi-threads.
+PLEASE USE OMP_NUM_THREADS WISELY.
+Skipping import of the encryption module.
+[2026/11/05 18:38:46] ppocr INFO: Architecture : 
+[2026/11/05 18:38:46] ppocr INFO:     Backbone : 
+[2026/11/05 18:38:46] ppocr INFO:         name : PPLCNetV3
+[2026/11/05 18:38:46] ppocr INFO:         scale : 0.95
+[2026/11/05 18:38:46] ppocr INFO:     Head : 
+[2026/11/05 18:38:46] ppocr INFO:         head_list : 
+[2026/11/05 18:38:46] ppocr INFO:             CTCHead : 
+[2026/11/05 18:38:46] ppocr INFO:                 Head : 
+[2026/11/05 18:38:46] ppocr INFO:                     fc_decay : 1e-05
+[2026/11/05 18:38:46] ppocr INFO:                 Neck : 
+[2026/11/05 18:38:46] ppocr INFO:                     depth : 2
+[2026/11/05 18:38:46] ppocr INFO:                     dims : 120
+[2026/11/05 18:38:46] ppocr INFO:                     hidden_dims : 120
+[2026/11/05 18:38:46] ppocr INFO:                     kernel_size : [1, 3]
+[2026/11/05 18:38:46] ppocr INFO:                     name : svtr
+[2026/11/05 18:38:46] ppocr INFO:                     use_guide : True
+[2026/11/05 18:38:46] ppocr INFO:             NRTRHead : 
+[2026/11/05 18:38:46] ppocr INFO:                 max_text_length : 25
+[2026/11/05 18:38:46] ppocr INFO:                 nrtr_dim : 384
+[2026/11/05 18:38:46] ppocr INFO:         name : MultiHead
+[2026/11/05 18:38:46] ppocr INFO:     Transform : None
+[2026/11/05 18:38:46] ppocr INFO:     algorithm : SVTR_LCNet
+[2026/11/05 18:38:46] ppocr INFO:     model_type : rec
+[2026/11/05 18:38:46] ppocr INFO: Eval : 
+[2026/11/05 18:38:46] ppocr INFO:     dataset : 
+[2026/11/05 18:38:46] ppocr INFO:         data_dir : /home/sl/racevideo/data/training/din-v1
+[2026/11/05 18:38:46] ppocr INFO:         label_file_list : ['/home/sl/racevideo/data/training/din-v1/val.txt']
+[2026/11/05 18:38:46] ppocr INFO:         name : SimpleDataSet
+[2026/11/05 18:38:46] ppocr INFO:         transforms : 
+[2026/11/05 18:38:46] ppocr INFO:             DecodeImage : 
+[2026/11/05 18:38:46] ppocr INFO:                 channel_first : False
+[2026/11/05 18:38:46] ppocr INFO:                 img_mode : BGR
+[2026/11/05 18:38:46] ppocr INFO:             MultiLabelEncode : 
+[2026/11/05 18:38:46] ppocr INFO:                 gtc_encode : NRTRLabelEncode
+[2026/11/05 18:38:46] ppocr INFO:             RecResizeImg : 
+[2026/11/05 18:38:46] ppocr INFO:                 image_shape : [3, 48, 320]
+[2026/11/05 18:38:46] ppocr INFO:             KeepKeys : 
+[2026/11/05 18:38:46] ppocr INFO:                 keep_keys : ['image', 'label_ctc', 'label_gtc', 'length', 'valid_ratio']
+[2026/11/05 18:38:46] ppocr INFO:     loader : 
+[2026/11/05 18:38:46] ppocr INFO:         batch_size_per_card : 4
+[2026/11/05 18:38:46] ppocr INFO:         drop_last : False
+[2026/11/05 18:38:46] ppocr INFO:         num_workers : 0
+[2026/11/05 18:38:46] ppocr INFO:         shuffle : False
+[2026/11/05 18:38:46] ppocr INFO: Global : 
+[2026/11/05 18:38:46] ppocr INFO:     amp_level : O1
+[2026/11/05 18:38:46] ppocr INFO:     cal_metric_during_train : True
+[2026/11/05 18:38:46] ppocr INFO:     character_dict_path : /home/sl/racevideo/data/training/PaddleOCR/ppocr/utils/dict/ppocrv5_dict.txt
+[2026/11/05 18:38:46] ppocr INFO:     checkpoints : None
+[2026/11/05 18:38:46] ppocr INFO:     d2s_train_image_shape : [3, 48, 320]
+[2026/11/05 18:38:46] ppocr INFO:     debug : False
+[2026/11/05 18:38:46] ppocr INFO:     distributed : False
+[2026/11/05 18:38:46] ppocr INFO:     epoch_num : 2
+[2026/11/05 18:38:46] ppocr INFO:     eval_batch_step : [0, 400]
+[2026/11/05 18:38:46] ppocr INFO:     infer_img : doc/imgs_words/ch/word_1.jpg
+[2026/11/05 18:38:46] ppocr INFO:     infer_mode : False
+[2026/11/05 18:38:46] ppocr INFO:     log_smooth_window : 20
+[2026/11/05 18:38:46] ppocr INFO:     max_text_length : 25
+[2026/11/05 18:38:46] ppocr INFO:     model_name : PP-OCRv5_mobile_rec
+[2026/11/05 18:38:46] ppocr INFO:     pretrained_model : /home/sl/racevideo/data/training/PP-OCRv5_mobile_rec_pretrained.pdparams
+[2026/11/05 18:38:46] ppocr INFO:     print_batch_step : 25
+[2026/11/05 18:38:46] ppocr INFO:     save_epoch_step : 1
+[2026/11/05 18:38:46] ppocr INFO:     save_inference_dir : None
+[2026/11/05 18:38:46] ppocr INFO:     save_model_dir : /home/sl/racevideo/data/training/din-v1-model
+[2026/11/05 18:38:46] ppocr INFO:     save_res_path : ./output/rec/predicts_ppocrv5.txt
+[2026/11/05 18:38:46] ppocr INFO:     scale_loss : 1024
+[2026/11/05 18:38:46] ppocr INFO:     seed : 20261105
+[2026/11/05 18:38:46] ppocr INFO:     use_amp : True
+[2026/11/05 18:38:46] ppocr INFO:     use_gpu : True
+[2026/11/05 18:38:46] ppocr INFO:     use_space_char : True
+[2026/11/05 18:38:46] ppocr INFO:     use_visualdl : False
+[2026/11/05 18:38:46] ppocr INFO: Loss : 
+[2026/11/05 18:38:46] ppocr INFO:     loss_config_list : 
+[2026/11/05 18:38:46] ppocr INFO:         CTCLoss : None
+[2026/11/05 18:38:46] ppocr INFO:         NRTRLoss : None
+[2026/11/05 18:38:46] ppocr INFO:     name : MultiLoss
+[2026/11/05 18:38:46] ppocr INFO: Metric : 
+[2026/11/05 18:38:46] ppocr INFO:     main_indicator : acc
+[2026/11/05 18:38:46] ppocr INFO:     name : RecMetric
+[2026/11/05 18:38:46] ppocr INFO: Optimizer : 
+[2026/11/05 18:38:46] ppocr INFO:     beta1 : 0.9
+[2026/11/05 18:38:46] ppocr INFO:     beta2 : 0.999
+[2026/11/05 18:38:46] ppocr INFO:     lr : 
+[2026/11/05 18:38:46] ppocr INFO:         learning_rate : 1e-05
+[2026/11/05 18:38:46] ppocr INFO:         name : Cosine
+[2026/11/05 18:38:46] ppocr INFO:         warmup_epoch : 0
+[2026/11/05 18:38:46] ppocr INFO:     name : Adam
+[2026/11/05 18:38:46] ppocr INFO:     regularizer : 
+[2026/11/05 18:38:46] ppocr INFO:         factor : 3e-05
+[2026/11/05 18:38:46] ppocr INFO:         name : L2
+[2026/11/05 18:38:46] ppocr INFO: PostProcess : 
+[2026/11/05 18:38:46] ppocr INFO:     name : CTCLabelDecode
+[2026/11/05 18:38:46] ppocr INFO: Train : 
+[2026/11/05 18:38:46] ppocr INFO:     dataset : 
+[2026/11/05 18:38:46] ppocr INFO:         data_dir : /home/sl/racevideo/data/training/din-v1
+[2026/11/05 18:38:46] ppocr INFO:         label_file_list : ['/home/sl/racevideo/data/training/din-v1/train.txt']
+[2026/11/05 18:38:46] ppocr INFO:         name : SimpleDataSet
+[2026/11/05 18:38:46] ppocr INFO:         transforms : 
+[2026/11/05 18:38:46] ppocr INFO:             DecodeImage : 
+[2026/11/05 18:38:46] ppocr INFO:                 channel_first : False
+[2026/11/05 18:38:46] ppocr INFO:                 img_mode : BGR
+[2026/11/05 18:38:46] ppocr INFO:             MultiLabelEncode : 
+[2026/11/05 18:38:46] ppocr INFO:                 gtc_encode : NRTRLabelEncode
+[2026/11/05 18:38:46] ppocr INFO:             RecResizeImg : 
+[2026/11/05 18:38:46] ppocr INFO:                 image_shape : [3, 48, 320]
+[2026/11/05 18:38:46] ppocr INFO:             KeepKeys : 
+[2026/11/05 18:38:46] ppocr INFO:                 keep_keys : ['image', 'label_ctc', 'label_gtc', 'length', 'valid_ratio']
+[2026/11/05 18:38:46] ppocr INFO:     loader : 
+[2026/11/05 18:38:46] ppocr INFO:         batch_size_per_card : 4
+[2026/11/05 18:38:46] ppocr INFO:         drop_last : True
+[2026/11/05 18:38:46] ppocr INFO:         num_workers : 0
+[2026/11/05 18:38:46] ppocr INFO:         shuffle : True
+[2026/11/05 18:38:46] ppocr INFO: profiler_options : None
+[2026/11/05 18:38:46] ppocr INFO: train with paddle 3.2.2 and device Place(gpu:0)
+[2026/11/05 18:38:46] ppocr INFO: Initialize indexes of datasets:['/home/sl/racevideo/data/training/din-v1/train.txt']
+[2026/11/05 18:38:46] ppocr INFO: Initialize indexes of datasets:['/home/sl/racevideo/data/training/din-v1/val.txt']
+W1105 18:38:46.595384 424959 gpu_resources.cc:114] Please NOTE: device: 0, GPU Compute Capability: 8.6, Driver API Version: 13.2, Runtime API Version: 12.6
+[2026/11/05 18:38:47] ppocr INFO: train dataloader has 808 iters
+[2026/11/05 18:38:47] ppocr INFO: valid dataloader has 96 iters
+[2026/11/05 18:38:47] ppocr INFO: load pretrain successful from /home/sl/racevideo/data/training/PP-OCRv5_mobile_rec_pretrained
+[2026/11/05 18:38:47] ppocr INFO: During the training process, after the 0th iteration, an evaluation is run every 400 iterations
+[2026/11/05 18:38:51] ppocr INFO: epoch: [1/2], global_step: 25, lr: 0.000010, acc: 0.000000, norm_edit_dis: 0.416668, CTCLoss: 13.185496, NRTRLoss: 1.799782, loss: 14.962040, avg_reader_cost: 0.00249 s, avg_batch_cost: 0.18245 s, avg_samples: 4.0, ips: 21.92421 samples/s, eta: 0:04:50, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:38:55] ppocr INFO: epoch: [1/2], global_step: 50, lr: 0.000010, acc: 0.249999, norm_edit_dis: 0.720834, CTCLoss: 5.758887, NRTRLoss: 1.380988, loss: 7.197745, avg_reader_cost: 0.00154 s, avg_batch_cost: 0.15657 s, avg_samples: 4.0, ips: 25.54745 samples/s, eta: 0:04:25, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:38:59] ppocr INFO: epoch: [1/2], global_step: 75, lr: 0.000010, acc: 0.499999, norm_edit_dis: 0.804167, CTCLoss: 2.674808, NRTRLoss: 1.348854, loss: 4.008097, avg_reader_cost: 0.00143 s, avg_batch_cost: 0.15612 s, avg_samples: 4.0, ips: 25.62128 samples/s, eta: 0:04:14, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:39:03] ppocr INFO: epoch: [1/2], global_step: 100, lr: 0.000010, acc: 0.749998, norm_edit_dis: 0.895834, CTCLoss: 2.154511, NRTRLoss: 1.351519, loss: 3.527807, avg_reader_cost: 0.00164 s, avg_batch_cost: 0.15924 s, avg_samples: 4.0, ips: 25.11899 samples/s, eta: 0:04:08, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:39:07] ppocr INFO: epoch: [1/2], global_step: 125, lr: 0.000010, acc: 0.874998, norm_edit_dis: 0.968750, CTCLoss: 0.770688, NRTRLoss: 1.324117, loss: 2.107571, avg_reader_cost: 0.00161 s, avg_batch_cost: 0.16013 s, avg_samples: 4.0, ips: 24.97940 samples/s, eta: 0:04:02, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:39:11] ppocr INFO: epoch: [1/2], global_step: 150, lr: 0.000010, acc: 0.749998, norm_edit_dis: 0.937500, CTCLoss: 0.978274, NRTRLoss: 1.317497, loss: 2.310071, avg_reader_cost: 0.00156 s, avg_batch_cost: 0.15835 s, avg_samples: 4.0, ips: 25.25985 samples/s, eta: 0:03:57, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:39:15] ppocr INFO: epoch: [1/2], global_step: 175, lr: 0.000010, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.417451, NRTRLoss: 1.316413, loss: 1.762259, avg_reader_cost: 0.00175 s, avg_batch_cost: 0.16181 s, avg_samples: 4.0, ips: 24.72058 samples/s, eta: 0:03:53, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:39:19] ppocr INFO: epoch: [1/2], global_step: 200, lr: 0.000010, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.315260, NRTRLoss: 1.312419, loss: 1.628353, avg_reader_cost: 0.00167 s, avg_batch_cost: 0.16183 s, avg_samples: 4.0, ips: 24.71654 samples/s, eta: 0:03:49, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:39:23] ppocr INFO: epoch: [1/2], global_step: 225, lr: 0.000010, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.276615, NRTRLoss: 1.313774, loss: 1.598109, avg_reader_cost: 0.00153 s, avg_batch_cost: 0.15765 s, avg_samples: 4.0, ips: 25.37217 samples/s, eta: 0:03:44, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:39:27] ppocr INFO: epoch: [1/2], global_step: 250, lr: 0.000009, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.191956, NRTRLoss: 1.311500, loss: 1.503446, avg_reader_cost: 0.00150 s, avg_batch_cost: 0.15675 s, avg_samples: 4.0, ips: 25.51773 samples/s, eta: 0:03:40, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:39:31] ppocr INFO: epoch: [1/2], global_step: 275, lr: 0.000009, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.173070, NRTRLoss: 1.312672, loss: 1.485394, avg_reader_cost: 0.00159 s, avg_batch_cost: 0.15966 s, avg_samples: 4.0, ips: 25.05285 samples/s, eta: 0:03:35, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:39:35] ppocr INFO: epoch: [1/2], global_step: 300, lr: 0.000009, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.222265, NRTRLoss: 1.314247, loss: 1.534746, avg_reader_cost: 0.00166 s, avg_batch_cost: 0.16047 s, avg_samples: 4.0, ips: 24.92608 samples/s, eta: 0:03:31, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:39:39] ppocr INFO: epoch: [1/2], global_step: 325, lr: 0.000009, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.123543, NRTRLoss: 1.313602, loss: 1.435658, avg_reader_cost: 0.00154 s, avg_batch_cost: 0.15815 s, avg_samples: 4.0, ips: 25.29197 samples/s, eta: 0:03:27, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:39:43] ppocr INFO: epoch: [1/2], global_step: 350, lr: 0.000009, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.133629, NRTRLoss: 1.311487, loss: 1.443872, avg_reader_cost: 0.00169 s, avg_batch_cost: 0.16123 s, avg_samples: 4.0, ips: 24.80974 samples/s, eta: 0:03:23, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:39:47] ppocr INFO: epoch: [1/2], global_step: 375, lr: 0.000009, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.080536, NRTRLoss: 1.310662, loss: 1.391174, avg_reader_cost: 0.00162 s, avg_batch_cost: 0.16000 s, avg_samples: 4.0, ips: 25.00020 samples/s, eta: 0:03:19, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:39:51] ppocr INFO: epoch: [1/2], global_step: 400, lr: 0.000009, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.084843, NRTRLoss: 1.311384, loss: 1.398597, avg_reader_cost: 0.00146 s, avg_batch_cost: 0.15744 s, avg_samples: 4.0, ips: 25.40656 samples/s, eta: 0:03:15, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+eval model::   0%|          | 0/96 [00:00<?, ?it/s]eval model::   3%|▎         | 3/96 [00:00<00:04, 23.08it/s]eval model::   6%|▋         | 6/96 [00:00<00:03, 25.12it/s]eval model::   9%|▉         | 9/96 [00:00<00:03, 25.60it/s]eval model::  12%|█▎        | 12/96 [00:00<00:03, 25.71it/s]eval model::  16%|█▌        | 15/96 [00:00<00:03, 25.46it/s]eval model::  19%|█▉        | 18/96 [00:00<00:03, 25.57it/s]eval model::  22%|██▏       | 21/96 [00:00<00:02, 25.64it/s]eval model::  25%|██▌       | 24/96 [00:00<00:02, 25.46it/s]eval model::  28%|██▊       | 27/96 [00:01<00:02, 25.22it/s]eval model::  31%|███▏      | 30/96 [00:01<00:02, 25.13it/s]eval model::  34%|███▍      | 33/96 [00:01<00:02, 25.10it/s]eval model::  38%|███▊      | 36/96 [00:01<00:02, 25.10it/s]eval model::  41%|████      | 39/96 [00:01<00:02, 25.09it/s]eval model::  44%|████▍     | 42/96 [00:01<00:02, 25.12it/s]eval model::  47%|████▋     | 45/96 [00:01<00:02, 25.27it/s]eval model::  50%|█████     | 48/96 [00:01<00:01, 25.48it/s]eval model::  53%|█████▎    | 51/96 [00:02<00:01, 25.65it/s]eval model::  56%|█████▋    | 54/96 [00:02<00:01, 25.53it/s]eval model::  59%|█████▉    | 57/96 [00:02<00:01, 25.72it/s]eval model::  62%|██████▎   | 60/96 [00:02<00:01, 25.75it/s]eval model::  66%|██████▌   | 63/96 [00:02<00:01, 26.05it/s]eval model::  69%|██████▉   | 66/96 [00:02<00:01, 26.04it/s]eval model::  72%|███████▏  | 69/96 [00:02<00:01, 26.31it/s]eval model::  75%|███████▌  | 72/96 [00:02<00:00, 26.33it/s]eval model::  78%|███████▊  | 75/96 [00:02<00:00, 26.39it/s]eval model::  81%|████████▏ | 78/96 [00:03<00:00, 26.54it/s]eval model::  84%|████████▍ | 81/96 [00:03<00:00, 26.67it/s]eval model::  88%|████████▊ | 84/96 [00:03<00:00, 26.75it/s]eval model::  91%|█████████ | 87/96 [00:03<00:00, 26.84it/s]eval model::  94%|█████████▍| 90/96 [00:03<00:00, 26.88it/s]eval model::  97%|█████████▋| 93/96 [00:03<00:00, 26.99it/s]eval model:: 100%|██████████| 96/96 [00:03<00:00, 27.30it/s]eval model:: 100%|██████████| 96/96 [00:03<00:00, 25.91it/s]
+[2026/11/05 18:39:55] ppocr INFO: cur metric, acc: 0.9166666427951395, norm_edit_dis: 0.9639756953825773, fps: 113.21631004912281
+[2026/11/05 18:39:55] ppocr INFO: save best model is to /home/sl/racevideo/data/training/din-v1-model/best_accuracy
+[2026/11/05 18:39:55] ppocr INFO: best metric, acc: 0.9166666427951395, is_float16: False, norm_edit_dis: 0.9639756953825773, fps: 113.21631004912281, best_epoch: 1
+[2026/11/05 18:39:59] ppocr INFO: epoch: [1/2], global_step: 425, lr: 0.000008, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.116072, NRTRLoss: 1.310701, loss: 1.427989, avg_reader_cost: 0.00173 s, avg_batch_cost: 0.16173 s, avg_samples: 4.0, ips: 24.73292 samples/s, eta: 0:03:11, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:40:03] ppocr INFO: epoch: [1/2], global_step: 450, lr: 0.000008, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.057813, NRTRLoss: 1.310766, loss: 1.368842, avg_reader_cost: 0.00159 s, avg_batch_cost: 0.15996 s, avg_samples: 4.0, ips: 25.00562 samples/s, eta: 0:03:07, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:40:07] ppocr INFO: epoch: [1/2], global_step: 475, lr: 0.000008, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.059824, NRTRLoss: 1.310492, loss: 1.371037, avg_reader_cost: 0.00160 s, avg_batch_cost: 0.15751 s, avg_samples: 4.0, ips: 25.39463 samples/s, eta: 0:03:02, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:40:11] ppocr INFO: epoch: [1/2], global_step: 500, lr: 0.000008, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.058036, NRTRLoss: 1.310082, loss: 1.368497, avg_reader_cost: 0.00170 s, avg_batch_cost: 0.16074 s, avg_samples: 4.0, ips: 24.88498 samples/s, eta: 0:02:58, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:40:15] ppocr INFO: epoch: [1/2], global_step: 525, lr: 0.000008, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.071272, NRTRLoss: 1.310312, loss: 1.382552, avg_reader_cost: 0.00150 s, avg_batch_cost: 0.15865 s, avg_samples: 4.0, ips: 25.21269 samples/s, eta: 0:02:54, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:40:19] ppocr INFO: epoch: [1/2], global_step: 550, lr: 0.000007, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.059954, NRTRLoss: 1.310013, loss: 1.372022, avg_reader_cost: 0.00165 s, avg_batch_cost: 0.16066 s, avg_samples: 4.0, ips: 24.89706 samples/s, eta: 0:02:50, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:40:23] ppocr INFO: epoch: [1/2], global_step: 575, lr: 0.000007, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.068786, NRTRLoss: 1.310616, loss: 1.378368, avg_reader_cost: 0.00172 s, avg_batch_cost: 0.16161 s, avg_samples: 4.0, ips: 24.75156 samples/s, eta: 0:02:46, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:40:27] ppocr INFO: epoch: [1/2], global_step: 600, lr: 0.000007, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.063805, NRTRLoss: 1.310457, loss: 1.374060, avg_reader_cost: 0.00151 s, avg_batch_cost: 0.15699 s, avg_samples: 4.0, ips: 25.47881 samples/s, eta: 0:02:42, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:40:31] ppocr INFO: epoch: [1/2], global_step: 625, lr: 0.000007, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.051427, NRTRLoss: 1.310140, loss: 1.366230, avg_reader_cost: 0.00167 s, avg_batch_cost: 0.16043 s, avg_samples: 4.0, ips: 24.93273 samples/s, eta: 0:02:38, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:40:35] ppocr INFO: epoch: [1/2], global_step: 650, lr: 0.000007, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.040180, NRTRLoss: 1.310050, loss: 1.350698, avg_reader_cost: 0.00169 s, avg_batch_cost: 0.16160 s, avg_samples: 4.0, ips: 24.75198 samples/s, eta: 0:02:34, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:40:39] ppocr INFO: epoch: [1/2], global_step: 675, lr: 0.000006, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.045214, NRTRLoss: 1.309824, loss: 1.355230, avg_reader_cost: 0.00151 s, avg_batch_cost: 0.15798 s, avg_samples: 4.0, ips: 25.31917 samples/s, eta: 0:02:30, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:40:43] ppocr INFO: epoch: [1/2], global_step: 700, lr: 0.000006, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.057197, NRTRLoss: 1.310900, loss: 1.367335, avg_reader_cost: 0.00146 s, avg_batch_cost: 0.15699 s, avg_samples: 4.0, ips: 25.47911 samples/s, eta: 0:02:26, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:40:47] ppocr INFO: epoch: [1/2], global_step: 725, lr: 0.000006, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.041203, NRTRLoss: 1.309789, loss: 1.350768, avg_reader_cost: 0.00165 s, avg_batch_cost: 0.16003 s, avg_samples: 4.0, ips: 24.99576 samples/s, eta: 0:02:22, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:40:51] ppocr INFO: epoch: [1/2], global_step: 750, lr: 0.000006, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.040950, NRTRLoss: 1.310245, loss: 1.350420, avg_reader_cost: 0.00159 s, avg_batch_cost: 0.15904 s, avg_samples: 4.0, ips: 25.15029 samples/s, eta: 0:02:18, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:40:55] ppocr INFO: epoch: [1/2], global_step: 775, lr: 0.000005, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.039884, NRTRLoss: 1.310171, loss: 1.349509, avg_reader_cost: 0.00149 s, avg_batch_cost: 0.15812 s, avg_samples: 4.0, ips: 25.29722 samples/s, eta: 0:02:14, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:40:59] ppocr INFO: epoch: [1/2], global_step: 800, lr: 0.000005, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.040128, NRTRLoss: 1.310132, loss: 1.349336, avg_reader_cost: 0.00169 s, avg_batch_cost: 0.16114 s, avg_samples: 4.0, ips: 24.82286 samples/s, eta: 0:02:10, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+eval model::   0%|          | 0/96 [00:00<?, ?it/s]eval model::   3%|▎         | 3/96 [00:00<00:03, 23.70it/s]eval model::   6%|▋         | 6/96 [00:00<00:03, 25.07it/s]eval model::   9%|▉         | 9/96 [00:00<00:03, 25.40it/s]eval model::  12%|█▎        | 12/96 [00:00<00:03, 25.79it/s]eval model::  16%|█▌        | 15/96 [00:00<00:03, 26.04it/s]eval model::  19%|█▉        | 18/96 [00:00<00:02, 26.09it/s]eval model::  22%|██▏       | 21/96 [00:00<00:02, 26.13it/s]eval model::  25%|██▌       | 24/96 [00:00<00:02, 26.22it/s]eval model::  28%|██▊       | 27/96 [00:01<00:02, 26.25it/s]eval model::  31%|███▏      | 30/96 [00:01<00:02, 25.95it/s]eval model::  34%|███▍      | 33/96 [00:01<00:02, 25.92it/s]eval model::  38%|███▊      | 36/96 [00:01<00:02, 25.86it/s]eval model::  41%|████      | 39/96 [00:01<00:02, 25.91it/s]eval model::  44%|████▍     | 42/96 [00:01<00:02, 25.92it/s]eval model::  47%|████▋     | 45/96 [00:01<00:01, 25.90it/s]eval model::  50%|█████     | 48/96 [00:01<00:01, 25.79it/s]eval model::  53%|█████▎    | 51/96 [00:01<00:01, 25.79it/s]eval model::  56%|█████▋    | 54/96 [00:02<00:01, 25.86it/s]eval model::  59%|█████▉    | 57/96 [00:02<00:01, 25.76it/s]eval model::  62%|██████▎   | 60/96 [00:02<00:01, 25.79it/s]eval model::  66%|██████▌   | 63/96 [00:02<00:01, 25.68it/s]eval model::  69%|██████▉   | 66/96 [00:02<00:01, 25.63it/s]eval model::  72%|███████▏  | 69/96 [00:02<00:01, 25.51it/s]eval model::  75%|███████▌  | 72/96 [00:02<00:00, 25.43it/s]eval model::  78%|███████▊  | 75/96 [00:02<00:00, 25.37it/s]eval model::  81%|████████▏ | 78/96 [00:03<00:00, 25.36it/s]eval model::  84%|████████▍ | 81/96 [00:03<00:00, 25.44it/s]eval model::  88%|████████▊ | 84/96 [00:03<00:00, 25.30it/s]eval model::  91%|█████████ | 87/96 [00:03<00:00, 25.28it/s]eval model::  94%|█████████▍| 90/96 [00:03<00:00, 25.38it/s]eval model::  97%|█████████▋| 93/96 [00:03<00:00, 25.91it/s]eval model:: 100%|██████████| 96/96 [00:03<00:00, 26.40it/s]eval model:: 100%|██████████| 96/96 [00:03<00:00, 25.77it/s]
+[2026/11/05 18:41:03] ppocr INFO: cur metric, acc: 0.9270833091905388, norm_edit_dis: 0.9715711812958894, fps: 112.15434254127642
+[2026/11/05 18:41:04] ppocr INFO: save best model is to /home/sl/racevideo/data/training/din-v1-model/best_accuracy
+[2026/11/05 18:41:04] ppocr INFO: best metric, acc: 0.9270833091905388, is_float16: False, norm_edit_dis: 0.9715711812958894, fps: 112.15434254127642, best_epoch: 1
+[2026/11/05 18:41:05] ppocr INFO: epoch: [1/2], global_step: 808, lr: 0.000005, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.038078, NRTRLoss: 1.310206, loss: 1.347761, avg_reader_cost: 0.00048 s, avg_batch_cost: 0.05025 s, avg_samples: 1.28, ips: 25.47429 samples/s, eta: 0:02:09, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:41:05] ppocr INFO: save model in /home/sl/racevideo/data/training/din-v1-model/latest
+[2026/11/05 18:41:06] ppocr INFO: save model in /home/sl/racevideo/data/training/din-v1-model/iter_epoch_1
+[2026/11/05 18:41:08] ppocr INFO: epoch: [2/2], global_step: 825, lr: 0.000005, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.030926, NRTRLoss: 1.309828, loss: 1.341505, avg_reader_cost: 0.02272 s, avg_batch_cost: 0.13161 s, avg_samples: 2.72, ips: 20.66653 samples/s, eta: 0:02:07, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:41:12] ppocr INFO: epoch: [2/2], global_step: 850, lr: 0.000005, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.030314, NRTRLoss: 1.309701, loss: 1.340100, avg_reader_cost: 0.00160 s, avg_batch_cost: 0.15980 s, avg_samples: 4.0, ips: 25.03187 samples/s, eta: 0:02:03, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:41:16] ppocr INFO: epoch: [2/2], global_step: 875, lr: 0.000004, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.027510, NRTRLoss: 1.309635, loss: 1.337080, avg_reader_cost: 0.00177 s, avg_batch_cost: 0.16303 s, avg_samples: 4.0, ips: 24.53599 samples/s, eta: 0:01:59, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:41:20] ppocr INFO: epoch: [2/2], global_step: 900, lr: 0.000004, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.028492, NRTRLoss: 1.309580, loss: 1.337723, avg_reader_cost: 0.00168 s, avg_batch_cost: 0.16067 s, avg_samples: 4.0, ips: 24.89604 samples/s, eta: 0:01:55, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:41:24] ppocr INFO: epoch: [2/2], global_step: 925, lr: 0.000004, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.029958, NRTRLoss: 1.309952, loss: 1.340029, avg_reader_cost: 0.00157 s, avg_batch_cost: 0.15906 s, avg_samples: 4.0, ips: 25.14701 samples/s, eta: 0:01:51, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:41:28] ppocr INFO: epoch: [2/2], global_step: 950, lr: 0.000004, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.035550, NRTRLoss: 1.309608, loss: 1.345332, avg_reader_cost: 0.00178 s, avg_batch_cost: 0.16328 s, avg_samples: 4.0, ips: 24.49790 samples/s, eta: 0:01:47, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:41:33] ppocr INFO: epoch: [2/2], global_step: 975, lr: 0.000004, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.029305, NRTRLoss: 1.309704, loss: 1.338995, avg_reader_cost: 0.00169 s, avg_batch_cost: 0.16162 s, avg_samples: 4.0, ips: 24.74872 samples/s, eta: 0:01:43, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:41:37] ppocr INFO: epoch: [2/2], global_step: 1000, lr: 0.000003, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.027127, NRTRLoss: 1.309432, loss: 1.336732, avg_reader_cost: 0.00163 s, avg_batch_cost: 0.15993 s, avg_samples: 4.0, ips: 25.01045 samples/s, eta: 0:01:39, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:41:40] ppocr INFO: epoch: [2/2], global_step: 1025, lr: 0.000003, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.027839, NRTRLoss: 1.309443, loss: 1.336879, avg_reader_cost: 0.00144 s, avg_batch_cost: 0.15676 s, avg_samples: 4.0, ips: 25.51594 samples/s, eta: 0:01:34, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:41:44] ppocr INFO: epoch: [2/2], global_step: 1050, lr: 0.000003, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.024325, NRTRLoss: 1.309311, loss: 1.333938, avg_reader_cost: 0.00162 s, avg_batch_cost: 0.15992 s, avg_samples: 4.0, ips: 25.01212 samples/s, eta: 0:01:30, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:41:48] ppocr INFO: epoch: [2/2], global_step: 1075, lr: 0.000003, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.025837, NRTRLoss: 1.309689, loss: 1.335623, avg_reader_cost: 0.00158 s, avg_batch_cost: 0.16045 s, avg_samples: 4.0, ips: 24.92930 samples/s, eta: 0:01:26, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:41:52] ppocr INFO: epoch: [2/2], global_step: 1100, lr: 0.000002, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.024681, NRTRLoss: 1.310035, loss: 1.334496, avg_reader_cost: 0.00154 s, avg_batch_cost: 0.15892 s, avg_samples: 4.0, ips: 25.16921 samples/s, eta: 0:01:22, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:41:56] ppocr INFO: epoch: [2/2], global_step: 1125, lr: 0.000002, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.037236, NRTRLoss: 1.309856, loss: 1.347050, avg_reader_cost: 0.00166 s, avg_batch_cost: 0.16143 s, avg_samples: 4.0, ips: 24.77831 samples/s, eta: 0:01:18, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:42:01] ppocr INFO: epoch: [2/2], global_step: 1150, lr: 0.000002, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.026948, NRTRLoss: 1.309586, loss: 1.337012, avg_reader_cost: 0.00163 s, avg_batch_cost: 0.16143 s, avg_samples: 4.0, ips: 24.77806 samples/s, eta: 0:01:14, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:42:04] ppocr INFO: epoch: [2/2], global_step: 1175, lr: 0.000002, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.026031, NRTRLoss: 1.309363, loss: 1.336035, avg_reader_cost: 0.00154 s, avg_batch_cost: 0.15830 s, avg_samples: 4.0, ips: 25.26879 samples/s, eta: 0:01:10, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:42:09] ppocr INFO: epoch: [2/2], global_step: 1200, lr: 0.000002, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.028925, NRTRLoss: 1.309918, loss: 1.339070, avg_reader_cost: 0.00175 s, avg_batch_cost: 0.16286 s, avg_samples: 4.0, ips: 24.56136 samples/s, eta: 0:01:06, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+eval model::   0%|          | 0/96 [00:00<?, ?it/s]eval model::   3%|▎         | 3/96 [00:00<00:03, 24.20it/s]eval model::   6%|▋         | 6/96 [00:00<00:03, 25.21it/s]eval model::   9%|▉         | 9/96 [00:00<00:03, 25.59it/s]eval model::  12%|█▎        | 12/96 [00:00<00:03, 25.66it/s]eval model::  16%|█▌        | 15/96 [00:00<00:03, 25.86it/s]eval model::  19%|█▉        | 18/96 [00:00<00:02, 26.04it/s]eval model::  22%|██▏       | 21/96 [00:00<00:02, 26.10it/s]eval model::  25%|██▌       | 24/96 [00:00<00:02, 26.17it/s]eval model::  28%|██▊       | 27/96 [00:01<00:02, 26.16it/s]eval model::  31%|███▏      | 30/96 [00:01<00:02, 26.24it/s]eval model::  34%|███▍      | 33/96 [00:01<00:02, 26.22it/s]eval model::  38%|███▊      | 36/96 [00:01<00:02, 26.28it/s]eval model::  41%|████      | 39/96 [00:01<00:02, 26.15it/s]eval model::  44%|████▍     | 42/96 [00:01<00:02, 26.07it/s]eval model::  47%|████▋     | 45/96 [00:01<00:01, 26.08it/s]eval model::  50%|█████     | 48/96 [00:01<00:01, 25.98it/s]eval model::  53%|█████▎    | 51/96 [00:01<00:01, 25.85it/s]eval model::  56%|█████▋    | 54/96 [00:02<00:01, 25.75it/s]eval model::  59%|█████▉    | 57/96 [00:02<00:01, 25.82it/s]eval model::  62%|██████▎   | 60/96 [00:02<00:01, 25.83it/s]eval model::  66%|██████▌   | 63/96 [00:02<00:01, 25.93it/s]eval model::  69%|██████▉   | 66/96 [00:02<00:01, 25.76it/s]eval model::  72%|███████▏  | 69/96 [00:02<00:01, 25.78it/s]eval model::  75%|███████▌  | 72/96 [00:02<00:00, 25.79it/s]eval model::  78%|███████▊  | 75/96 [00:02<00:00, 25.72it/s]eval model::  81%|████████▏ | 78/96 [00:03<00:00, 25.63it/s]eval model::  84%|████████▍ | 81/96 [00:03<00:00, 25.54it/s]eval model::  88%|████████▊ | 84/96 [00:03<00:00, 25.49it/s]eval model::  91%|█████████ | 87/96 [00:03<00:00, 25.45it/s]eval model::  94%|█████████▍| 90/96 [00:03<00:00, 25.34it/s]eval model::  97%|█████████▋| 93/96 [00:03<00:00, 25.69it/s]eval model:: 100%|██████████| 96/96 [00:03<00:00, 26.23it/s]eval model:: 100%|██████████| 96/96 [00:03<00:00, 25.87it/s]
+[2026/11/05 18:42:12] ppocr INFO: cur metric, acc: 0.9348958089870884, norm_edit_dis: 0.9748263895444517, fps: 112.46075223401036
+[2026/11/05 18:42:13] ppocr INFO: save best model is to /home/sl/racevideo/data/training/din-v1-model/best_accuracy
+[2026/11/05 18:42:13] ppocr INFO: best metric, acc: 0.9348958089870884, is_float16: False, norm_edit_dis: 0.9748263895444517, fps: 112.46075223401036, best_epoch: 2
+[2026/11/05 18:42:17] ppocr INFO: epoch: [2/2], global_step: 1225, lr: 0.000001, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.026202, NRTRLoss: 1.309454, loss: 1.335464, avg_reader_cost: 0.00149 s, avg_batch_cost: 0.15756 s, avg_samples: 4.0, ips: 25.38673 samples/s, eta: 0:01:02, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:42:21] ppocr INFO: epoch: [2/2], global_step: 1250, lr: 0.000001, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.027937, NRTRLoss: 1.309406, loss: 1.337197, avg_reader_cost: 0.00166 s, avg_batch_cost: 0.16076 s, avg_samples: 4.0, ips: 24.88134 samples/s, eta: 0:00:58, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:42:25] ppocr INFO: epoch: [2/2], global_step: 1275, lr: 0.000001, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.028887, NRTRLoss: 1.309546, loss: 1.338511, avg_reader_cost: 0.00160 s, avg_batch_cost: 0.15921 s, avg_samples: 4.0, ips: 25.12391 samples/s, eta: 0:00:54, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:42:29] ppocr INFO: epoch: [2/2], global_step: 1300, lr: 0.000001, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.030033, NRTRLoss: 1.309688, loss: 1.339712, avg_reader_cost: 0.00148 s, avg_batch_cost: 0.15731 s, avg_samples: 4.0, ips: 25.42744 samples/s, eta: 0:00:50, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:42:33] ppocr INFO: epoch: [2/2], global_step: 1325, lr: 0.000001, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.026846, NRTRLoss: 1.309625, loss: 1.336571, avg_reader_cost: 0.00169 s, avg_batch_cost: 0.16149 s, avg_samples: 4.0, ips: 24.76899 samples/s, eta: 0:00:46, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:42:37] ppocr INFO: epoch: [2/2], global_step: 1350, lr: 0.000001, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.029834, NRTRLoss: 1.309443, loss: 1.339773, avg_reader_cost: 0.00166 s, avg_batch_cost: 0.16004 s, avg_samples: 4.0, ips: 24.99358 samples/s, eta: 0:00:42, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:42:41] ppocr INFO: epoch: [2/2], global_step: 1375, lr: 0.000001, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.036510, NRTRLoss: 1.309304, loss: 1.345533, avg_reader_cost: 0.00149 s, avg_batch_cost: 0.15855 s, avg_samples: 4.0, ips: 25.22864 samples/s, eta: 0:00:38, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:42:45] ppocr INFO: epoch: [2/2], global_step: 1400, lr: 0.000000, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.027321, NRTRLoss: 1.309536, loss: 1.337563, avg_reader_cost: 0.00174 s, avg_batch_cost: 0.16232 s, avg_samples: 4.0, ips: 24.64273 samples/s, eta: 0:00:34, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:42:49] ppocr INFO: epoch: [2/2], global_step: 1425, lr: 0.000000, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.029472, NRTRLoss: 1.309649, loss: 1.339354, avg_reader_cost: 0.00154 s, avg_batch_cost: 0.15883 s, avg_samples: 4.0, ips: 25.18435 samples/s, eta: 0:00:30, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:42:53] ppocr INFO: epoch: [2/2], global_step: 1450, lr: 0.000000, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.022003, NRTRLoss: 1.309190, loss: 1.332663, avg_reader_cost: 0.00147 s, avg_batch_cost: 0.15818 s, avg_samples: 4.0, ips: 25.28728 samples/s, eta: 0:00:26, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:42:57] ppocr INFO: epoch: [2/2], global_step: 1475, lr: 0.000000, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.040935, NRTRLoss: 1.309521, loss: 1.352241, avg_reader_cost: 0.00173 s, avg_batch_cost: 0.16221 s, avg_samples: 4.0, ips: 24.65875 samples/s, eta: 0:00:22, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:43:01] ppocr INFO: epoch: [2/2], global_step: 1500, lr: 0.000000, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.028856, NRTRLoss: 1.309276, loss: 1.338372, avg_reader_cost: 0.00160 s, avg_batch_cost: 0.16055 s, avg_samples: 4.0, ips: 24.91420 samples/s, eta: 0:00:18, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:43:05] ppocr INFO: epoch: [2/2], global_step: 1525, lr: 0.000000, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.024530, NRTRLoss: 1.309811, loss: 1.334288, avg_reader_cost: 0.00149 s, avg_batch_cost: 0.15798 s, avg_samples: 4.0, ips: 25.32010 samples/s, eta: 0:00:14, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:43:09] ppocr INFO: epoch: [2/2], global_step: 1550, lr: 0.000000, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.034102, NRTRLoss: 1.309470, loss: 1.343603, avg_reader_cost: 0.00177 s, avg_batch_cost: 0.16281 s, avg_samples: 4.0, ips: 24.56920 samples/s, eta: 0:00:10, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:43:13] ppocr INFO: epoch: [2/2], global_step: 1575, lr: 0.000000, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.025717, NRTRLoss: 1.309449, loss: 1.334940, avg_reader_cost: 0.00163 s, avg_batch_cost: 0.16123 s, avg_samples: 4.0, ips: 24.81001 samples/s, eta: 0:00:06, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:43:17] ppocr INFO: epoch: [2/2], global_step: 1600, lr: 0.000000, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.033484, NRTRLoss: 1.309628, loss: 1.343390, avg_reader_cost: 0.00150 s, avg_batch_cost: 0.15818 s, avg_samples: 4.0, ips: 25.28751 samples/s, eta: 0:00:02, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+eval model::   0%|          | 0/96 [00:00<?, ?it/s]eval model::   3%|▎         | 3/96 [00:00<00:04, 22.77it/s]eval model::   6%|▋         | 6/96 [00:00<00:03, 24.35it/s]eval model::   9%|▉         | 9/96 [00:00<00:03, 24.84it/s]eval model::  12%|█▎        | 12/96 [00:00<00:03, 25.01it/s]eval model::  16%|█▌        | 15/96 [00:00<00:03, 25.17it/s]eval model::  19%|█▉        | 18/96 [00:00<00:03, 25.21it/s]eval model::  22%|██▏       | 21/96 [00:00<00:02, 25.24it/s]eval model::  25%|██▌       | 24/96 [00:00<00:02, 25.10it/s]eval model::  28%|██▊       | 27/96 [00:01<00:02, 25.15it/s]eval model::  31%|███▏      | 30/96 [00:01<00:02, 25.21it/s]eval model::  34%|███▍      | 33/96 [00:01<00:02, 25.30it/s]eval model::  38%|███▊      | 36/96 [00:01<00:02, 25.27it/s]eval model::  41%|████      | 39/96 [00:01<00:02, 25.34it/s]eval model::  44%|████▍     | 42/96 [00:01<00:02, 25.40it/s]eval model::  47%|████▋     | 45/96 [00:01<00:01, 25.51it/s]eval model::  50%|█████     | 48/96 [00:01<00:01, 25.54it/s]eval model::  53%|█████▎    | 51/96 [00:02<00:01, 25.52it/s]eval model::  56%|█████▋    | 54/96 [00:02<00:01, 25.63it/s]eval model::  59%|█████▉    | 57/96 [00:02<00:01, 25.67it/s]eval model::  62%|██████▎   | 60/96 [00:02<00:01, 25.77it/s]eval model::  66%|██████▌   | 63/96 [00:02<00:01, 25.76it/s]eval model::  69%|██████▉   | 66/96 [00:02<00:01, 25.89it/s]eval model::  72%|███████▏  | 69/96 [00:02<00:01, 25.91it/s]eval model::  75%|███████▌  | 72/96 [00:02<00:00, 25.97it/s]eval model::  78%|███████▊  | 75/96 [00:02<00:00, 25.99it/s]eval model::  81%|████████▏ | 78/96 [00:03<00:00, 26.10it/s]eval model::  84%|████████▍ | 81/96 [00:03<00:00, 26.13it/s]eval model::  88%|████████▊ | 84/96 [00:03<00:00, 26.14it/s]eval model::  91%|█████████ | 87/96 [00:03<00:00, 26.15it/s]eval model::  94%|█████████▍| 90/96 [00:03<00:00, 26.07it/s]eval model::  97%|█████████▋| 93/96 [00:03<00:00, 26.50it/s]eval model:: 100%|██████████| 96/96 [00:03<00:00, 26.85it/s]eval model:: 100%|██████████| 96/96 [00:03<00:00, 25.69it/s]
+[2026/11/05 18:43:21] ppocr INFO: cur metric, acc: 0.9244791425916891, norm_edit_dis: 0.9717881951791268, fps: 111.73617650374538
+[2026/11/05 18:43:21] ppocr INFO: best metric, acc: 0.9348958089870884, is_float16: False, norm_edit_dis: 0.9748263895444517, fps: 112.46075223401036, best_epoch: 2
+[2026/11/05 18:43:23] ppocr INFO: epoch: [2/2], global_step: 1616, lr: 0.000000, acc: 0.999998, norm_edit_dis: 1.000000, CTCLoss: 0.040574, NRTRLoss: 1.309393, loss: 1.350049, avg_reader_cost: 0.00095 s, avg_batch_cost: 0.10094 s, avg_samples: 2.56, ips: 25.36061 samples/s, eta: 0:00:00, max_mem_reserved: 1366 MB, max_mem_allocated: 1277 MB
+[2026/11/05 18:43:24] ppocr INFO: save model in /home/sl/racevideo/data/training/din-v1-model/latest
+[2026/11/05 18:43:24] ppocr INFO: save model in /home/sl/racevideo/data/training/din-v1-model/iter_epoch_2
+[2026/11/05 18:43:24] ppocr INFO: best metric, acc: 0.9348958089870884, is_float16: False, norm_edit_dis: 0.9748263895444517, fps: 112.46075223401036, best_epoch: 2

@@ -1,0 +1,16 @@
+{
+  "device": "/dev/v4l/by-id/usb-4K_U3_Camera_4K_U3_Camera_2601230006-video-index0",
+  "width": 3840,
+  "height": 2160,
+  "fps": 30.001860415326924,
+  "capture_frames": 907,
+  "analysis_lag_ms": 0.0,
+  "analysis_overrun_frames": 0,
+  "dropped_clips": 0,
+  "error": null,
+  "usb_link": "5000M",
+  "advertised_mjpeg_max": "3840x2160 at 60fps",
+  "tested_mode": "3840x2160 at requested 30fps",
+  "image_issue": "Dark featureless image at both 4K and 1080p. User reports uncovered lens and lit scene. Physical iris/film check pending.",
+  "diagnostic_controls": "Manual exposure 20ms and 100ms with gain190 accepted; no recognizable scene. Restored exposure raw156, gain140 and automatic exposure mode3."
+}

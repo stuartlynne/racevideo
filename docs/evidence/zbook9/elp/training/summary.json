@@ -1,0 +1,81 @@
+{
+  "decision": "Keep original Paddle baseline; experimental fine-tuning not promoted.",
+  "synthetic_validation": {
+    "baseline": {
+      "samples": 384,
+      "correct": 383,
+      "accuracy": 0.9973958333333334
+    },
+    "initial-checkpoint": {
+      "samples": 384,
+      "correct": 383,
+      "accuracy": 0.9973958333333334
+    },
+    "tuned": {
+      "samples": 384,
+      "correct": 361,
+      "accuracy": 0.9401041666666666
+    },
+    "bn-reset": {
+      "samples": 384,
+      "correct": 383,
+      "accuracy": 0.9973958333333334
+    }
+  },
+  "encounters": {
+    "baseline": [
+      {
+        "clip": 71,
+        "repeated_candidates": {
+          "235": 5,
+          "469": 2
+        },
+        "wall_seconds": 26.926150164043065
+      },
+      {
+        "clip": 81,
+        "repeated_candidates": {
+          "469": 2,
+          "235": 2
+        },
+        "wall_seconds": 5.95493600302143
+      }
+    ],
+    "tuned": [
+      {
+        "clip": 71,
+        "repeated_candidates": {
+          "235": 4,
+          "469": 2
+        },
+        "wall_seconds": 26.877543597016484
+      },
+      {
+        "clip": 81,
+        "repeated_candidates": {
+          "469": 2,
+          "235": 2
+        },
+        "wall_seconds": 6.065476769988891
+      }
+    ],
+    "bn-reset": [
+      {
+        "clip": 71,
+        "repeated_candidates": {
+          "235": 3,
+          "469": 2
+        },
+        "wall_seconds": 26.749547184968833
+      },
+      {
+        "clip": 81,
+        "repeated_candidates": {
+          "469": 2,
+          "235": 2
+        },
+        "wall_seconds": 5.995769442990422
+      }
+    ]
+  }
+}

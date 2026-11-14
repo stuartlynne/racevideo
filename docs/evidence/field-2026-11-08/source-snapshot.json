@@ -1,0 +1,26 @@
+{
+  "source": "/home/sl/.local/share/racevideo/racevideo.sqlite3",
+  "snapshot": "/home/sl/racevideo/data/exports/2026-11-09/racevideo-20261109.sqlite3",
+  "bytes": 175081676800,
+  "sha256": "46818cab16a6edeef2ced6d000bc9485a6dcd1eb9f315bf15fb729d85bf44140",
+  "quick_check": "ok",
+  "daily_counts": [
+    [
+      "2026-11-05",
+      90,
+      6760
+    ],
+    [
+      "2026-11-07",
+      1,
+      96
+    ],
+    [
+      "2026-11-08",
+      786,
+      90679
+    ]
+  ],
+  "completed_utc": "2026-11-09T17:17:28.854125+00:00",
+  "wall_seconds": 843.7580074869984
+}

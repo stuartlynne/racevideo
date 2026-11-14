@@ -1,0 +1,13 @@
+{
+  "host": "zbook9",
+  "cpu": "12th Gen Intel(R) Core(TM) i7-12850HX",
+  "logical_cpus": 24,
+  "versions": {
+    "paddlepaddle-gpu": "3.2.2",
+    "paddleocr": "3.3.2",
+    "paddlex": "3.3.13",
+    "numpy": "2.4.1",
+    "opencv-contrib-python": "4.10.0.84"
+  },
+  "gpu": "NVIDIA RTX A1000 Laptop GPU, 4096 MiB, 595.99.02"
+}

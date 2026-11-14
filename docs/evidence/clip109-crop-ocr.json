@@ -1,0 +1,74 @@
+{
+  "clip": 109,
+  "regions": {
+    "top": [
+      [
+        498,
+        328
+      ],
+      [
+        537,
+        343
+      ],
+      [
+        527,
+        363
+      ],
+      [
+        487,
+        350
+      ]
+    ],
+    "next": [
+      [
+        568,
+        369
+      ],
+      [
+        591,
+        395
+      ],
+      [
+        574,
+        410
+      ],
+      [
+        551,
+        385
+      ]
+    ]
+  },
+  "numbers": {
+    "235": {
+      "distinct_frames": 13,
+      "readings": 27,
+      "best": {
+        "frame": 53,
+        "region": "top",
+        "number": "235",
+        "confidence": 93,
+        "variant": "inset",
+        "threshold": false,
+        "psm": 7,
+        "native_width": 41.8,
+        "native_height": 24.6
+      }
+    },
+    "469": {
+      "distinct_frames": 10,
+      "readings": 76,
+      "best": {
+        "frame": 48,
+        "region": "next",
+        "number": "469",
+        "confidence": 96,
+        "variant": "trimmed",
+        "threshold": true,
+        "psm": 7,
+        "native_width": 34.7,
+        "native_height": 23.3
+      }
+    }
+  },
+  "method": "Hand-selected corners from frame 46 reused on frames 40\u201354. Expected bibs not supplied to OCR. No automatic detection claim; raw CSV includes blank and incorrect reads."
+}

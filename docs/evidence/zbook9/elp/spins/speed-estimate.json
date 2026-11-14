@@ -1,0 +1,556 @@
+{
+  "diameter_inches": 48,
+  "circumference_m": 3.8302297632566753,
+  "method": "Ellipse fit to source-image OCR plate centers, unwrapped partial-arc angles and original frame PTS/timebase; mean weighted over visible tag traversals.",
+  "ellipse": {
+    "center_pixels": [
+      1907.4847412109375,
+      2300.7314453125
+    ],
+    "axis_diameters_pixels": [
+      2647.9970703125,
+      2785.486083984375
+    ],
+    "axis_angle_degrees": 40.629852294921875
+  },
+  "assumptions": [
+    "Tag centres are approximately at the 24-inch radius.",
+    "Ellipse normalization approximates the camera projection; no intrinsic/projective calibration was performed.",
+    "Equivalent revolution frame counts extrapolate visible partial arcs; they are not observed complete revolutions.",
+    "Speeds vary during each push/deceleration. Counts include only intervals with located tag centers, not whole quiet-tail duration."
+  ],
+  "runs": [
+    {
+      "label": "Medium 1",
+      "clip_id": 46,
+      "mean_speed_kmh": 4.622490309579255,
+      "mean_speed_mph": 2.872282314768784,
+      "mean_speed_m_s": 1.2840250859942375,
+      "equivalent_revolution_seconds": 2.9829867072191023,
+      "equivalent_frames_per_revolution_at_30fps": 89.48960121657306,
+      "observed_interval_speed_range_kmh": [
+        4.05629890177773,
+        5.368737082552006
+      ],
+      "tag_measurements": [
+        {
+          "tag": "235",
+          "first_frame": 0,
+          "last_frame": 36,
+          "sweep_degrees": 150.17445453180176,
+          "elapsed_seconds": 1.2000809999881312,
+          "speed_kmh": 4.793032015624212
+        },
+        {
+          "tag": "469",
+          "first_frame": 8,
+          "last_frame": 40,
+          "sweep_degrees": 123.53731160062651,
+          "elapsed_seconds": 1.06791499996325,
+          "speed_kmh": 4.430842227908749
+        }
+      ],
+      "intervals": [
+        {
+          "tag": "235",
+          "from_frame": 0,
+          "to_frame": 4,
+          "seconds": 0.13200799998594448,
+          "angle_degrees": 18.503230576838156,
+          "speed_kmh": 5.368737082552006
+        },
+        {
+          "tag": "235",
+          "from_frame": 4,
+          "to_frame": 8,
+          "seconds": 0.13207400002283975,
+          "angle_degrees": 18.25484913156724,
+          "speed_kmh": 5.294022022154073
+        },
+        {
+          "tag": "235",
+          "from_frame": 8,
+          "to_frame": 16,
+          "seconds": 0.26792199996998534,
+          "angle_degrees": 34.054050882194396,
+          "speed_kmh": 4.86838853334368
+        },
+        {
+          "tag": "235",
+          "from_frame": 16,
+          "to_frame": 20,
+          "seconds": 0.13598000002093613,
+          "angle_degrees": 17.662357949873346,
+          "speed_kmh": 4.975061707492439
+        },
+        {
+          "tag": "235",
+          "from_frame": 20,
+          "to_frame": 36,
+          "seconds": 0.5320969999884255,
+          "angle_degrees": 61.69996599132861,
+          "speed_kmh": 4.441390312989027
+        },
+        {
+          "tag": "469",
+          "from_frame": 8,
+          "to_frame": 16,
+          "seconds": 0.26792199996998534,
+          "angle_degrees": 32.92257214574942,
+          "speed_kmh": 4.706631621507059
+        },
+        {
+          "tag": "469",
+          "from_frame": 16,
+          "to_frame": 20,
+          "seconds": 0.13598000002093613,
+          "angle_degrees": 16.90479935709105,
+          "speed_kmh": 4.761675660350297
+        },
+        {
+          "tag": "469",
+          "from_frame": 20,
+          "to_frame": 24,
+          "seconds": 0.13216300000203773,
+          "angle_degrees": 15.39565985869027,
+          "speed_kmh": 4.461832329382832
+        },
+        {
+          "tag": "469",
+          "from_frame": 24,
+          "to_frame": 28,
+          "seconds": 0.1318559999926947,
+          "angle_degrees": 14.862454120897183,
+          "speed_kmh": 4.3173320995670394
+        },
+        {
+          "tag": "469",
+          "from_frame": 28,
+          "to_frame": 36,
+          "seconds": 0.2680779999936931,
+          "angle_degrees": 29.48162696736089,
+          "speed_kmh": 4.212259308196605
+        },
+        {
+          "tag": "469",
+          "from_frame": 36,
+          "to_frame": 40,
+          "seconds": 0.13191599998390302,
+          "angle_degrees": 13.970199150837699,
+          "speed_kmh": 4.05629890177773
+        }
+      ]
+    },
+    {
+      "label": "Medium 2",
+      "clip_id": 48,
+      "mean_speed_kmh": 5.269831481378738,
+      "mean_speed_mph": 3.274521470474142,
+      "mean_speed_m_s": 1.4638420781607604,
+      "equivalent_revolution_seconds": 2.6165594092425293,
+      "equivalent_frames_per_revolution_at_30fps": 78.49678227727588,
+      "observed_interval_speed_range_kmh": [
+        4.951529095458729,
+        5.740311335269508
+      ],
+      "tag_measurements": [
+        {
+          "tag": "235",
+          "first_frame": 0,
+          "last_frame": 4,
+          "sweep_degrees": 19.816074558389552,
+          "elapsed_seconds": 0.13222299999324605,
+          "speed_kmh": 5.740311335269508
+        },
+        {
+          "tag": "469",
+          "first_frame": 4,
+          "last_frame": 36,
+          "sweep_degrees": 145.28527130024008,
+          "elapsed_seconds": 1.067769999965094,
+          "speed_kmh": 5.211571502432095
+        }
+      ],
+      "intervals": [
+        {
+          "tag": "235",
+          "from_frame": 0,
+          "to_frame": 4,
+          "seconds": 0.13222299999324605,
+          "angle_degrees": 19.816074558389552,
+          "speed_kmh": 5.740311335269508
+        },
+        {
+          "tag": "469",
+          "from_frame": 4,
+          "to_frame": 24,
+          "seconds": 0.667702000006102,
+          "angle_degrees": 93.27002465334834,
+          "speed_kmh": 5.350375233916835
+        },
+        {
+          "tag": "469",
+          "from_frame": 24,
+          "to_frame": 32,
+          "seconds": 0.26798799994867295,
+          "angle_degrees": 34.94060613176979,
+          "speed_kmh": 4.993900830550829
+        },
+        {
+          "tag": "469",
+          "from_frame": 32,
+          "to_frame": 36,
+          "seconds": 0.13208000001031905,
+          "angle_degrees": 17.074640515121956,
+          "speed_kmh": 4.951529095458729
+        }
+      ]
+    },
+    {
+      "label": "Slow 1",
+      "clip_id": 50,
+      "mean_speed_kmh": 2.189497704638724,
+      "mean_speed_mph": 1.36049079913227,
+      "mean_speed_m_s": 0.60819380684409,
+      "equivalent_revolution_seconds": 6.297712538593067,
+      "equivalent_frames_per_revolution_at_30fps": 188.93137615779202,
+      "observed_interval_speed_range_kmh": [
+        1.0567851231983436,
+        2.9746733609112814
+      ],
+      "tag_measurements": [
+        {
+          "tag": "235",
+          "first_frame": 0,
+          "last_frame": 56,
+          "sweep_degrees": 114.06714867841723,
+          "elapsed_seconds": 1.86797399999341,
+          "speed_kmh": 2.3389157872617035
+        },
+        {
+          "tag": "469",
+          "first_frame": 0,
+          "last_frame": 76,
+          "sweep_degrees": 137.67734271767836,
+          "elapsed_seconds": 2.535954999970272,
+          "speed_kmh": 2.0794369608669045
+        }
+      ],
+      "intervals": [
+        {
+          "tag": "235",
+          "from_frame": 0,
+          "to_frame": 4,
+          "seconds": 0.13599099998828024,
+          "angle_degrees": 9.881851779994612,
+          "speed_kmh": 2.7832549806302054
+        },
+        {
+          "tag": "235",
+          "from_frame": 4,
+          "to_frame": 8,
+          "seconds": 0.1319239999866113,
+          "angle_degrees": 9.507039360519745,
+          "speed_kmh": 2.7602365849133617
+        },
+        {
+          "tag": "235",
+          "from_frame": 8,
+          "to_frame": 12,
+          "seconds": 0.13201000000117347,
+          "angle_degrees": 7.942020043596296,
+          "speed_kmh": 2.3043528180511474
+        },
+        {
+          "tag": "235",
+          "from_frame": 12,
+          "to_frame": 16,
+          "seconds": 0.13605500000994653,
+          "angle_degrees": 7.518752609726141,
+          "speed_kmh": 2.1166844310191837
+        },
+        {
+          "tag": "235",
+          "from_frame": 16,
+          "to_frame": 20,
+          "seconds": 0.13193000003229827,
+          "angle_degrees": 6.628775791297386,
+          "speed_kmh": 1.9244852818590774
+        },
+        {
+          "tag": "235",
+          "from_frame": 20,
+          "to_frame": 24,
+          "seconds": 0.13202499999897555,
+          "angle_degrees": 5.57502464241775,
+          "speed_kmh": 1.6173925632602586
+        },
+        {
+          "tag": "235",
+          "from_frame": 24,
+          "to_frame": 28,
+          "seconds": 0.136032999958843,
+          "angle_degrees": 5.996817098079012,
+          "speed_kmh": 1.688501124052114
+        },
+        {
+          "tag": "235",
+          "from_frame": 28,
+          "to_frame": 52,
+          "seconds": 0.8000150000443682,
+          "angle_degrees": 54.26576552911171,
+          "speed_kmh": 2.5980806640373566
+        },
+        {
+          "tag": "235",
+          "from_frame": 52,
+          "to_frame": 56,
+          "seconds": 0.13199099997291341,
+          "angle_degrees": 6.7511018236745715,
+          "speed_kmh": 1.9590935097939461
+        },
+        {
+          "tag": "469",
+          "from_frame": 0,
+          "to_frame": 4,
+          "seconds": 0.13599099998828024,
+          "angle_degrees": 9.61006712371028,
+          "speed_kmh": 2.7067059678435914
+        },
+        {
+          "tag": "469",
+          "from_frame": 4,
+          "to_frame": 20,
+          "seconds": 0.5319190000300296,
+          "angle_degrees": 30.912005405123686,
+          "speed_kmh": 2.2259043790120616
+        },
+        {
+          "tag": "469",
+          "from_frame": 20,
+          "to_frame": 24,
+          "seconds": 0.13202499999897555,
+          "angle_degrees": 4.723424354357163,
+          "speed_kmh": 1.3703314180413282
+        },
+        {
+          "tag": "469",
+          "from_frame": 24,
+          "to_frame": 32,
+          "seconds": 0.26804399996763095,
+          "angle_degrees": 14.208742967701657,
+          "speed_kmh": 2.030366291352426
+        },
+        {
+          "tag": "469",
+          "from_frame": 32,
+          "to_frame": 36,
+          "seconds": 0.13201100000878796,
+          "angle_degrees": 10.252377255288044,
+          "speed_kmh": 2.9746733609112814
+        },
+        {
+          "tag": "469",
+          "from_frame": 36,
+          "to_frame": 48,
+          "seconds": 0.39997199998470023,
+          "angle_degrees": 26.77104320028013,
+          "speed_kmh": 2.563660617819886
+        },
+        {
+          "tag": "469",
+          "from_frame": 48,
+          "to_frame": 52,
+          "seconds": 0.13602100004209206,
+          "angle_degrees": 8.183167713948528,
+          "speed_kmh": 2.304306873643587
+        },
+        {
+          "tag": "469",
+          "from_frame": 52,
+          "to_frame": 56,
+          "seconds": 0.13199099997291341,
+          "angle_degrees": 6.182091334940978,
+          "speed_kmh": 1.7939730917351475
+        },
+        {
+          "tag": "469",
+          "from_frame": 56,
+          "to_frame": 72,
+          "seconds": 0.5319289999897592,
+          "angle_degrees": 23.080660834893926,
+          "speed_kmh": 1.6619555257777894
+        },
+        {
+          "tag": "469",
+          "from_frame": 72,
+          "to_frame": 76,
+          "seconds": 0.13605199998710304,
+          "angle_degrees": 3.7537625274339637,
+          "speed_kmh": 1.0567851231983436
+        }
+      ]
+    },
+    {
+      "label": "Slow 2",
+      "clip_id": 52,
+      "mean_speed_kmh": 1.7069150517001834,
+      "mean_speed_mph": 1.0606278407227934,
+      "mean_speed_m_s": 0.4741430699167176,
+      "equivalent_revolution_seconds": 8.078215218730179,
+      "equivalent_frames_per_revolution_at_30fps": 242.34645656190537,
+      "observed_interval_speed_range_kmh": [
+        0.329258511319361,
+        3.307214047211847
+      ],
+      "tag_measurements": [
+        {
+          "tag": "235",
+          "first_frame": 0,
+          "last_frame": 80,
+          "sweep_degrees": 122.54916195788088,
+          "elapsed_seconds": 2.668102000025101,
+          "speed_kmh": 1.7592710008418797
+        },
+        {
+          "tag": "469",
+          "first_frame": 12,
+          "last_frame": 76,
+          "sweep_degrees": 91.54838226164044,
+          "elapsed_seconds": 2.1361369999940507,
+          "speed_kmh": 1.6415208318451076
+        }
+      ],
+      "intervals": [
+        {
+          "tag": "235",
+          "from_frame": 0,
+          "to_frame": 4,
+          "seconds": 0.1360590000404045,
+          "angle_degrees": 7.119750416306638,
+          "speed_kmh": 2.004298131207676
+        },
+        {
+          "tag": "235",
+          "from_frame": 4,
+          "to_frame": 8,
+          "seconds": 0.13192799995886162,
+          "angle_degrees": 9.978729886722757,
+          "speed_kmh": 2.8970975246757784
+        },
+        {
+          "tag": "235",
+          "from_frame": 8,
+          "to_frame": 12,
+          "seconds": 0.13209700002335012,
+          "angle_degrees": 11.405922909969592,
+          "speed_kmh": 3.307214047211847
+        },
+        {
+          "tag": "235",
+          "from_frame": 12,
+          "to_frame": 16,
+          "seconds": 0.13589199999114498,
+          "angle_degrees": 11.444411941234256,
+          "speed_kmh": 3.22570329696685
+        },
+        {
+          "tag": "235",
+          "from_frame": 16,
+          "to_frame": 20,
+          "seconds": 0.13221700000576675,
+          "angle_degrees": 11.20225423051632,
+          "speed_kmh": 3.245211097470082
+        },
+        {
+          "tag": "235",
+          "from_frame": 20,
+          "to_frame": 24,
+          "seconds": 0.13188000000081956,
+          "angle_degrees": 10.07420672619946,
+          "speed_kmh": 2.9258815926334525
+        },
+        {
+          "tag": "235",
+          "from_frame": 24,
+          "to_frame": 44,
+          "seconds": 0.6679100000183098,
+          "angle_degrees": 38.054007777906186,
+          "speed_kmh": 2.182263975657523
+        },
+        {
+          "tag": "235",
+          "from_frame": 44,
+          "to_frame": 80,
+          "seconds": 1.2001189999864437,
+          "angle_degrees": 23.269878069025673,
+          "speed_kmh": 0.7426678485078787
+        },
+        {
+          "tag": "469",
+          "from_frame": 12,
+          "to_frame": 24,
+          "seconds": 0.3999889999977313,
+          "angle_degrees": 31.352830474925213,
+          "speed_kmh": 3.0022961743468097
+        },
+        {
+          "tag": "469",
+          "from_frame": 24,
+          "to_frame": 28,
+          "seconds": 0.13627800001995638,
+          "angle_degrees": 9.30137993291156,
+          "speed_kmh": 2.6142460450827825
+        },
+        {
+          "tag": "469",
+          "from_frame": 28,
+          "to_frame": 36,
+          "seconds": 0.26364099996862933,
+          "angle_degrees": 15.047478919130693,
+          "speed_kmh": 2.1861281676556303
+        },
+        {
+          "tag": "469",
+          "from_frame": 36,
+          "to_frame": 40,
+          "seconds": 0.13604599999962375,
+          "angle_degrees": 6.238531809253678,
+          "speed_kmh": 1.756391971457672
+        },
+        {
+          "tag": "469",
+          "from_frame": 40,
+          "to_frame": 56,
+          "seconds": 0.5319819999858737,
+          "angle_degrees": 19.50284698012631,
+          "speed_kmh": 1.404190084880766
+        },
+        {
+          "tag": "469",
+          "from_frame": 56,
+          "to_frame": 60,
+          "seconds": 0.1320420000120066,
+          "angle_degrees": 3.3325466649217366,
+          "speed_kmh": 0.9666938869650818
+        },
+        {
+          "tag": "469",
+          "from_frame": 60,
+          "to_frame": 64,
+          "seconds": 0.1359890000312589,
+          "angle_degrees": 3.3327811972581545,
+          "speed_kmh": 0.9387022283586259
+        },
+        {
+          "tag": "469",
+          "from_frame": 64,
+          "to_frame": 76,
+          "seconds": 0.40016999997897074,
+          "angle_degrees": 3.439986283113091,
+          "speed_kmh": 0.329258511319361
+        }
+      ]
+    }
+  ]
+}

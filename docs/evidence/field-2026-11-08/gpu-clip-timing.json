@@ -1,0 +1,30 @@
+{
+  "store": "/home/sl/racevideo/data/exports/2026-11-09/racevideo-20261109.sqlite3",
+  "state": "complete",
+  "model_initialization_seconds": 1.9438734779978404,
+  "cpu_affinity": [
+    0,
+    1
+  ],
+  "device": "gpu:0",
+  "threads": 2,
+  "roi": [
+    0.05,
+    0.4,
+    0.98,
+    0.9
+  ],
+  "try_rotations": true,
+  "detector_rotations": [
+    0,
+    90
+  ],
+  "enable_mkldnn": false,
+  "notes": [
+    "No valid bib list supplied to models. Exact three-digit outputs remain candidates.",
+    "Methods and rotations are separate diagnostics, not independent votes."
+  ],
+  "total_wall_seconds": 11.912087447002705,
+  "total_cpu_seconds": 11.60361764,
+  "peak_rss_bytes": 2036420608
+}

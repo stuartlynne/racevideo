@@ -1,0 +1,30 @@
+{
+  "store": "/home/sl/work26/sprinttimer/racevideo/data/imports/zbook9/2026-11-09/field-sample.sqlite3",
+  "state": "complete",
+  "model_initialization_seconds": 1.0559513121843338,
+  "cpu_affinity": [
+    0,
+    1
+  ],
+  "device": "cpu",
+  "threads": 2,
+  "roi": [
+    0.05,
+    0.4,
+    0.98,
+    0.9
+  ],
+  "try_rotations": true,
+  "detector_rotations": [
+    0,
+    90
+  ],
+  "enable_mkldnn": true,
+  "notes": [
+    "No valid bib list supplied to models. Exact three-digit outputs remain candidates.",
+    "Methods and rotations are separate diagnostics, not independent votes."
+  ],
+  "total_wall_seconds": 36.042627811431885,
+  "total_cpu_seconds": 69.14733907899999,
+  "peak_rss_bytes": 1341906944
+}
