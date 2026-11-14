@@ -1,0 +1,21 @@
+[Unit]
+Description=RaceVideo MCP and reverse app bridge
+After=network.target
+
+[Service]
+Type=simple
+# Use racevideo-mcp-install-service to render absolute paths for this host.
+ExecStart=%h/.local/bin/racevideo-mcp --config %h/.config/racevideo-mcp/service.json
+Restart=on-failure
+RestartSec=2
+TimeoutStopSec=15
+KillMode=control-group
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+Environment=OMP_THREAD_LIMIT=1
+Environment=OPENBLAS_NUM_THREADS=1
+Environment=RACEVIDEO_SYSTEMD_CHILDREN=1
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "racevideo"
+version = "0.1.0"
+description = "Independent race camera recorder and concurrent Tk review"
+requires-python = ">=3.11"
+dependencies = ["av>=16,<20", "Pillow>=10"]
+
+[project.optional-dependencies]
+ocr = ["opencv-python-headless>=4.10,<5", "numpy>=2", "tesserocr>=2.8,<3"]
+mcp = ["mcp>=1.28,<2", "uvicorn>=0.30,<1", "websockets>=13,<17", "httpx>=0.27,<1"]
+
+[project.scripts]
+racevideo = "racevideo.__main__:main"
+racevideo-mcp = "racevideo_mcp.server:main"
+racevideo-mcp-install-service = "racevideo_mcp.install_service:main"
+racevideo-tool = "racevideo_mcp.client:main"
+
+[tool.setuptools.packages.find]
+include = ["racevideo*"]
