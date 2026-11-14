@@ -595,7 +595,7 @@ class ReviewWindow:
         root.bind("0",lambda e:self.zoom_key(e,0))
         root.bind("l", lambda e: None if self.editing_text() else self.go_live(follow_race=True))
         self.review_shortcut_tag='RaceVideoReview'+str(id(self))
-        for sequence,action in (('<space>','confirmed'),('<plus>','add'),('<KP_Add>','add'),('<minus>','ignored'),('<KP_Subtract>','ignored')):
+        for sequence,action in (('<space>','confirmed'),('<plus>','add'),('<KP_Add>','add'),('<minus>','ignored'),('<KP_Subtract>','ignored'),('<Delete>','ignored'),('<KP_Delete>','ignored')):
             root.bind_class(self.review_shortcut_tag,sequence,lambda e,action=action:self.review_shortcut(e,action))
         root.bind_class(self.review_shortcut_tag,'<KeyRelease-space>',lambda e:self.review_shortcut(e,'release'))
         for sequence,action in (('<Control-z>','undo'),('<Control-r>','redo')):
@@ -667,7 +667,7 @@ class ReviewWindow:
     def set_passings_layout(self,active):
         if active:self.browser_area.pack_forget()
         else:self.browser_area.pack(fill='x')
-        self.review_help.configure(text='Review: scroll to zoom · drag to pan · Space confirm · + add bib · − ignore' if active else 'Review: scroll to zoom at pointer · drag to pan · + / − / 0')
+        self.review_help.configure(text='Review: scroll to zoom · drag to pan · Space confirm · + add bib · Del ignore + next · − ignore' if active else 'Review: scroll to zoom at pointer · drag to pan · + / − / 0')
         self.refresh_play_button()
         self.update_bib_overlay()
 

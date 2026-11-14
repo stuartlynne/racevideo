@@ -67,7 +67,7 @@ def main():
             wait(lambda:not panel.busy and panel.event_id==other_id)
             panel.day.set('2026-11-08');compact.choose_day()
             wait(lambda:panel.model and panel.model['event']['id']==f.event and not panel.busy)
-            compact.follow_current();app.go_live();compact.results.put(('error','Live CrossMgr unavailable: test offline'))
+            compact.follow_current();app.go_live();compact.results.put(('error','Live CrossMgr unavailable: test offline',compact.generation))
             wait(lambda:'test offline' in compact.status.cget('text'))
             assert not compact.locations
             compact.follow.set(False);compact.manual_archive=True;compact.signature=None;compact.render()

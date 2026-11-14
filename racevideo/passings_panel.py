@@ -173,7 +173,9 @@ class PassingsPanel:
         if not cells:return None
         columns=sorted({c['column'] for c in cells})
         current=self.selected_cell
-        ordered=[c for column in columns for c in cells if c['column']==column]
+        from .passings_layout import layout
+        table=layout(cells,columns)
+        ordered=[entry['cells'][column] for column in columns for entry in table if column in entry['cells']]
         if current is None or current['cell_key'] not in {c['cell_key'] for c in cells}:
             target=ordered[-1] if self.hold_removed_selection else ordered[0]
             if self.hold_removed_selection and dy>0:return None
@@ -181,12 +183,12 @@ class PassingsPanel:
             index=next(i for i,c in enumerate(ordered) if c['cell_key']==current['cell_key'])
             target=ordered[max(0,min(len(ordered)-1,index+dy))]
         else:
-            column=current['column'];rows=[c for c in cells if c['column']==column]
-            row=next(i for i,c in enumerate(rows) if c['cell_key']==current['cell_key'])
+            column=current['column']
+            row=next(i for i,entry in enumerate(table) if entry['cells'].get(column,{}).get('cell_key')==current['cell_key'])
             if dx:
                 column=columns[max(0,min(len(columns)-1,columns.index(column)+dx))]
-                rows=[c for c in cells if c['column']==column]
-            target=rows[max(0,min(len(rows)-1,row+dy))]
+            choices=[(abs(i-row),i,entry['cells'][column]) for i,entry in enumerate(table) if column in entry['cells']]
+            target=min(choices,key=lambda item:item[:2])[2]
         return target
 
     def move_selection(self,event,dx,dy):
@@ -356,8 +358,9 @@ class PassingsPanel:
         if not self.model:
             self.canvas.configure(scrollregion=(0,0,1,1));self.header_canvas.configure(scrollregion=(0,0,1,44));return
         width=242;height=75;header=44
-        columns=self.model['columns'];rows=[[] for _ in columns]
-        for cell in self.displayed_cells():rows[cell['column']].append(cell)
+        columns=self.model['columns']
+        from .passings_layout import layout
+        table=layout(self.displayed_cells(),list(range(len(columns))))
         # Only repaint on model/size changes; scrolling moves existing canvas
         # items without redrawing every cell on each GUI timer tick.
         for col,info in enumerate(columns):
@@ -367,15 +370,18 @@ class PassingsPanel:
             stamp=display(info['start_ns'],self.model['event'],milliseconds=False,prefix=False)
             self.header_canvas.create_text(x+8,5,text=info['label']+' · '+stamp,anchor='nw',font=('TkDefaultFont',10,'bold'))
             if info.get('leader_bib'):self.header_canvas.create_text(x+8,24,text='Leader '+info['leader_bib'],anchor='nw')
-            for row,cell in enumerate(rows[col]):
+            for row,entry in enumerate(table):
+                cell=entry['cells'].get(col)
+                if cell is None:continue
                 y=row*height;tag=f'cell-{col}-{row}';self.locations[tag]=cell
                 fill=COLOURS[cell['state']]
                 selected=self.selected_cell is not None and self.selected_cell['cell_key']==cell['cell_key']
                 self.canvas.create_rectangle(x+3,y+3,x+width-3,y+height-3,fill=fill,outline='#0057c2' if selected else '#bbb',width=5 if selected else 1,tags=(tag,'selected-passing') if selected else (tag,))
                 marker='✓' if cell['confirmed'] else '?' if cell['visual_count'] else '—'
                 if cell.get('grouped_candidates'):marker+=f" [+{len(cell['grouped_candidates'])} grouped]"
-                title=f"{row+1}.  {cell['bib']} {marker}  {cell['name']}"
-                if cell.get('passing_order'):title=f"{row+1}.  {cell['bib']} {marker} [bike {cell['passing_order']}] {cell['name']}"
+                position=str(entry['position'])+'.' if entry['position'] is not None else 'Visual' if cell['origin']!='CrossMgr' else 'Unranked CM'
+                title=f"{position}  {cell['bib']} {marker}  {cell['name']}"
+                if cell.get('passing_order'):title=f"{position}  {cell['bib']} {marker} [bike {cell['passing_order']}] {cell['name']}"
                 if cell.get('grouped_under'):title='↳ '+title
                 if selected:title='▶ '+title
                 stamp=display(cell['at_ns'],self.model['event'],prefix=False)
@@ -386,7 +392,7 @@ class PassingsPanel:
                     font=self.fonts[bold]
                     while text and font.measure(text)>width-16:text=text[:-2]+'…'
                     self.canvas.create_text(x+8,y+dy,text=text,anchor='nw',font=font,tags=tag)
-        self.canvas.configure(scrollregion=(0,0,max(width*len(columns),1),max([len(r) for r in rows]+[1])*height))
+        self.canvas.configure(scrollregion=(0,0,max(width*len(columns),1),max(len(table),1)*height))
         self.header_canvas.configure(scrollregion=(0,0,max(width*len(columns),1),header))
         self.header_canvas.xview_moveto(self.canvas.xview()[0])
         self.app.performance.observe('passings_draw_ms',(time.perf_counter()-drawing_started)*1000)
