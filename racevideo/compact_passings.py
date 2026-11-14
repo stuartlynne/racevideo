@@ -253,6 +253,8 @@ class CompactPassings:
         if not model:self.status.configure(text=panel.status.get());self.detail.configure(text='Select a date and event, or follow the current race.');return
         self.status.configure(text=('Current race'+(' (finished)' if self.live_state=='finished' else '')+' · ' if self.follow.get() else 'Archive · ')+model['event']['name'])
         columns=[(i,c) for i,c in enumerate(model['columns']) if i or len(model['columns'])==1]
+        from .passings_layout import layout
+        table=layout(cells,[i for i,_ in columns])
         width=44;height=25;gutter=27
         for j,(column,info) in enumerate(columns):
             x=gutter+j*width
@@ -261,12 +263,15 @@ class CompactPassings:
             duration=header_clock(info['start_ns']-model['columns'][max(0,column-1)]['start_ns'])
             self.header.create_text(x+width/2,6,text=str(column) if column else 'Start',anchor='n',font=('Sans',10,'bold'))
             self.header.create_text(x+width/2,24,text=duration+'\n'+stamp,anchor='n',font=('Sans',8,'bold'))
-            for row,cell in enumerate(c for c in cells if c['column']==column):
+            for row,entry in enumerate(table):
+                cell=entry['cells'].get(column)
+                if cell is None:continue
                 y=row*height;tag='compact:'+cell['cell_key'];self.locations[tag]=cell
                 self.canvas.create_rectangle(x,y,x+width,y+height,fill=COLOURS[cell['state']],outline='#0057c2' if cell['cell_key']==selected else '#d3d9df',width=3 if cell['cell_key']==selected else 1,tags=(tag,))
                 self.canvas.create_text(x+width/2,y+height/2,text=cell['bib'],font=('Sans',10,'bold' if cell['confirmed'] else 'normal'),fill='#14233a',tags=(tag,))
-        count=max([sum(c['column']==i for c in cells) for i,_ in columns]+[1])
-        for row in range(count):self.canvas.create_text(13,row*height+height/2,text=str(row+1),font=('Sans',9,'bold'),fill='#35465d')
+        count=max(len(table),1)
+        for row,entry in enumerate(table):
+            if entry['position'] is not None:self.canvas.create_text(13,row*height+height/2,text=str(entry['position']),font=('Sans',9,'bold'),fill='#35465d')
         self.canvas.configure(scrollregion=(0,0,gutter+len(columns)*width,count*height));self.header.configure(scrollregion=(0,0,gutter+len(columns)*width,58));self.header.xview_moveto(self.canvas.xview()[0])
         if selected!=self.last_selected:
             tag='compact:'+str(selected);bounds=self.canvas.bbox(tag)

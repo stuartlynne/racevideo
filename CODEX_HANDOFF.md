@@ -1,5 +1,17 @@
 # RaceVideo: start here on zbook9
 
+## November 14 visual-only review update
+
+See [CROSSMGR_VIDEO_CORRECTIONS.md](CROSSMGR_VIDEO_CORRECTIONS.md). CrossMgr
+positions now align across laps; visual-only and unassigned raw CM reads are on
+unnumbered rows. Delete ignores the selected candidate and advances; Ctrl+Z
+restores it. Saved video is retained. Capture 764's Lap 4 run of question marks
+is fragmented detector evidence (14 candidates), not 14 established riders.
+No video-to-CrossMgr write-back is implemented. Existing MCP add-time operations
+can handle native existing riders; workbook-only entrants need an explicit
+registration-aware extension. Keep video identity confirmation separate from
+approval of a concrete CrossMgr timing correction.
+
 ## Git-managed deployment (November 13)
 
 The source is now committed on `develop`; see [GIT_WORKFLOW.md](GIT_WORKFLOW.md).

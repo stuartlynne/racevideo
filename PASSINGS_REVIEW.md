@@ -639,3 +639,14 @@ Changing target waits for outstanding requests to finish, clears the displayed
 model, and follows the new current race. Subsequent archive imports also use the
 new target. Cached events are retained. Cloned credentials and paths must be
 verified on the destination before use.
+
+### Unranked observations and quick dismissal (November 14)
+
+Visual-only entries and raw CM reads without an assigned lap are displayed on
+separate unnumbered rows. Numbered CrossMgr positions remain aligned across
+lap columns, in CrossMgr time order. Compact and detailed views use the same
+layout and navigation. Delete (or keypad Delete) ignores the selected candidate
+and advances, from either main or passing window; Ctrl+Z restores it. Entry
+controls retain ordinary text editing. Video is not deleted. See
+[CROSSMGR_VIDEO_CORRECTIONS.md](CROSSMGR_VIDEO_CORRECTIONS.md) for the Elite
+capture-764 fragmentation finding and the MCP write-back contract assessment.
