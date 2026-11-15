@@ -647,3 +647,13 @@ and advances, from either main or passing window; Ctrl+Z restores it. Entry
 controls retain ordinary text editing. Video is not deleted. See
 [CROSSMGR_VIDEO_CORRECTIONS.md](CROSSMGR_VIDEO_CORRECTIONS.md) for the Elite
 capture-764 fragmentation finding and the MCP write-back contract assessment.
+
+### Display-only review enhancement (November 14)
+
+The review toolbar's **Display…** controls adjust brightness, contrast and
+sharpness for the on-screen saved-clip preview. Adjustments run on the bounded
+display image outside Tk's thread and persist in the host-local UI session.
+The button visibly reports an adjusted state and the dialog provides Reset.
+Saved JPEG frames, thumbnails, OCR input/evidence, wheel analysis and exports
+remain unchanged. Enhancement can expose encoded shadow detail but cannot recover
+clipped highlights/blacks, missed focus or motion blur.

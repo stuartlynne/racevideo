@@ -14,7 +14,7 @@ from PIL import Image, ImageTk
 
 from . import storage
 from .motion import DEFAULT_ROI, validate_roi
-from .review import View, render
+from .review import DISPLAY_DEFAULTS, DISPLAY_RANGES, View, render, validate_display_adjustments
 
 
 def clock(ns):
@@ -253,10 +253,10 @@ class Reader(threading.Thread):
                 request = self.wanted_frame
                 if request is not None:
                     self.wanted_frame = None
-                    clip_id, ordinal, token, view = request
+                    clip_id, ordinal, token, view, adjustments = request
                     try:
                         jpeg = storage.read_frame(connection, clip_id, ordinal)
-                        image,bounds,position=render(jpeg,self.size,view)
+                        image,bounds,position=render(jpeg,self.size,view,adjustments)
                         self.output.put(("frame", (clip_id,ordinal,token,image,bounds,position)))
                     except LookupError:self.output.put(('review_error','This recording was removed.'))
                 if time.monotonic() >= next_poll:
@@ -388,6 +388,9 @@ class ReviewWindow:
         self.browse_generation=0
         self.pending_review=None
         self.view=View()
+        try:self.display_adjustments=validate_display_adjustments(self.saved_session.get('display_adjustments'))
+        except ValueError:self.display_adjustments=dict(DISPLAY_DEFAULTS)
+        self.display_adjustment_window=None
         self.review_bounds=None
         self.pan_drag=None
         self.last_render_token=-1
@@ -523,6 +526,9 @@ class ReviewWindow:
         ttk.Button(review_controls,text='+',width=3,command=lambda:self.zoom_review(1.25)).pack(side='left')
         ttk.Button(review_controls,text='Fit (Esc)',command=self.fit_review).pack(side='left',padx=4)
         self.zoom_label=ttk.Label(review_controls,text='100%');self.zoom_label.pack(side='left')
+        self.display_button=ttk.Button(review_controls,text='Display: normal',command=self.show_display_adjustments)
+        self.display_button.pack(side='left',padx=6)
+        self.update_display_button()
         self.review_help=ttk.Label(review_controls,text='Review: scroll to zoom at pointer · drag to pan · + / − / 0');self.review_help.pack(side='right')
 
         transport = ttk.Frame(root, padding=(10, 6))
@@ -617,6 +623,7 @@ class ReviewWindow:
         except tk.TclError:maximized=False
         return dict(version=1,geometry=self.root.geometry(),maximized=maximized,date=self.review_day.get(),bibs=self.bib_filter.get(),stars=self.stars_only.get(),
             mode=self.mode,clip=self.selected,ordinal=getattr(self,'displayed_ordinal',None),view=vars(self.view).copy(),wheel_enabled=self.wheel_enabled.get(),
+            display_adjustments=self.display_adjustments.copy(),
             compact_view=dict(x=self.compact_passings.canvas.xview()[0],y=self.compact_passings.canvas.yview()[0],width=self.video_area.sashpos(0)) if self.compact_passings and self.compact_passings.visible else self.saved_session.get('compact_view',{}),
             passings_open=opened,passings=self.last_passings_state,compact_passings=self.compact_enabled.get(),passings_window_open=bool(opened and panel.window.state()!='withdrawn'))
 
@@ -920,6 +927,49 @@ class ReviewWindow:
         if self.mode=='replay':
             self.view=View();self.pan_drag=None;self.zoom_label.configure(text='100%');self.request_frame()
         return 'break'
+
+    def update_display_button(self):
+        adjusted=any(abs(self.display_adjustments[k]-v)>1e-6 for k,v in DISPLAY_DEFAULTS.items())
+        self.display_button.configure(text='Display: adjusted…' if adjusted else 'Display: normal…')
+
+    def set_display_adjustment(self,name,value):
+        values=dict(self.display_adjustments);values[name]=round(float(value),2)
+        self.display_adjustments=validate_display_adjustments(values)
+        if hasattr(self,'display_adjustment_labels'):
+            self.display_adjustment_labels[name].set(f'{self.display_adjustments[name]:.2f}×')
+        self.update_display_button()
+        if self.mode=='replay' and self.index:self.request_frame()
+
+    def reset_display_adjustments(self):
+        self.display_adjustments=dict(DISPLAY_DEFAULTS)
+        for name,variable in getattr(self,'display_adjustment_vars',{}).items():
+            variable.set(self.display_adjustments[name])
+            self.display_adjustment_labels[name].set(f'{self.display_adjustments[name]:.2f}×')
+        self.update_display_button()
+        if self.mode=='replay' and self.index:self.request_frame()
+
+    def show_display_adjustments(self):
+        window=self.display_adjustment_window
+        if window is not None and window.winfo_exists():window.lift();return
+        window=self.display_adjustment_window=tk.Toplevel(self.root)
+        window.title('Review display adjustments')
+        window.transient(self.root)
+        body=ttk.Frame(window,padding=12);body.pack(fill='both',expand=True)
+        ttk.Label(body,text='Screen preview only — saved JPEGs, OCR and exports are unchanged.').grid(row=0,column=0,columnspan=3,sticky='w',pady=(0,10))
+        self.display_adjustment_vars={};self.display_adjustment_labels={}
+        names=dict(brightness='Brightness',contrast='Contrast',sharpness='Sharpness')
+        for row,(name,label) in enumerate(names.items(),1):
+            variable=tk.DoubleVar(value=self.display_adjustments[name]);value=tk.StringVar(value=f'{variable.get():.2f}×')
+            self.display_adjustment_vars[name]=variable;self.display_adjustment_labels[name]=value
+            ttk.Label(body,text=label,width=11).grid(row=row,column=0,sticky='w',pady=4)
+            scale=ttk.Scale(body,from_=DISPLAY_RANGES[name][0],to=DISPLAY_RANGES[name][1],variable=variable,
+                command=lambda current,name=name:self.set_display_adjustment(name,current))
+            scale.grid(row=row,column=1,sticky='ew',padx=8)
+            ttk.Label(body,textvariable=value,width=7,anchor='e').grid(row=row,column=2,sticky='e')
+        body.columnconfigure(1,weight=1);window.minsize(430,190)
+        buttons=ttk.Frame(body);buttons.grid(row=4,column=0,columnspan=3,sticky='e',pady=(12,0))
+        ttk.Button(buttons,text='Reset',command=self.reset_display_adjustments).pack(side='left',padx=4)
+        ttk.Button(buttons,text='Close',command=window.destroy).pack(side='left')
 
     def escape_review(self,event=None):
         if self.motion_options is not None and self.motion_options.window.winfo_exists() and self.motion_options.drawing:
@@ -1786,7 +1836,7 @@ class ReviewWindow:
             return
         self.update_bike_controls()
         self.token += 1
-        self.reader.wanted_frame = (self.selected,self.ordinal,self.token,vars(self.view).copy())
+        self.reader.wanted_frame = (self.selected,self.ordinal,self.token,vars(self.view).copy(),self.display_adjustments.copy())
         self.updating_scale = True
         self.scale.set(self.ordinal)
         self.updating_scale = False

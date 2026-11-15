@@ -8,9 +8,9 @@ import unittest
 from unittest.mock import patch
 from datetime import date,timedelta
 
-from PIL import Image
+from PIL import Image, ImageChops, ImageDraw, ImageStat
 from racevideo import storage
-from racevideo.review import View,render
+from racevideo.review import View,adjust_display,render,validate_display_adjustments
 
 
 def jpeg():
@@ -188,6 +188,16 @@ class ViewTests(unittest.TestCase):
         self.assertGreaterEqual(top+h,canvas[1]);self.assertLessEqual(top,0)
         view.zoom_at(.0001,point,source,canvas)
         self.assertEqual(view,View())
+
+    def test_display_adjustments_change_bounded_preview_only(self):
+        normal,_,_=render(jpeg(),(320,180),vars(View()))
+        bright,_,_=render(jpeg(),(320,180),vars(View()),dict(brightness=1.8,contrast=1,sharpness=1))
+        self.assertGreater(sum(ImageStat.Stat(bright).mean),sum(ImageStat.Stat(normal).mean))
+        edge=Image.new('RGB',(80,40),'#777777');ImageDraw.Draw(edge).rectangle((30,0,50,40),fill='#999999')
+        sharpened=adjust_display(edge,dict(brightness=1,contrast=1,sharpness=4))
+        self.assertIsNotNone(ImageChops.difference(edge,sharpened).getbbox())
+        with self.assertRaises(ValueError):validate_display_adjustments(dict(brightness=float('nan')))
+        with self.assertRaises(ValueError):validate_display_adjustments(dict(sharpness=5))
 
 
 if __name__=='__main__':unittest.main()

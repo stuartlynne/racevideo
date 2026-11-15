@@ -45,6 +45,13 @@ def main():
             wait(lambda:len(app.clips)==2)
             assert app.review_day.get()=='Today' and [r['id'] for r in app.clips]==[a,b]
             app.select(a);wait(lambda:bool(app.index) and app.shown_image is not None)
+            app.display_button.invoke();pump(.1)
+            assert app.display_adjustment_window.winfo_exists()
+            app.set_display_adjustment('brightness',1.6);wait(lambda:'adjusted' in app.display_button.cget('text'))
+            assert app.display_adjustments['brightness']==1.6
+            app.reset_display_adjustments();wait(lambda:'normal' in app.display_button.cget('text'))
+            assert app.display_adjustments==dict(brightness=1.0,contrast=1.0,sharpness=1.0)
+            app.display_adjustment_window.destroy()
             caption=app.frame_label.cget('text');app.ordinal=3;app.request_frame()
             assert app.frame_label.cget('text')==caption
             wait(lambda:app.displayed_ordinal==3)
@@ -102,7 +109,7 @@ def main():
             app.select(b);wait(lambda:app.index and app.selected==b and app.displayed_ordinal is not None)
             app.toggle_star();wait(lambda:storage.browse_clips(c,today)[0]['starred']==0)
             assert c.execute('PRAGMA foreign_key_check').fetchall()==[]
-            print('Review GUI passed: Today/date selection, ANY bib filter, candidate sightings/source jump, anchored zoom/pan/Fit, persistent stars, safe cleanup/cancel, hidden clips and older dates retained correctly')
+            print('Review GUI passed: display adjustments, Today/date selection, ANY bib filter, candidate sightings/source jump, anchored zoom/pan/Fit, persistent stars, safe cleanup/cancel, hidden clips and older dates retained correctly')
         finally:app.close();c.close()
 
 

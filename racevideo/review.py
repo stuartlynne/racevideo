@@ -2,7 +2,30 @@
 from dataclasses import dataclass
 import io
 import math
-from PIL import Image
+from PIL import Image, ImageEnhance
+
+
+DISPLAY_DEFAULTS = dict(brightness=1.0, contrast=1.0, sharpness=1.0)
+DISPLAY_RANGES = dict(brightness=(0.25, 3.0), contrast=(0.25, 3.0), sharpness=(0.0, 4.0))
+
+
+def validate_display_adjustments(values=None):
+    values=values or {};result={}
+    for name,default in DISPLAY_DEFAULTS.items():
+        value=values.get(name,default)
+        if type(value) not in (int,float) or not math.isfinite(value) or not DISPLAY_RANGES[name][0]<=value<=DISPLAY_RANGES[name][1]:
+            raise ValueError('Invalid display '+name)
+        result[name]=float(value)
+    return result
+
+
+def adjust_display(image, values=None):
+    """Enhance a bounded display image only; source JPEG evidence is untouched."""
+    values=validate_display_adjustments(values)
+    if values['brightness']!=1: image=ImageEnhance.Brightness(image).enhance(values['brightness'])
+    if values['contrast']!=1: image=ImageEnhance.Contrast(image).enhance(values['contrast'])
+    if values['sharpness']!=1: image=ImageEnhance.Sharpness(image).enhance(values['sharpness'])
+    return image
 
 
 @dataclass
@@ -36,7 +59,7 @@ class View:
         self.clamp(source,canvas)
 
 
-def render(jpeg, canvas, view):
+def render(jpeg, canvas, view, adjustments=None):
     with Image.open(io.BytesIO(jpeg)) as image:
         source=image.size
         transform=View(**view);transform.clamp(source,canvas)
@@ -49,4 +72,5 @@ def render(jpeg, canvas, view):
              min(source[0],math.ceil((x1-left)*source[0]/w)),min(source[1],math.ceil((y1-top)*source[1]/h)))
         picture=image.crop(box).convert('RGB')
         picture=picture.resize((max(1,round(x1-x0)),max(1,round(y1-y0))),Image.Resampling.BILINEAR)
+        picture=adjust_display(picture,adjustments)
         return picture,(left,top,w,h),((x0+x1)/2,(y0+y1)/2)
