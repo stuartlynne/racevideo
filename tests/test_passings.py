@@ -45,7 +45,7 @@ class PassingsTests(unittest.TestCase):
         self.assertLess(unknown[0]['at_ns'],unknown[1]['at_ns'])
         self.assertNotEqual(unknown[0]['captures'][0]['key'],unknown[1]['captures'][0]['key'])
         self.assertEqual(model['bike_coverage'],dict(indexed=1,total=1,unindexed=0))
-        self.assertEqual(len([c for c in model['cells'] if c['state']=='missing']),7)
+        self.assertEqual(len([c for c in model['cells'] if c['state']=='missing']),5)
         self.assertEqual(len([c for c in passings.compare_event(self.c,self.event,category='Women')['cells'] if c['bib']=='?']),2)
 
     def test_ignore_one_detected_bike_is_audited_hidden_and_individually_restorable(self):
@@ -142,10 +142,20 @@ class PassingsTests(unittest.TestCase):
         for col in (1,2):
             cells=[c for c in model['cells'] if c['column']==col]
             self.assertEqual(cells[0]['bib'],'24')
-        self.assertEqual(len(model['cells']),7)
+        self.assertEqual(len(model['cells']),5)
         filtered=passings.compare_event(self.c,self.event,category='Women')
         self.assertEqual({c['bib'] for c in filtered['cells']},{'24'})
         self.assertEqual(filtered['columns'],model['columns'])
+    def test_unassigned_crossmgr_reads_remain_cached_but_are_not_review_rows(self):
+        original=dict(self.c.execute("SELECT * FROM race_passings WHERE bib='24' AND seconds=60").fetchone())
+        original.pop('id');original.update(seconds=88.6,at_ns=self.start+88_600_000_000,rider_lap=None)
+        with self.c:self.c.execute('INSERT INTO race_passings('+','.join(original)+') VALUES('+','.join('?' for _ in original)+')',tuple(original.values()))
+        self.clip(88.6,'24')
+        model=passings.compare_event(self.c,self.event,tolerance=1)
+        self.assertFalse(any(c['origin']=='CrossMgr' and c.get('rider_lap') is None for c in model['cells']))
+        self.assertTrue(any(c['origin']=='Visual only' and c['bib']=='24' for c in model['cells']))
+        # The original start read and the inserted extra read both remain cached.
+        self.assertEqual(self.c.execute('SELECT count(*) FROM race_passings WHERE bib=? AND rider_lap IS NULL',('24',)).fetchone()[0],2)
     def test_matching_needs_bib_and_time_but_missing_rows_offer_unread_captures(self):
         self.clip(60,'24');unknown=self.clip(65)
         self.clip(100,'24');self.clip(75,'999')

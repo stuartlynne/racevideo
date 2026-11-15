@@ -3,8 +3,9 @@
 ## November 14 visual-only review update
 
 See [CROSSMGR_VIDEO_CORRECTIONS.md](CROSSMGR_VIDEO_CORRECTIONS.md). CrossMgr
-positions now align across laps; visual-only and unassigned raw CM reads are on
-unnumbered rows. Delete ignores the selected candidate and advances; Ctrl+Z
+positions now align across laps; visual-only evidence is on unnumbered rows.
+Unassigned raw CM reads remain cached for audit but are omitted from review. Delete
+ignores the selected candidate and advances; Ctrl+Z
 restores it. Saved video is retained. Capture 764's Lap 4 run of question marks
 is fragmented detector evidence (14 candidates), not 14 established riders.
 No video-to-CrossMgr write-back is implemented. Existing MCP add-time operations
@@ -695,11 +696,9 @@ Installed both hosts. Reopen the existing GUI for the new diagnostics/guards.
 
 User pointed to final Elite rows4/Napier,1/Wakefield confirmed,1/Wakefield CM-no-
 visual,Lawson. Actual second Wakefield is raw CM passing1218, 28.598909s after
-confirmed passing1217, no assigned lap/no video. Added review_duplicates.py:
-comparison groups plausible extra reads around a confirmed lap-associated same-bib
-CM passing within30s and same leader column. It retains real assigned laps, other
-bibs/columns, separate confirmations and extra CM rows with any video candidate.
-Same-subject unconfirmed OCR can also group; distinct physical tracks are retained.
+confirmed passing1217, no assigned lap/no video. Current presentation omits
+unassigned CM reads while retaining them in the source cache. Same-subject
+unconfirmed OCR can group under a confirmed passing; distinct physical tracks are retained.
 
 Model retains grouped_cells and parent.grouped_candidates; UI badge and Show grouped
 expose the originals. Checkbox persists; hiding a selected child/old restored child

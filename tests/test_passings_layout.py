@@ -15,12 +15,12 @@ class LayoutTests(unittest.TestCase):
         self.assertEqual(rows[3]['cells'][2]['cell_key'],'d')
         self.assertNotIn(2,rows[2]['cells'])
         self.assertEqual(len([c for r in rows for c in r['cells'].values()]),len(cells))
-    def test_source_order_wins_over_video_repositioning_and_raw_reads_are_unranked(self):
+    def test_source_order_wins_over_video_repositioning_and_raw_reads_are_ignored(self):
         a=cell('a',1,10,sort_ns=30);b=cell('b',1,20,sort_ns=5)
         raw=cell('raw',1,15);raw['rider_lap']=None
         rows=layout([b,raw,a],[1])
-        self.assertEqual([r['position'] for r in rows],[1,None,2])
-        self.assertEqual([r['cells'][1]['cell_key'] for r in rows],['a','raw','b'])
+        self.assertEqual([r['position'] for r in rows],[1,2])
+        self.assertEqual([r['cells'][1]['cell_key'] for r in rows],['a','b'])
     def test_only_visual_entries_and_candidates_after_shorter_column(self):
         cells=[cell('?',1,5,True),cell('a',2,10),cell('b',2,20),cell('tail',1,25,True)]
         rows=layout(cells,[1,2])

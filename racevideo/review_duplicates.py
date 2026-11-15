@@ -20,8 +20,6 @@ def group(cells,seconds=30):
         if not cell['confirmed']:
             for anchor in sorted(anchors,key=lambda a:abs(a['at_ns']-cell['at_ns'])):
                 if cell['bib']!=anchor['bib'] or cell['column']!=anchor['column'] or abs(cell['at_ns']-anchor['at_ns'])>seconds*1e9:continue
-                if cell['origin']=='CrossMgr' and cell.get('rider_lap') is None and cell['visual_count']==0 and not cell['captures']:
-                    target=anchor;reason='Nearby extra CrossMgr read with no assigned lap or video candidate';break
                 if cell['origin']=='Visual only' and cell['captures']:
                     known=anchor['captures'][:anchor['visual_count']]
                     if all(any(same_subject(v,k) for k in known) for v in cell['captures']):

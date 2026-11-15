@@ -210,6 +210,10 @@ def compare_event(connection, event_id, tolerance=3.0, offset=0.0, category='All
     for row in connection.execute('SELECT bib,category FROM race_participant_categories WHERE source_id=?',(source,)):
         memberships.setdefault(row['bib'], []).append(row['category'])
     passings = [dict(r) for r in connection.execute('SELECT * FROM race_passings WHERE source_id=? ORDER BY at_ns,bib',(source,))]
+    # CrossMgr retains raw reads that it did not assign to a scored rider lap.
+    # Preserve them in race_passings for audit, but do not let them consume video
+    # evidence or appear as review-table positions/candidates.
+    scored_passings = [p for p in passings if p['rider_lap'] is not None]
     leaders = {}
     for p in passings:
         if p['rider_lap'] is not None:
@@ -231,7 +235,7 @@ def compare_event(connection, event_id, tolerance=3.0, offset=0.0, category='All
         if not v['confirmed'] and v['encounter_key']:
             alternatives.setdefault((v['clip_id'],v['encounter_key']), set()).add(v['number'])
     edges = []
-    for i,p in enumerate(passings):
+    for i,p in enumerate(scored_passings):
         target=p['at_ns']+shift
         for j,v in enumerate(evidence):
             if p['bib']!=v['number']: continue
@@ -245,7 +249,7 @@ def compare_event(connection, event_id, tolerance=3.0, offset=0.0, category='All
         owners.setdefault(group,i)
         assignments.setdefault(i,[]).append(j);used.add(j)
     cells=[]
-    for i,p in enumerate(passings):
+    for i,p in enumerate(scored_passings):
         if category!='All categories' and category not in memberships.get(p['bib'],[]): continue
         target=p['at_ns']+shift
         matched=[evidence[j] for j in assignments.get(i,[])]

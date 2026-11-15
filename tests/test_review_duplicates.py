@@ -11,13 +11,10 @@ def row(key,bib='1',at=100,column=9,lap=None,confirmed=False,origin='CrossMgr',c
 class DuplicateReviewTests(unittest.TestCase):
     def anchor(self):
         return row('confirmed',lap=9,confirmed=True,captures=[dict(clip_id=869,key='review:32',number='1',physical_key='bike:12:motion:1')])
-    def test_extra_unassigned_cm_read_near_confirmed_lap_is_grouped_reversibly(self):
+    def test_extra_unassigned_cm_read_is_not_grouped_for_display(self):
         anchor=self.anchor();extra=row('extra',at=128.6)
         visible,grouped=group([anchor,extra])
-        self.assertEqual(visible,[anchor]);self.assertEqual(grouped,[extra])
-        self.assertIs(anchor['grouped_candidates'][0],extra)
-        self.assertEqual(extra['grouped_under'],'confirmed');self.assertAlmostEqual(extra['group_delta_seconds'],28.6)
-        self.assertFalse(extra['confirmed'])
+        self.assertEqual(visible,[anchor,extra]);self.assertEqual(grouped,[])
     def test_genuine_laps_separate_observations_other_bibs_and_distant_reads_remain(self):
         for extra in (row('lap',at=110,lap=10),row('other-column',at=110,column=10),row('other-bib',bib='15',at=110),
                       row('far',at=131),row('human',at=110,confirmed=True),row('video',at=110,captures=[dict(clip_id=870)])):

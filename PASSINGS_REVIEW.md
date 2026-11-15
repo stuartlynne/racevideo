@@ -491,23 +491,19 @@ returns selection to the confirmed parent. The option persists in review session
 an old saved selection that has become grouped resumes at its parent.
 
 The default window is 30 seconds, within the same overall leader-lap column.
-An extra CrossMgr row qualifies only when its bib matches a confirmed, lap-associated
-CrossMgr passing, it has no assigned rider lap, and it has no visual match or
-nearby video candidate. An unconfirmed OCR row can fold only if its observed
+An unconfirmed OCR row can fold only if its observed
 subject is the same as the confirmed sighting. Different physical tracks, bibs,
-columns, actual assigned laps, separately confirmed sightings and rows with their
+columns, separately confirmed sightings and rows with their
 own video candidates remain available independently. The comparison's optional
 `duplicate_seconds=0` disables grouping; Show grouped exposes all grouped rows.
 
-This is a reversible presentation rule. Raw CMN/source passings and video evidence
-are retained. Undoing the parent confirmation automatically brings the possible
-duplicates back into the main list. Grouping never marks the extra read confirmed
-or proves it is invalid.
+This is a reversible presentation rule for visual evidence. Undoing the parent
+confirmation automatically brings possible visual duplicates back into the main
+list. Grouping never marks the extra observation confirmed or proves it is invalid.
 
 Actual Elite final lap: Wakefield's confirmed CM passing 1217 is followed 28.598909
-seconds later by unassigned CM passing 1218, with no video candidate. The latter
-now appears under the confirmed Wakefield row as +1 grouped. The primary order is
-Napier, Wakefield, Lawson. Both raw Wakefield reads remain in race_passings.
+seconds later by unassigned CM passing 1218, with no video candidate. Current
+presentation omits that unassigned read while retaining it in `race_passings`.
 
 Validation: 173 unit tests passed on both hosts. Tk tests cover confirmation-driven
 grouping, visible badge, Show grouped, explanation/selection, restored sessions,
@@ -642,10 +638,11 @@ verified on the destination before use.
 
 ### Unranked observations and quick dismissal (November 14)
 
-Visual-only entries and raw CM reads without an assigned lap are displayed on
-separate unnumbered rows. Numbered CrossMgr positions remain aligned across
-lap columns, in CrossMgr time order. Compact and detailed views use the same
-layout and navigation. Delete (or keypad Delete) ignores the selected candidate
+Visual-only entries are displayed on separate unnumbered rows. Raw CM reads
+without an assigned lap remain cached as source evidence but are omitted from
+review and do not consume video matches. Numbered CrossMgr positions remain
+aligned across lap columns, in CrossMgr time order. Compact and detailed views
+use the same layout and navigation. Delete (or keypad Delete) ignores the selected candidate
 and advances, from either main or passing window; Ctrl+Z restores it. Entry
 controls retain ordinary text editing. Video is not deleted. See
 [CROSSMGR_VIDEO_CORRECTIONS.md](CROSSMGR_VIDEO_CORRECTIONS.md) for the Elite

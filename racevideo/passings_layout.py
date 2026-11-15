@@ -1,9 +1,14 @@
-"""Align CrossMgr positions while retaining unranked visual evidence between them."""
+"""Align CrossMgr positions while retaining visual-only evidence between them."""
 from bisect import bisect_right
 
 
 def ranked(cell):
     return cell.get('origin') == 'CrossMgr' and cell.get('rider_lap', 0) is not None and not cell.get('grouped_under')
+
+
+def ignored(cell):
+    """Raw CrossMgr reads without an assigned lap are audit data, not UI rows."""
+    return cell.get('origin') == 'CrossMgr' and cell.get('rider_lap') is None
 
 
 def layout(cells, columns):
@@ -16,7 +21,7 @@ def layout(cells, columns):
     extras = {}
     maximum = 0
     for column in columns:
-        members = [c for c in cells if c['column'] == column]
+        members = [c for c in cells if c['column'] == column and not ignored(c)]
         ordered = sorted((c for c in members if ranked(c)), key=lambda c: (c['at_ns'], c['cell_key']))
         assigned[column] = ordered
         maximum = max(maximum, len(ordered))

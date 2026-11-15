@@ -21,12 +21,13 @@ candidate is not present in this local derived snapshot. The number/date of
 completed bike analyses or operator decisions can differ between laptop and
 whiskey. Do not invent a bib or assume all visual-only observations are false.
 
-The new shared layout reserves numbered positions for CrossMgr passings with
-an assigned lap. Visual-only evidence (including named bibs) and raw CrossMgr
-reads without an assigned lap occupy separate unnumbered rows. Other columns
-leave these rows blank, preserving rank alignment across laps. Numbered order
-uses CrossMgr time, not the frame selected for visual review. Both compact and
-pop-out tables and keyboard navigation share this layout.
+The shared layout reserves numbered positions for CrossMgr passings with an
+assigned lap. Visual-only evidence (including named bibs) occupies separate
+unnumbered rows. Raw CrossMgr reads without an assigned lap remain in the cached
+source evidence but are omitted from the review tables and do not consume video
+matches. Other columns leave visual-only rows blank, preserving rank alignment
+across laps. Numbered order uses CrossMgr time, not the frame selected for visual
+review. Both compact and pop-out tables and keyboard navigation share this layout.
 
 Delete/keypad Delete now performs the same audited Ignore decision as minus and
 advances to the next entry. This hides a candidate from the table, preserves the
