@@ -10,7 +10,7 @@ import time
 import tkinter as tk
 from tkinter import ttk, messagebox
 
-from PIL import Image, ImageTk
+from PIL import Image, ImageDraw, ImageFont, ImageTk
 
 from . import storage
 from .motion import DEFAULT_ROI, validate_roi
@@ -365,6 +365,9 @@ class ReviewWindow:
         self.playing = False
         self.live_image = None
         self.shown_image = None
+        self.displayed_frame = None
+        self.displayed_frame_origin = (0, 0)
+        self.email_sending=False;self.last_email_recipient=''
         self.thumb_images = {}
         self.last_status = {}
         self.race_events=[]
@@ -481,8 +484,9 @@ class ReviewWindow:
         self.plate_evidence_outline=self.viewer.create_polygon(0,0,1,0,1,1,0,1,fill='',outline='#6be4ab',width=3,state='hidden')
         self.bike_mark_outline=self.viewer.create_rectangle(0,0,1,1,outline='#65d5ff',width=3,dash=(6,3),state='hidden')
         self.ocr_box=self.viewer.create_rectangle(0,0,1,1,outline='#66cfff',width=2,dash=(5,3),state='hidden')
-        self.bib_overlay_back=self.viewer.create_rectangle(12,12,13,13,fill='#080b10',outline='',state='hidden')
-        self.bib_overlay_text=self.viewer.create_text(24,18,anchor='nw',text='',font=('Sans',48,'bold'),state='hidden')
+        self.bib_overlay_back=self.viewer.create_rectangle(12,0,13,1,fill='#080b10',outline='',state='hidden')
+        self.bib_overlay_text=self.viewer.create_text(24,6,anchor='nw',text='',font=('Sans',24,'bold'),state='hidden')
+        self.passing_identity_signature=None;self.passing_identity=''
         self.race_time_overlay=self.viewer.create_text(24,94,anchor='nw',text='',fill='#ffffff',font=('Sans',24,'bold'),state='hidden')
         self.race_time_back=self.viewer.create_rectangle(14,88,15,89,fill='#080b10',outline='',state='hidden')
         self.finish_line=self.viewer.create_line(0,0,0,1,fill='#ffe14a',width=2,dash=(8,5),state='hidden')
@@ -511,6 +515,8 @@ class ReviewWindow:
         ttk.Button(timing_bar,text='Analyze wheels',command=lambda:self.request_wheels(force=True)).pack(side='left',padx=5)
         self.crossing_button=ttk.Button(timing_bar,text='Crossing frame',command=self.jump_crossing,state='disabled');self.crossing_button.pack(side='left',padx=5)
         self.wheel_status=ttk.Label(timing_bar,text='Centreline = finish · wheel timing pending');self.wheel_status.pack(side='left',padx=8)
+        self.email_frame_button=ttk.Button(timing_bar,text='Email JPEG…',command=self.email_annotated_frame,state='disabled');self.email_frame_button.pack(side='right',padx=4)
+        self.save_frame_button=ttk.Button(timing_bar,text='Save JPEG…',command=self.save_annotated_frame,state='disabled');self.save_frame_button.pack(side='right',padx=4)
         ttk.Button(ocr_bar,text='Review bibs…',command=self.show_ocr_results).pack(side='left')
         self.ocr_label=ttk.Label(ocr_bar,text='Select a saved clip and an area containing the plates.')
         self.ocr_label.pack(side='left',padx=10)
@@ -705,31 +711,44 @@ class ReviewWindow:
         event,offset=self.timing_context(ns)
         return display(ns,event,offset,camera,milliseconds,prefix,compact)
 
+    def selected_passing_context(self):
+        panel=self.passings_panel
+        cell=panel.selected_cell if panel is not None and panel.window.winfo_exists() else None
+        index=panel.capture_picker.current() if cell else -1
+        row=panel.capture_rows[index] if cell and 0<=index<len(panel.capture_rows) else None
+        visible=bool(cell and row and self.mode=='replay' and self.selected==row['clip_id'] and getattr(self,'displayed_ordinal',None) is not None)
+        return panel,cell,row,visible
+
     def draw_time_overlay(self):
         ordinal=getattr(self,'displayed_ordinal',None)
         stamp=self.index[ordinal]['received_ns'] if self.mode=='replay' and ordinal is not None and 0<=ordinal<len(self.index) else self.last_preview_received_ns if self.mode=='live' else None
         if not stamp:
             self.time_overlay_signature=None
             for item in (self.race_time_overlay,self.race_time_back):self.viewer.itemconfigure(item,state='hidden')
-            if self.compact_passings and self.compact_passings.visible:self.compact_passings.clock.configure(text='')
             return
         crossing=self.current_wheel_report().get('crossing') if self.wheel_enabled.get() else None
         # Left overlay stays uncluttered. Detailed frame/estimate/bracket labels
         # remain in the status controls; all stored timing retains nanoseconds.
         value=self.wheel_time_label(self.current_wheel_report(),stamp) if crossing else self.display_time(stamp,milliseconds=False,compact=True,prefix=False)
-        if self.wheel_enabled.get():
-            for entry,report,sample,label in self.visible_wheel_peers():
+        wheel_peers=[]
+        if self.wheel_enabled.get() and self.wheel_reports:
+            wheel_peers=self.visible_wheel_peers()
+            for entry,report,sample,label in wheel_peers:
                 value+='\n'+label+'  '+self.wheel_time_label(report,stamp)
-        signature=(value,self.mode)
+        # A selected passing already carries the frame time in its combined
+        # lap/position/rider overlay.  Wheel results may add markers, but must
+        # not bring back the older second copy of the clock underneath it.
+        passing_active=self.selected_passing_context()[3]
+        signature=(value,self.mode,passing_active)
         if signature!=getattr(self,'time_overlay_signature',None):
             self.time_overlay_signature=signature;self.viewer.itemconfigure(self.race_time_overlay,text=value,state='normal')
             x0,y0,x1,y1=self.viewer.bbox(self.race_time_overlay)
-            self.viewer.coords(self.race_time_back,x0-10,y0-6,x1+10,y1+6);self.viewer.itemconfigure(self.race_time_back,state='normal')
+            self.viewer.coords(self.race_time_back,x0-10,y0-6,x1+10,y1+6);self.viewer.itemconfigure(self.race_time_back,state='hidden' if passing_active else 'normal')
+            if passing_active:self.viewer.itemconfigure(self.race_time_overlay,state='hidden')
             if self.mode=='replay':self.frame_caption(ordinal)
             else:self.position_label.configure(text=value.splitlines()[0])
         self.viewer.tag_raise(self.race_time_back);self.viewer.tag_raise(self.race_time_overlay)
-        if self.compact_passings and self.compact_passings.visible:
-            if self.compact_passings.clock.cget('text')!=value:self.compact_passings.clock.configure(text=value)
+        if passing_active:
             for item in (self.race_time_overlay,self.race_time_back):self.viewer.itemconfigure(item,state='hidden')
 
     def wheel_subject(self):
@@ -1151,31 +1170,151 @@ class ReviewWindow:
 
     def update_bib_overlay(self):
         self.draw_time_overlay()
-        panel=self.passings_panel
-        cell=panel.selected_cell if panel is not None and panel.window.winfo_exists() else None
-        index=panel.capture_picker.current() if cell else -1
-        row=panel.capture_rows[index] if cell and 0<=index<len(panel.capture_rows) else None
-        visible=bool(cell and row and self.mode=='replay' and self.selected==row['clip_id'] and getattr(self,'displayed_ordinal',None) is not None)
-        signature=(visible,cell['bib'] if cell else None,cell['state'] if cell else None)
-        compact=self.compact_passings
-        if compact and compact.visible:
-            colours=dict(matched='#65e894',missing='#ffe14a',video_only='#ffe14a',extra='#ff6b6b',ignored='#bbbbbb')
-            header=(cell['bib'] if visible else 'Live' if self.mode=='live' else '—',colours.get(cell['state'],'#ffe14a') if visible else '#ffe14a')
-            if header!=getattr(compact,'bib_signature',None):
-                compact.bib_signature=header;compact.bib.configure(text=header[0],fg=header[1])
-            for item in (self.bib_overlay_text,self.bib_overlay_back):self.viewer.itemconfigure(item,state='hidden')
-            return
+        panel,cell,row,visible=self.selected_passing_context()
+        exportable=bool(visible and self.displayed_frame is not None)
+        if hasattr(self,'save_frame_button'):
+            state='normal' if exportable else 'disabled'
+            self.save_frame_button.configure(state=state)
+            self.email_frame_button.configure(state='normal' if exportable and not self.email_sending else 'disabled')
+        ordinal=getattr(self,'displayed_ordinal',None)
+        stamp=self.index[ordinal]['received_ns'] if visible and ordinal is not None and 0<=ordinal<len(self.index) else None
+        identity=(id(panel.model),cell['cell_key']) if visible and panel.model else None
+        if identity!=getattr(self,'passing_identity_signature',None):
+            self.passing_identity_signature=identity;self.passing_identity=''
+            if identity:
+                from .passings_layout import layout
+                columns=[i for i in range(len(panel.model['columns'])) if i or len(panel.model['columns'])==1]
+                entry=next((entry for entry in layout(panel.displayed_cells(),columns)
+                            if any(value['cell_key']==cell['cell_key'] for value in entry['cells'].values())),None)
+                lap=cell.get('rider_lap')
+                if lap is None:lap=cell.get('column','?')
+                position=entry['position'] if entry and entry['position'] is not None else '?'
+                bib=str(int(cell['bib'])) if cell['bib'].isascii() and cell['bib'].isdigit() else cell['bib']
+                parts=cell['name'].strip().rsplit(None,1)
+                name=(parts[1]+', '+parts[0]) if len(parts)==2 else (parts[0] if parts else '')
+                self.passing_identity=f'{lap}-{position} {bib}'+(f' {name}' if name else '')
+        clock=self.display_time(stamp,milliseconds=False,compact=False,prefix=False) if stamp is not None else ''
+        lap_position,separator,rider=self.passing_identity.partition(' ')
+        text=f'{lap_position} {clock}{separator}{rider}'.strip()
+        signature=(visible,text,cell['state'] if cell else None)
         if signature==getattr(self,'bib_overlay_signature',None):return
         self.bib_overlay_signature=signature
         if not visible:
             for item in (self.bib_overlay_text,self.bib_overlay_back):self.viewer.itemconfigure(item,state='hidden')
             return
         colours=dict(matched='#65e894',missing='#ffe14a',video_only='#ffe14a',extra='#ff6b6b',ignored='#bbbbbb')
-        self.viewer.itemconfigure(self.bib_overlay_text,text=cell['bib'],fill=colours[cell['state']],state='normal')
+        self.viewer.itemconfigure(self.bib_overlay_text,text=text,fill=colours[cell['state']],state='normal')
         x0,y0,x1,y1=self.viewer.bbox(self.bib_overlay_text)
         self.viewer.coords(self.bib_overlay_back,x0-10,y0-6,x1+10,y1+6)
         self.viewer.itemconfigure(self.bib_overlay_back,state='normal')
+        for item in (self.race_time_overlay,self.race_time_back):self.viewer.itemconfigure(item,state='hidden')
         self.viewer.tag_raise(self.bib_overlay_back);self.viewer.tag_raise(self.bib_overlay_text)
+
+    def annotated_frame_identity(self):
+        """Return the operator-facing subject and safe attachment basename."""
+        panel,cell,row,visible=self.selected_passing_context()
+        text=self.viewer.itemcget(self.bib_overlay_text,'text').strip()
+        fields=text.split(' ',3)
+        if not visible or self.displayed_frame is None or len(fields)<4:
+            raise ValueError('Select a passing and wait for its video frame to load.')
+        lap_position,stamp,bib,name=fields
+        event=panel.model['event']['name']
+        competition=next((item.get('competition','') for item in panel.events if item['id']==panel.event_id),'')
+        if not competition:
+            competition='Competition'
+        subject=f'{competition} - {event} - {lap_position}-{stamp}-{bib}-{name}'
+        basename=''.join(subject.split()).replace('/','_').replace('\\','_')+'.jpg'
+        return subject,basename
+
+    @staticmethod
+    def annotation_font(size,bold=False):
+        path='/usr/share/fonts/truetype/dejavu/DejaVuSans'+('-Bold' if bold else '')+'.ttf'
+        try:return ImageFont.truetype(path,size)
+        except OSError:return ImageFont.load_default()
+
+    def rendered_annotated_frame(self):
+        """Burn the currently visible review annotations into the shown frame."""
+        if self.displayed_frame is None:raise ValueError('No displayed frame is available.')
+        image=self.displayed_frame.copy().convert('RGB');draw=ImageDraw.Draw(image)
+        ox,oy=self.displayed_frame_origin
+        def visible(item):return self.viewer.itemcget(item,'state')!='hidden'
+        def points(item):
+            values=self.viewer.coords(item)
+            return [(round(values[i]-ox),round(values[i+1]-oy)) for i in range(0,len(values),2)]
+        def width(item):
+            try:return max(1,round(float(self.viewer.itemcget(item,'width') or 1)))
+            except ValueError:return 1
+        def colour(item,option):return self.viewer.itemcget(item,option) or None
+        def paint(item):
+            if not visible(item):return
+            kind=self.viewer.type(item);coords=points(item)
+            if kind=='line':draw.line(coords,fill=colour(item,'fill'),width=width(item))
+            elif kind=='rectangle':draw.rectangle((coords[0],coords[1]),fill=colour(item,'fill'),outline=colour(item,'outline'),width=width(item))
+            elif kind=='oval':draw.ellipse((coords[0],coords[1]),fill=colour(item,'fill'),outline=colour(item,'outline'),width=width(item))
+            elif kind=='polygon':draw.polygon(coords,fill=colour(item,'fill'));draw.line(coords+[coords[0]],fill=colour(item,'outline'),width=width(item))
+            elif kind=='text':
+                text=self.viewer.itemcget(item,'text');font_spec=self.viewer.itemcget(item,'font')
+                size=24 if item==self.bib_overlay_text else 12
+                paint_font=self.annotation_font(size,'bold' in font_spec.lower())
+                draw.multiline_text(coords[0],text,fill=colour(item,'fill') or 'white',font=paint_font,spacing=2)
+        # Geometry first, followed by captions and the primary passing label.
+        for item in (self.finish_line,self.front_wheel_line,self.front_wheel_circle,
+                     self.plate_evidence_outline,self.bike_mark_outline,self.ocr_box):paint(item)
+        for line,caption in self.wheel_peer_items.values():paint(line);paint(caption)
+        paint(self.bib_overlay_back);paint(self.bib_overlay_text)
+        return image
+
+    def write_annotated_frame(self,path):
+        image=self.rendered_annotated_frame()
+        image.save(path,'JPEG',quality=95,subsampling=0)
+
+    def save_annotated_frame(self):
+        from pathlib import Path
+        from tkinter import filedialog
+        try:
+            subject,basename=self.annotated_frame_identity()
+            chosen=filedialog.asksaveasfilename(parent=self.root,title='Save annotated frame',initialfile=basename,
+                defaultextension='.jpg',filetypes=(('JPEG image','*.jpg'),('All files','*')))
+            if not chosen:return
+            self.write_annotated_frame(chosen)
+            self.status_label.configure(text='Saved annotated frame: '+str(Path(chosen)))
+        except Exception as exc:messagebox.showerror('Save annotated frame',str(exc),parent=self.root)
+
+    def email_annotated_frame(self):
+        from pathlib import Path
+        from tkinter import simpledialog
+        import os
+        try:
+            recipient=simpledialog.askstring('Email annotated frame','Email address:',parent=self.root,initialvalue=self.last_email_recipient)
+            if recipient is None:return
+            recipient=recipient.strip()
+            from email.headerregistry import Address
+            Address(addr_spec=recipient)
+            if '@' not in recipient:raise ValueError('Enter a complete email address.')
+            self.last_email_recipient=recipient
+            subject,basename=self.annotated_frame_identity()
+            root=Path(os.environ.get('XDG_CACHE_HOME',Path.home()/'.cache'))/'racevideo'/'mail'
+            root.mkdir(parents=True,exist_ok=True);attachment=root/basename
+            self.write_annotated_frame(attachment)
+            self.email_sending=True;self.email_frame_button.configure(text='Sending…',state='disabled')
+            result=queue.SimpleQueue()
+            def deliver():
+                try:
+                    from .email_jpg import send_jpg
+                    send_jpg(recipient,attachment,subject);result.put(None)
+                except Exception as exc:result.put(exc)
+            threading.Thread(target=deliver,name='racevideo-email',daemon=True).start()
+            def finish():
+                try:error=result.get_nowait()
+                except queue.Empty:
+                    if not self.closing:self.root.after(100,finish)
+                    return
+                self.email_sending=False;self.email_frame_button.configure(text='Email JPEG…')
+                self.update_bib_overlay()
+                if error:messagebox.showerror('Email annotated frame',str(error),parent=self.root)
+                else:self.status_label.configure(text=f'Sent {basename} to {recipient}')
+            self.root.after(100,finish)
+        except Exception as exc:messagebox.showerror('Email annotated frame',str(exc),parent=self.root)
 
     def find_bikes(self):
         if self.mode=='replay' and self.selected is not None:self.reader.jobs.put(('find_bikes',self.selected))
@@ -1484,7 +1623,10 @@ class ReviewWindow:
         started = time.perf_counter()
         self.review_bounds=bounds
         self.display_size = image.size
-        self.viewer.coords(self.picture,*(position or (self.viewer.winfo_width()/2,self.viewer.winfo_height()/2)))
+        centre=position or (self.viewer.winfo_width()/2,self.viewer.winfo_height()/2)
+        self.viewer.coords(self.picture,*centre)
+        self.displayed_frame=image.copy()
+        self.displayed_frame_origin=(centre[0]-image.width/2,centre[1]-image.height/2)
         self.shown_image = ImageTk.PhotoImage(image)
         self.viewer.itemconfigure(self.picture, image=self.shown_image, state='normal')
         self.viewer.itemconfigure(self.empty, state="hidden")
@@ -1712,6 +1854,8 @@ class ReviewWindow:
         self.wheel_peer_items.clear()
         self.displayed_ordinal=None
         self.display_size=None
+        self.displayed_frame=None
+        self.save_frame_button.configure(state='disabled');self.email_frame_button.configure(state='disabled')
         self.viewer.itemconfigure(self.picture,state='hidden')
         self.viewer.itemconfigure(self.empty,state='normal',text=f'Loading clip #{clip_id}…')
         self.frame_label.configure(text='Loading…')

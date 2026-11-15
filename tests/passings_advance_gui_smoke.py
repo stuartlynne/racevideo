@@ -29,10 +29,12 @@ def main():
             wait(lambda:app.displayed_ordinal is not None and app.selected==panel.capture_rows[panel.capture_picker.current()]['clip_id'])
             return cell
         def overlay(number,colour):
-            wait(lambda:app.viewer.itemcget(app.bib_overlay_text,'state')=='normal' and app.viewer.itemcget(app.bib_overlay_text,'text')==number)
+            wait(lambda:app.viewer.itemcget(app.bib_overlay_text,'state')=='normal' and f' {int(number)} ' in app.viewer.itemcget(app.bib_overlay_text,'text'))
+            text=app.viewer.itemcget(app.bib_overlay_text,'text')
+            clock=text.split()[1];assert len(clock)==8 and clock[2]==clock[5]==':',text
             assert app.viewer.itemcget(app.bib_overlay_text,'fill')==colour
-            assert app.viewer.coords(app.bib_overlay_text)==[24.0,18.0]
-            assert '48' in app.viewer.itemcget(app.bib_overlay_text,'font')
+            assert app.viewer.coords(app.bib_overlay_text)==[24.0,6.0]
+            assert '24' in app.viewer.itemcget(app.bib_overlay_text,'font')
         wait(lambda:panel.model is not None and not panel.busy)
         cells=panel.displayed_cells();columns=sorted({c['column'] for c in cells})
         ordered=[c for col in columns for c in cells if c['column']==col]

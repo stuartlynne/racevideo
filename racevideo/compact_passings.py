@@ -18,9 +18,6 @@ class CompactPassings:
         self.jobs=queue.Queue(maxsize=1);self.results=queue.SimpleQueue();self.stop=threading.Event();self.force_live=True;self.live_state='';self.live_busy=False;self.live_error='';self.live_ready=False;self.next_live=0
         self.prestart_categories=[];self.prestart_name='';self.prestart_total=0
         self.frame=ttk.Frame(parent,width=440);self.frame.pack_propagate(False)
-        self.banner=tk.Frame(self.frame,bg='#080b10');self.banner.pack(fill='x')
-        self.bib=tk.Label(self.banner,text='Live',bg='#080b10',fg='#ffe14a',font=('Sans',48,'bold'),anchor='w');self.bib.pack(fill='x',padx=14)
-        self.clock=tk.Label(self.banner,text='',bg='#080b10',fg='white',font=('Sans',24,'bold'),anchor='w',justify='left');self.clock.pack(fill='x',padx=14,pady=(0,6))
         bar=ttk.Frame(self.frame);bar.pack(fill='x')
         ttk.Checkbutton(bar,text='Current CrossMgr race',variable=self.follow,command=self.follow_changed).pack(side='left')
         ttk.Button(bar,text='Pop out',style='Compact.TButton',command=app.show_event_passings).pack(side='right')

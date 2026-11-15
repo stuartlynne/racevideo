@@ -51,7 +51,7 @@ def main():
         # its timestamp literally; it must use the later cached motion stop.
         panel.request('compare');wait(lambda:not panel.busy)
         panel.select_cell(next(c for c in panel.model['cells'] if c['bib']=='7' and c.get('seconds')==72.4))
-        wait(lambda:app.displayed_ordinal==second and app.viewer.itemcget(app.bib_overlay_text,'text')=='7')
+        wait(lambda:app.displayed_ordinal==second and ' 7 ' in app.viewer.itemcget(app.bib_overlay_text,'text'))
         assert f.c.execute('SELECT count(*) FROM frames').fetchone()[0]==150
         assert f.c.execute('SELECT count(*) FROM bib_reviews').fetchone()[0]==1
         assert not f.c.execute('SELECT 1 FROM ocr_runs').fetchone()

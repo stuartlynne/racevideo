@@ -1,5 +1,5 @@
 """One-screen live/archive grid shares selection, capture and audited reviews."""
-import copy,sys,time,tkinter as tk
+import copy,os,sys,time,tkinter as tk
 from pathlib import Path
 from unittest.mock import patch
 sys.path.insert(0,str(Path(__file__).parent))
@@ -41,11 +41,23 @@ def main():
             panel.model['cells']=original_cells;compact.render()
             x0,y0,x1,y1=compact.canvas.bbox(tag);x,y=(x0+x1)//2,(y0+y1)//2
             compact.canvas.event_generate('<Motion>',x=x,y=y);compact.canvas.event_generate('<Button-1>',x=x,y=y)
-            wait(lambda:app.selected==clip and app.displayed_ordinal==1 and compact.bib.cget('text')=='24')
+            wait(lambda:app.selected==clip and app.displayed_ordinal==1 and app.viewer.itemcget(app.bib_overlay_text,'text')=='1-1 00:01:00 24 24, Rider')
             assert panel.navigation_target(0,-1)['cell_key']==cell['cell_key']
-            assert compact.follow.get();assert compact.clock.cget('text')=='1:00'
-            assert app.viewer.itemcget(app.bib_overlay_text,'state')=='hidden'
+            assert compact.follow.get()
+            assert app.viewer.itemcget(app.bib_overlay_text,'state')=='normal'
             assert app.viewer.itemcget(app.race_time_overlay,'state')=='hidden'
+            subject,basename=app.annotated_frame_identity()
+            assert subject=='Test - Test - 1-1-00:01:00-24-24, Rider'
+            assert basename=='Test-Test-1-1-00:01:00-24-24,Rider.jpg'
+            exported=f.path.with_name(basename);app.write_annotated_frame(exported)
+            from PIL import Image
+            with Image.open(exported) as result:assert result.size==app.displayed_frame.size and result.format=='JPEG'
+            with patch.dict(os.environ,{'XDG_CACHE_HOME':str(f.path.parent)}),patch('tkinter.simpledialog.askstring',return_value='rider@example.com'),patch('racevideo.email_jpg.send_jpg') as send:
+                app.email_annotated_frame()
+                wait(lambda:send.called and not app.email_sending)
+                recipient,attachment,sent_subject=send.call_args.args
+                assert recipient=='rider@example.com' and sent_subject==subject
+                assert str(attachment).endswith('/'+basename) and os.path.exists(attachment)
             def key(widget,keysym,state=0):
                 widget.focus_force();root.update();widget.event_generate('<KeyPress>',keysym=keysym,**({'state':state} if state else {}));widget.event_generate('<KeyRelease>',keysym=keysym,**({'state':state} if state else {}))
             key(compact.canvas,'space')
@@ -94,7 +106,7 @@ def main():
             compact=app.compact_passings;panel=compact.panel
             assert panel.window.state()=='withdrawn' and panel.category.get()=='Women'
             assert abs(app.video_area.sashpos(0)-390)<=2
-            print('Compact passings GUI passed: current-race snapshot, bib grid click opens capture, sidebar bib/time/colors, confirm/undo/add from main, pop-out retention, date/event/category selection, offline hides stale live grid, hide/reopen, session and pane-width restoration')
+            print('Compact passings GUI passed: current-race snapshot, bib grid click opens capture with video passing overlay, confirm/undo/add from main, pop-out retention, date/event/category selection, offline hides stale live grid, hide/reopen, session and pane-width restoration')
     finally:
         if app:app.close()
         f.tearDown()
