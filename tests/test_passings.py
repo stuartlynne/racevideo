@@ -28,6 +28,27 @@ def payload():
 
 
 class PassingsTests(unittest.TestCase):
+    def test_latest_passing_confirmation_in_tail_updates_without_new_passings(self):
+        from racevideo import passing_review
+        # A live race ends at its latest RFID read; the selected camera frame
+        # can be slightly later and still be inside the configured match window.
+        with self.c:
+            self.c.execute('UPDATE race_events SET end_ns=? WHERE id=?',
+                           (self.start+130*10**9,self.event))
+        for offset in (0,2):
+            with self.subTest(offset=offset):
+                clip=self.clip(130.5+offset)
+                saved=passing_review.decide(self.path,event_id=self.event,clip_id=clip,
+                    ordinal=1,action='confirmed',number='7')
+                model=passings.compare_event(self.c,self.event,offset=offset)
+                last=next(c for c in model['cells'] if c['bib']=='7' and c.get('seconds')==130)
+                self.assertEqual(last['state'],'matched')
+                self.assertTrue(last['confirmed'])
+                passing_review.undo(self.path,saved['history_id'])
+                last=next(c for c in passings.compare_event(self.c,self.event,offset=offset)['cells']
+                          if c['bib']=='7' and c.get('seconds')==130)
+                self.assertFalse(last['confirmed'])
+
     def index_bikes(self,clip,count=1):
         from racevideo import bike_index
         passages=[]
