@@ -13,8 +13,8 @@ def header_clock(ns):
 
 class CompactPassings:
     def __init__(self,app,parent):
-        self.app=app;self.visible=True;self.panel=None;self.signature=None;self.last_mode=app.mode
-        self.review_live=False;self.restore_scroll=app.saved_session.get('compact_view',{});self.manual_archive=False;self.follow=tk.BooleanVar(value=app.mode=='live')
+        self.app=app;self.visible=True;self.panel=None;self.signature=None
+        self.restore_scroll=app.saved_session.get('compact_view',{});self.follow=tk.BooleanVar(value=app.mode=='live')
         self.jobs=queue.Queue(maxsize=1);self.results=queue.SimpleQueue();self.stop=threading.Event();self.force_live=True;self.live_state='';self.live_busy=False;self.live_error='';self.live_ready=False;self.next_live=0
         self.prestart_categories=[];self.prestart_name='';self.prestart_total=0
         self.frame=ttk.Frame(parent,width=440);self.frame.pack_propagate(False)
@@ -112,11 +112,11 @@ class CompactPassings:
     def hide_add(self):self.add_bar.pack_forget();self.canvas.focus_set()
 
     def follow_current(self):
-        self.force_live=True;self.review_live=False;self.manual_archive=False;self.follow.set(True);self.live_error='';self.live_ready=False;self.next_live=0;self.signature=None
+        self.force_live=True;self.follow.set(True);self.live_error='';self.live_ready=False;self.next_live=0;self.signature=None
         if hasattr(self,'archive_controls'):self.update_mode_controls()
 
     def follow_changed(self):
-        self.force_live=True;self.manual_archive=not self.follow.get();self.live_error='';self.live_ready=False;self.signature=None
+        self.force_live=True;self.live_error='';self.live_ready=False;self.signature=None
         if hasattr(self,'archive_controls'):self.update_mode_controls()
         if self.follow.get():self.app.go_live();self.next_live=0
 
@@ -128,7 +128,7 @@ class CompactPassings:
             self.archive_controls.pack(fill='x',before=self.category_picker)
 
     def archive(self,operation='events'):
-        self.review_live=False;self.follow.set(False);self.manual_archive=True;self.live_error='';self.signature=None
+        self.follow.set(False);self.live_error='';self.signature=None
         self.panel.event_id=None;self.panel.competition_id=None;self.panel.request(operation)
 
     def choose_day(self):
@@ -139,7 +139,7 @@ class CompactPassings:
     def choose_event(self,event=None):
         index=self.event_picker.current()
         if not 0<=index<len(self.event_options):return
-        chosen=self.event_options[index];self.follow.set(False);self.manual_archive=True
+        chosen=self.event_options[index];self.follow.set(False)
         self.panel.event_id=chosen['id'];self.panel.competition_id=chosen['competition_id'];self.panel.category.set('All categories');self.panel.request('compare')
 
     def choose_category(self,event=None):
@@ -176,10 +176,9 @@ class CompactPassings:
         if self.stop.is_set() or self.app.closing:return
         if self.visible:
             self.ensure_panel();panel=self.panel
-            if self.app.mode!=self.last_mode:
-                if self.app.mode=='replay' and not self.review_live:self.follow.set(False)
-                elif not self.manual_archive:self.follow_current()
-                self.last_mode=self.app.mode
+            # Video review and race following are independent. Keyboard,
+            # pop-out and asynchronous capture opens all enter replay; none
+            # should silently disable polling or reset an in-flight refresh.
             while not self.results.empty():
                 kind,value,generation=self.results.get();self.live_busy=False
                 if generation!=self.generation:continue
@@ -201,7 +200,7 @@ class CompactPassings:
                     self.prestart_categories=[];self.prestart_name='';self.prestart_total=0
                     panel.request('compare');self.signature=None
             if self.follow.get() and not self.live_busy and time.monotonic()>=self.next_live:
-                self.live_busy=True;self.next_live=time.monotonic()+15;self.jobs.put_nowait((self.generation,panel.config))
+                self.live_busy=True;self.next_live=time.monotonic()+5;self.jobs.put_nowait((self.generation,panel.config))
             self.event_options=panel.events
             values=[f"{e['name']} · {e['competition']}" for e in self.event_options]
             if not self.follow.get():
@@ -289,7 +288,7 @@ class CompactPassings:
     def click(self,event):
         cell=self.cell_at()
         if cell:
-            self.review_live=self.follow.get();self.panel.select_cell(cell);self.canvas.focus_set();self.signature=None;self.render()
+            self.panel.select_cell(cell);self.canvas.focus_set();self.signature=None;self.render()
         return 'break'
     def hover(self,event):
         cell=self.cell_at()
