@@ -224,7 +224,10 @@ def compare_event(connection, event_id, tolerance=3.0, offset=0.0, category='All
     clips = [dict(r) for r in connection.execute('SELECT id,started_ns,ended_ns FROM clips WHERE started_ns<=? AND ended_ns>=? ORDER BY started_ns',
                 (event['end_ns']+shift+margin,event['start_ns']+shift-margin))]
     from .bike_evidence import collect
-    evidence,coverage = collect(connection,event['start_ns']+shift,event['end_ns']+shift,event_id=event_id)
+    # Apply the same matching window to evidence as to candidate clips. In a
+    # running race end_ns is the latest read, so a confirmed frame just after
+    # that read must not wait for another CrossMgr passing to become visible.
+    evidence,coverage = collect(connection,event['start_ns']+shift-margin,event['end_ns']+shift+margin,event_id=event_id)
     reviews=[dict(r) for r in connection.execute('SELECT * FROM race_visual_reviews WHERE event_id=?',(event_id,))]
     from .review_resolution import resolve
     resolution=resolve(evidence,reviews);evidence=resolution['evidence']
@@ -316,7 +319,7 @@ def compare_event(connection, event_id, tolerance=3.0, offset=0.0, category='All
     for review in reviews:
         if review['action']!='ignored':continue
         stamp=review['received_ns']-shift
-        if not event['start_ns']<=stamp<=event['end_ns']:continue
+        if not event['start_ns']-margin<=stamp<=event['end_ns']+margin:continue
         history=connection.execute('SELECT id,current FROM race_visual_review_history WHERE review_id=? ORDER BY id DESC LIMIT 1',(review['id'],)).fetchone()
         ignored_cells.append(dict(cell_key='ignored:'+str(review['id']),bib='Hidden',name='Ignored bike / bystander',
             at_ns=stamp,column=bisect.bisect_right(times,stamp),categories=[],state='ignored',confirmed=False,
