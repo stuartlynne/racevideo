@@ -337,6 +337,7 @@ class PassingsPanel:
                 self.update_review_buttons()
                 self.next_refresh=time.monotonic()+5
         if not self.busy and self.event_id and time.monotonic()>=self.next_refresh:self.request('compare')
+        self.app.idle_passings.tick(self)
         self.poll_timer=self.window.after(100,self.poll)
 
     def choose_event(self,event=None):
@@ -456,7 +457,14 @@ class PassingsPanel:
                 if v['clip_id']==row['clip_id'] and v.get('confirmed') and v.get('key')]
             hint=dict(target_ns=row['target_ns'],bib=self.selected_cell['bib'],exclude_keys=excluded,ignore_keys=ignored,protected_keys=protected)
         self.app.pending_seek=(row['clip_id'],row['ordinal']) if row.get('ordinal') is not None else None
+        idle=self.app.idle_passings
+        # A fresh CrossMgr snapshot can replace cell IDs and reopen the same
+        # selected clip. Preserve its committed-last exception across that
+        # automatic refresh; real input already revokes it in activity().
+        confirmed_last=idle.confirmed_last and idle.target==(self.event_id,row['clip_id'])
         self.app.select(row['clip_id'],focus_view=False,target_ns=hint,align_wheel=True)
+        idle.arm(self.event_id,row['clip_id'])
+        idle.confirmed_last=confirmed_last
         if row.get('bike_box') and row.get('ordinal') is not None:
             box=row['bike_box'];w,h=row['width'],row['height']
             self.app.plate_evidence=(row['clip_id'],row['ordinal'],[[box[0]*w,box[1]*h],[box[2]*w,box[1]*h],[box[2]*w,box[3]*h],[box[0]*w,box[3]*h]])
@@ -491,6 +499,7 @@ class PassingsPanel:
                 target['cell_key'] if target and target['cell_key']!=self.selected_cell['cell_key'] else None)
         self.review_pending=True;self.update_review_buttons()
         self.review_message.set(f'Saving review for clip {row["clip_id"]}, displayed frame {ordinal+1}…')
+        self.app.idle_passings.prepare_confirmation(self,action)
         self.app.reader.jobs.put(('passing_review',request))
 
     def position_candidate(self,clip,position,index):
@@ -554,6 +563,7 @@ class PassingsPanel:
         self.app.reader.jobs.put(('passing_review',dict(history_id=self.selected_cell['restore_history_id'])))
 
     def review_result(self,result,error=False):
+        self.app.idle_passings.confirmation_result(self,result,error)
         self.review_pending=False
         advance=self.submitted_advance;self.submitted_advance=None
         if self.add_pending:
