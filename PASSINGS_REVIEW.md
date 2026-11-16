@@ -576,8 +576,18 @@ unchanged. The splitter and compact scroll position persist with the session.
 - **Current CrossMgr race** reads the current GUI race via `bridge.identity` and
   `bridge.snapshot`, then analyzes its private copy through `race.inspect` /
   `race.review`. This does not send edits or reads to CrossMgr. While running,
-  it refreshes about every 15 seconds. Clicking a current-race bib for video
-  review keeps following that race unless archive mode is explicitly selected.
+  it refreshes about every 5 seconds. Video review (including keyboard navigation,
+  confirmation/advance, thumbnails and Pop out) keeps following that race unless
+  archive mode is explicitly selected. Live re-enables following with one click.
+- After opening a clip from Passings, 15 seconds with no operator activity
+  enables idle follow to the newest available passing clip in the selected
+  race/category. Each newly displayed clip gets at least 15 seconds. Keyboard,
+  mouse movement, clicks and scrolling restart the timer. Playback, dialogs and
+  unfinished edits hold the view. Live, ordinary thumbnail selection and archive
+  mode stop automatic following; opening a passing clip arms it again.
+  Confirming the last available passing enables the next arriving clip to open
+  immediately, without the 15-second wait. This starts only after the confirmation
+  is saved; further operator activity restores the normal delay.
 - Uncheck **Current CrossMgr race** to select a date, event and category. Load
   reads the local cache; Import date imports saved CMNs through MCP. Event choices
   span the selected date's competitions. Category filtering uses the existing
