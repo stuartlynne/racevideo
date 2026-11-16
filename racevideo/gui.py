@@ -615,6 +615,9 @@ class ReviewWindow:
         for key,dx,dy in (('Left',-1,0),('Right',1,0),('Up',0,-1),('Down',0,1)):
             root.bind_class(self.review_shortcut_tag,'<'+key+'>',lambda e,dx=dx,dy=dy:self.review_navigation(e,dx,dy))
         self.install_review_shortcuts(root)
+        from .idle_passings import IdlePassings
+        self.idle_passings=IdlePassings(self)
+        self.idle_passings.install()
         self.reader.start()
         self.viewer.focus_set()
         root.after(30, self.poll)
@@ -658,7 +661,9 @@ class ReviewWindow:
         # Before widget/class bindings, so Space cannot activate a focused
         # Ignore button and then confirm the resulting selection as well.
         tags=widget.bindtags()
-        if self.review_shortcut_tag not in tags:widget.bindtags((self.review_shortcut_tag,*tags))
+        if self.review_shortcut_tag not in tags:
+            activity=tuple(t for t in tags if t=='RaceVideoIdleActivity')
+            widget.bindtags((*activity,self.review_shortcut_tag,*(t for t in tags if t not in activity)))
         for child in widget.winfo_children():
             if not isinstance(child,tk.Toplevel):self.install_review_shortcuts(child)
 
@@ -914,9 +919,11 @@ class ReviewWindow:
         except ValueError as exc:
             self.status_label.configure(text=str(exc),foreground='#ff9b87');return 'break'
         pending=self.pending_review if preserve_pending else None
+        idle_target=self.idle_passings.target if pending else None
         self.browse_generation+=1
         self.reader.browse=(self.browse_generation,chosen,bibs,bool(self.stars_only.get()))
         self.go_live()
+        if idle_target:self.idle_passings.arm(*idle_target)
         self.pending_review=pending
         if self.passages_window is not None and self.passages_window.winfo_exists():self.show_passages(raise_window=False)
         return 'break'
@@ -1796,6 +1803,7 @@ class ReviewWindow:
             self.draw_roi()
 
     def go_live(self,follow_race=False):
+        self.idle_passings.cancel()
         if follow_race and self.compact_passings:self.compact_passings.follow_current()
         self.clear_bike_mark()
         self.bike_order.set('')
@@ -1825,6 +1833,8 @@ class ReviewWindow:
         self.viewer.focus_set()
 
     def select(self, clip_id, *, focus_view=True,auto_position=True,target_ns=None,align_wheel=False):
+        # A delayed locate of the same passing keeps its idle-follow intent.
+        if self.pending_review!=clip_id:self.idle_passings.cancel()
         self.clear_bike_mark()
         self.ocr_selecting=False;self.ocr_drag=None
         if self.motion_options is not None and self.motion_options.window.winfo_exists():
