@@ -30,6 +30,49 @@ def main():
             assert compact.race_name.get()==payload['review']['race']['name']
             assert compact.target_picker.winfo_rooty()<compact.race_name_entry.winfo_rooty()<compact.category_picker.winfo_rooty()
             assert panel.window.state()=='withdrawn'
+            # Reviewing through the shared controller (keyboard/pop-out/advance)
+            # must not silently stop polling the current race.
+            panel.select_cell(next(c for c in panel.model['cells'] if c['bib']=='24' and c.get('seconds')==60))
+            wait(lambda:app.mode=='replay' and app.displayed_ordinal is not None)
+            until=time.monotonic()+.5
+            while time.monotonic()<until:root.update();time.sleep(.02)
+            assert compact.follow.get(),'Video review disabled current-race refresh'
+            # A new source arrives while staying in review, without a Live click.
+            payload['inspect']['inputs'][0]['sha256']='live-update'
+            rider=next(r for r in payload['review']['race']['rows'] if r['bib']==7)
+            rider['passings'].append(dict(seconds=170,provenance='Unattributed',metadata=None))
+            rider['calculated_times'].append(170);rider['calculated_interpolation'].append(False)
+            wait(lambda:any(c['bib']=='7' and c.get('seconds')==170 for c in panel.model['cells']))
+            assert app.mode=='replay' and compact.follow.get()
+            # Idle follow waits for display and real input, then opens the
+            # newest passing with a capture without requiring another click.
+            newest_clip=f.clip(170)
+            panel.request('compare')
+            wait(lambda:not panel.busy and any(c.get('seconds')==170 and c['captures'] for c in panel.model['cells']))
+            idle=app.idle_passings;clock=idle.clock;now=[0.0]
+            idle.clock=lambda:now[0];idle.last_activity=0;idle.arm(panel.event_id,clip)
+            idle.tick(panel)
+            now[0]=14
+            app.viewer.event_generate('<Motion>',x=100,y=100);root.update()
+            assert idle.last_activity==14
+            now[0]=15;idle.tick(panel);assert app.selected==clip
+            now[0]=29;idle.tick(panel)
+            wait(lambda:app.selected==newest_clip and app.displayed_ordinal is not None)
+            wait(lambda:not panel.busy)
+            panel.review_action('confirmed',advance=True)
+            wait(lambda:not panel.review_pending and idle.confirmed_last)
+            # A committed confirmation of the last entry bypasses the delay.
+            arrival_clip=f.clip(175)
+            payload['inspect']['inputs'][0]['sha256']='confirmed-last-arrival'
+            arrival_rider=next(r for r in payload['review']['race']['rows'] if r['bib']==24)
+            arrival_rider['passings'].append(dict(seconds=175,provenance='Unattributed',metadata=None))
+            arrival_rider['calculated_times'].append(175);arrival_rider['calculated_interpolation'].append(False)
+            compact.next_live=0
+            wait(lambda:app.selected==arrival_clip and app.displayed_ordinal is not None)
+            assert now[0]==29 and not idle.confirmed_last
+            idle.clock=clock;idle.activity()
+            app.go_live(follow_race=True)
+            wait(lambda:compact.live_ready and not panel.busy)
             assert app.viewer.winfo_rootx()>compact.frame.winfo_rootx()+250
             assert app.frame_label.winfo_viewable() and app.frame_label.winfo_rooty()+app.frame_label.winfo_height()<=root.winfo_rooty()+root.winfo_height()
             cell=next(c for c in panel.model['cells'] if c['bib']=='24' and c.get('seconds')==60)
@@ -89,6 +132,9 @@ def main():
             compact.follow.set(False);compact.follow_changed();compact.signature=None;compact.render()
             wait(lambda:compact.archive_controls.winfo_ismapped())
             assert compact.locations
+            app.live_button.invoke()
+            wait(lambda:compact.follow.get() and compact.live_ready and compact.locations)
+            assert app.mode=='live' and not compact.archive_controls.winfo_ismapped()
             state=app.session_snapshot();assert state['compact_passings'] and not state['passings_window_open']
             app.compact_enabled.set(False);app.toggle_compact_passings();root.update()
             assert not compact.visible and not panel.window.winfo_exists()
