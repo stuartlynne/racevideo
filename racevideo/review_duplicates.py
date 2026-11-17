@@ -27,7 +27,7 @@ def order_shared_suggestions(cells):
     for key,parents in expected.items():
         subjects=visual.get(key,[])
         if len(parents)<2 or len(parents)!=len(subjects):continue
-        if any(not c['captures'][0].get('physical_key') or not c['captures'][0].get('navigation_primary') or c['captures'][0].get('uncertain',True) for c in subjects):continue
+        if any(not c['captures'][0].get('physical_key') or not c['captures'][0].get('navigation_primary') or c['captures'][0].get('uncertain',True) or c['captures'][0].get('in_finish_zone') is False for c in subjects):continue
         parents=sorted(parents,key=lambda c:c['at_ns'])
         subjects=sorted(subjects,key=lambda c:c['at_ns'])
         if len({c['at_ns'] for c in parents})!=len(parents) or len({c['at_ns'] for c in subjects})!=len(subjects):continue
@@ -51,7 +51,7 @@ def group(cells,seconds=30):
     for cell in cells:
         if cell['origin']!='CrossMgr' or cell.get('rider_lap') is None or cell['confirmed'] or cell['visual_count'] or not cell['captures']:continue
         candidate=cell['captures'][0]
-        if not candidate.get('physical_key') or not candidate.get('navigation_primary') or candidate.get('uncertain',True):continue
+        if not candidate.get('physical_key') or not candidate.get('navigation_primary') or candidate.get('uncertain',True) or candidate.get('in_finish_zone') is False:continue
         key=(candidate['clip_id'],candidate['physical_key'])
         proposals.setdefault(key,[]).append(cell)
     grouped=[];visible=[]

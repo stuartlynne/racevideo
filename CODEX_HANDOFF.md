@@ -1,5 +1,14 @@
 # RaceVideo: start here on zbook9
 
+## November 17 finish-zone candidate preference
+
+Capture 1958 contains a walker and 60. The saved trigger frame places 60 inside
+its recorded ROI and the walker outside it. Review now prefers subject tracks
+observed inside that recorded zone; outside subjects remain reviewable and are
+not treated as clear CM grouping suggestions. Motion-only candidates are labelled
+moving subjects, not classified bikes. No pixel masks or semantic classification
+are implied. See the 60/bystander section of REVIEW_CAPTURE_CHOICES_2026-11-15.md.
+
 ## November 17 shared-capture review positioning
 
 Lap 8's 6 and 5 are both in 1954, at display frames 18 and 28. Equal-sized groups

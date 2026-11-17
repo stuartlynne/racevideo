@@ -141,6 +141,19 @@ class PassingsTests(unittest.TestCase):
             expected=next(c for c in cells if c['bib']==bib and c.get('seconds')==seconds)
             self.assertEqual(expected['captures'][0]['clip_id'],shared)
 
+    def test_subject_entering_recorded_finish_zone_precedes_nearer_outside_motion(self):
+        import json
+        clip=self.clip(65);self.index_bikes(clip,2)
+        with self.c:self.c.execute('INSERT INTO clip_details(clip_id,metadata) VALUES(?,?) ON CONFLICT(clip_id) DO UPDATE SET metadata=excluded.metadata',(clip,json.dumps(dict(roi=[.5,0,1,1]))))
+        model=passings.compare_event(self.c,self.event)
+        expected=next(c for c in model['cells'] if c['bib']=='7' and c.get('seconds')==65)
+        self.assertEqual(expected['captures'][0]['ordinal'],2)
+        self.assertIs(expected['captures'][0]['in_finish_zone'],True)
+        self.assertIs(expected['captures'][1]['in_finish_zone'],False)
+        self.assertEqual(expected['state'],'missing');self.assertFalse(expected['confirmed'])
+        outside=[c for c in model['cells'] if c['bib']=='?' and c['captures'][0].get('in_finish_zone') is False]
+        self.assertEqual(len(outside),1)
+
     def test_ignore_does_not_hide_other_bike_sharing_an_ocr_encounter_label(self):
         import json
         from racevideo import passing_review

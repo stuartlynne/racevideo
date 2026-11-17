@@ -1,5 +1,22 @@
 """Join physical passage candidates to bib evidence without reading JPEGs."""
 import json
+import math
+
+
+def crosses_finish_zone(entry,roi,width,height):
+    """Check observed track centres against the recorded ROI; not classification."""
+    if not isinstance(roi,(list,tuple)) or len(roi)!=4 or width<=0 or height<=0:return None
+    try:
+        left,top,right,bottom=map(float,roi)
+        if not all(math.isfinite(v) for v in (left,top,right,bottom)) or not 0<=left<right<=1 or not 0<=top<bottom<=1:return None
+    except (TypeError,ValueError):return None
+    valid=False
+    for point in entry.get('points',[]):
+        box=point.get('box')
+        if not box or len(box)!=4 or not all(isinstance(v,(int,float)) and math.isfinite(v) for v in box):continue
+        valid=True;x=(box[0]+box[2])/(2*width);y=(box[1]+box[3])/(2*height)
+        if left<=x<=right and top<=y<=bottom:return True
+    return False if valid else None
 
 
 def collect(connection,start,end,clip_id=None,event_id=None):
@@ -7,8 +24,9 @@ def collect(connection,start,end,clip_id=None,event_id=None):
     from .bike_index import navigation
     evidence=visual_evidence(connection,start,end,clip_id=clip_id)
     by_key={v['key']:v for v in evidence};used=set();result=[]
-    clips=connection.execute('''SELECT id,width,height FROM clips WHERE started_ns<=? AND ended_ns>=?
-        AND (? IS NULL OR id=?) ORDER BY started_ns,id''',(end,start,clip_id,clip_id)).fetchall()
+    clips=connection.execute('''SELECT c.id,c.width,c.height,d.metadata FROM clips c
+        LEFT JOIN clip_details d ON d.clip_id=c.id WHERE c.started_ns<=? AND c.ended_ns>=?
+        AND (? IS NULL OR c.id=?) ORDER BY c.started_ns,c.id''',(end,start,clip_id,clip_id)).fetchall()
     reviews=connection.execute('SELECT * FROM race_visual_reviews WHERE event_id=?',(event_id,)).fetchall() if event_id else []
     indexed=0
     for clip in clips:
@@ -16,6 +34,10 @@ def collect(connection,start,end,clip_id=None,event_id=None):
         nav=navigation(connection,clip['id'])
         if nav['source'] not in ('detector','motion'):continue
         indexed+=1
+        try:
+            metadata=json.loads(clip['metadata'] or '{}')
+            roi=metadata.get('roi') if isinstance(metadata,dict) else None
+        except (ValueError,TypeError):roi=None
         for entry in nav['passages']:
             physical=entry.get('visual_key')
             if not physical:continue  # Independent manual entries are retained below.
@@ -34,6 +56,8 @@ def collect(connection,start,end,clip_id=None,event_id=None):
             common=dict(physical_key=physical,source_keys=sorted(sources|{physical}),
                 bike_box=normalized,points=entry.get('points',[]),width=clip['width'],height=clip['height'],
                 passage_ns=frame[0],passage_ordinal=entry['ordinal'],navigation_primary=entry.get('navigation_primary',False),passing_order=entry.get('passing_order'),uncertain=entry.get('uncertain',False))
+            common['in_finish_zone']=crosses_finish_zone(entry,roi,clip['width'],clip['height'])
+            common['candidate_kind']='motion' if nav['source']=='motion' else 'bicycle'
             if not rows:
                 rows=[dict(key=physical,number='?',first_ns=frame[0],last_ns=frame[0],ordinal=entry['ordinal'],
                     clip_id=clip['id'],confirmed=False,confidence=None,status='bike candidate',run_id=None,

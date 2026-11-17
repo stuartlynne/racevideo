@@ -89,3 +89,27 @@ the raw `?` rows are grouped behind Show grouped candidates. No detector reports
 images, manual decisions or race times were changed for this fix. The local GUI
 was reopened on display :0 with 5 at frame 28 and its visible plate checked.
 225 unit tests and the shared-capture and original grouping GUI smokes pass.
+
+## Lap 8, 60 and the walking bystander
+
+Capture 1958 has two real moving subjects: a bystander (motion:1, frame 5)
+and the cyclist (motion:2, frame 20). The generic motion preview cannot classify
+bicycles. Its first subject was nearer the CM time, so the review opened on the
+walker and showed the cyclist separately as `?`.
+
+The saved trigger is at frame 16, with the cyclist inside the recorded capture
+ROI and the walker outside it. This supports the cyclist, rather than the
+walker, triggering this particular capture; the exact contributing pixel mask
+was not stored, so this is not proof of the sole trigger cause.
+
+Comparison now uses observed track centres and the saved capture ROI as a soft
+review preference. A subject observed inside that zone ranks ahead of outside
+motion within the same candidate clip. Missing/invalid geometry adds no bias.
+Outside-zone candidates are not discarded or grouped as clear CM suggestions;
+walkers or other subjects inside the zone still require operator judgment.
+Generic motion rows are labelled Unidentified moving subject, not detected bikes.
+
+The real proposal is now 60 at frame 20; the walker remains separately reviewable
+at frame 5. No images, detector IDs, operator decisions or CM data were edited.
+228 tests and a finish-zone GUI smoke pass. The local :0 review was reopened
+on 60's cyclist candidate. This is geometric ranking, not a semantic bike detector.

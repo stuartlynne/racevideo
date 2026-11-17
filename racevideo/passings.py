@@ -283,7 +283,8 @@ def compare_event(connection, event_id, tolerance=3.0, offset=0.0, category='All
                 other=owners.get(group_key(v)) if v.get('physical_key') else None
                 return (other is not None and other!=i,
                     distance>clip_nearest[v['clip_id']]+250_000_000,
-                    distance,not v.get('navigation_primary',False),v.get('uncertain',False),
+                    distance,0 if v.get('in_finish_zone') is True else 2 if v.get('in_finish_zone') is False else 1,
+                    not v.get('navigation_primary',False),v.get('uncertain',False),
                     abs(v.get('passage_ns',(bounds['started_ns']+bounds['ended_ns'])//2)-target))
             candidates.sort(key=candidate_rank)
         for v in matched:
@@ -323,10 +324,10 @@ def compare_event(connection, event_id, tolerance=3.0, offset=0.0, category='All
             continue
         stamp=v.get('passage_ns',(v['first_ns']+v['last_ns'])//2)-shift
         cell=dict(bib=bib,passing_order=v.get('passing_order'),cell_key='visual:'+v['key'],at_ns=stamp,column=bisect.bisect_right(times,stamp),
-            name=riders.get(bib,{}).get('name','Unidentified bike' if bib=='?' else 'Not in this event'), categories=memberships.get(bib,[]),
+            name=riders.get(bib,{}).get('name',('Unidentified moving subject' if v.get('candidate_kind')=='motion' else 'Unidentified bike') if bib=='?' else 'Not in this event'), categories=memberships.get(bib,[]),
             state='extra' if outside else 'video_only',confirmed=v['confirmed'],
             ambiguous=len(alternatives.get((v['clip_id'],v['encounter_key']),()))>1,
-            captures=[v],visual_count=1,origin='Visual only',provenance='Human review' if v['confirmed'] else 'Uncertain bike candidate' if v.get('uncertain') else 'Bike candidate' if bib=='?' else 'OCR candidate',rider_lap=None)
+            captures=[v],visual_count=1,origin='Visual only',provenance='Human review' if v['confirmed'] else 'Uncertain bike candidate' if v.get('uncertain') else ('Motion candidate' if v.get('candidate_kind')=='motion' else 'Bike candidate') if bib=='?' else 'OCR candidate',rider_lap=None)
         cells.append(cell)
         cell['alternative_bibs']=[bib];orphan_groups[group]=cell
     cells.sort(key=lambda c:(c.get('sort_ns',c['at_ns']),c.get('passing_order') or 1000,c['bib'],c['origin']))

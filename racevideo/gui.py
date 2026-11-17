@@ -1199,6 +1199,7 @@ class ReviewWindow:
                 bib=str(int(cell['bib'])) if cell['bib'].isascii() and cell['bib'].isdigit() else cell['bib']
                 parts=cell['name'].strip().rsplit(None,1)
                 name=(parts[1]+', '+parts[0]) if len(parts)==2 else (parts[0] if parts else '')
+                if bib=='?':name=cell['name']
                 self.passing_identity=f'{lap}-{position} {bib}'+(f' {name}' if name else '')
         clock=self.display_time(stamp,milliseconds=False,compact=False,prefix=False) if stamp is not None else ''
         lap_position,separator,rider=self.passing_identity.partition(' ')
