@@ -47,9 +47,13 @@ No JPEGs, OCR observations, human identity reviews or CrossMgr reads were change
 The local window was reopened on display :0 with CM bib 5 selected, capture 1969,
 zero-based frame 22 (display frame 23), and the visible plate checked.
 
-The remaining `?` beside an unconfirmed CM passing is independent unassigned
-visual evidence. Confirming that rider against the correct candidate associates
-it with the CM passing; do not auto-confirm or discard it merely from time order.
+Initially the same unassigned visual candidate was displayed twice: as the
+CM row's first review suggestion and as a separate `?`. Unique primary,
+non-uncertain unknown candidates are now grouped under that CM suggestion by
+default. The CM row stays missing/yellow, unconfirmed, with zero identity matches.
+The sidebar's Show grouped candidates toggle exposes the raw row. Shared or
+ambiguous suggestions, uncertain/secondary tracks, named observations and
+separate extra subjects remain visible. No identity is inferred from grouping.
 
 ## Validation
 
@@ -60,3 +64,7 @@ cancellation tests pass. The real derived-data proposal order is now 1968 for 6,
 1969 for 5, and 1970 for 2. The actual display :0 window was checked on plate 5.
 Contact sheet, corrected screenshot and data-change audit are under
 `/raid4tb/sl/racevideo/tests/2026-11-15/finish-*` (not tracked raw race data).
+
+Display grouping validation: 223 unit tests pass. A dedicated GUI smoke verifies
+that the raw candidate can be shown/hidden, a distinct extra subject stays visible
+and no identity decision is recorded. Grouping changes no database observations.

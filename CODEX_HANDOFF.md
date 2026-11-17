@@ -1,5 +1,13 @@
 # RaceVideo: start here on zbook9
 
+## November 17 suggested-candidate display
+
+A unique primary, non-uncertain unidentified candidate already offered by one CM
+row is grouped under that yellow/unconfirmed row, instead of duplicated as `?`.
+Use the sidebar Show grouped candidates toggle to inspect it. Ambiguous/shared
+suggestions and actual extra candidates stay separate. Grouping records no
+identity confirmation or race timing change.
+
 ## November 17 finish-review correction
 
 See [REVIEW_CAPTURE_CHOICES_2026-11-15.md](REVIEW_CAPTURE_CHOICES_2026-11-15.md).

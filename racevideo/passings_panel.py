@@ -297,7 +297,7 @@ class PassingsPanel:
                     if jobs:self.status.set(self.status.get()+f" Indexing: {jobs.get('running',0)} running, {jobs.get('queued',0)} queued.")
                     reconciled=self.model.get('review_reconciliations',[])
                     if reconciled:self.status.set(self.status.get()+f" {len(reconciled)} review associations reconciled automatically; saved manual evidence retained.")
-                    if self.model.get('grouped_cells'):self.status.set(self.status.get()+f" {len(self.model['grouped_cells'])} possible duplicate reads grouped; Show grouped to inspect.")
+                    if self.model.get('grouped_cells'):self.status.set(self.status.get()+f" {len(self.model['grouped_cells'])} visual suggestions/possible duplicates grouped; Show grouped to inspect.")
                 else:
                     self.event_id=None;self.event_name.set('');self.status.set('No cached events for this date. Use Import / refresh CMNs to load the date from the configured base.')
                 time_signature=(self.event_id,self.model['event']['start_ns'],self.model['offset']) if self.model else None
@@ -436,6 +436,7 @@ class PassingsPanel:
             ('Other OCR alternatives on this track: '+', '.join(cell['alternative_bibs'])+'. ' if cell.get('alternative_bibs') else '')+
             'Times are uncalibrated; an OCR candidate or stored CM passing is not proof of RFID detection.')
         if cell.get('grouped_candidates'):self.detail.set(self.detail.get()+f" {len(cell['grouped_candidates'])} nearby possible duplicates grouped; enable Show grouped to inspect them.")
+        if cell.get('suggested_visual'):self.detail.set(self.detail.get()+' The unidentified visual candidate is grouped here as a suggestion only; identity is still unconfirmed.')
         if cell.get('grouped_under'):self.detail.set(self.detail.get()+f" Possible duplicate: {cell['group_reason']} ({cell['group_delta_seconds']:+.1f}s). Original CrossMgr data is retained.")
         self.capture_picker.configure(values=[f"Clip {r['clip_id']} · "+('nearby bike · '+r.get('number','?') if r.get('candidate') else 'matching bib'+(' ✓' if r.get('confirmed') else ' ?') if r.get('ordinal') is not None and r.get('number') not in (None,'?') else 'unidentified bike' if r.get('ordinal') is not None else 'nearby time candidate') for r in self.capture_rows])
         if self.capture_rows:
