@@ -68,3 +68,24 @@ Contact sheet, corrected screenshot and data-change audit are under
 Display grouping validation: 223 unit tests pass. A dedicated GUI smoke verifies
 that the raw candidate can be shown/hidden, a distinct extra subject stays visible
 and no identity decision is recorded. Grouping changes no database observations.
+
+## Two riders in one clip: Lap 8
+
+Capture 1954 contains both 6 and 5. Its original motion report 268 correctly has
+two subjects: zero-based frames 17 and 27 (display frames 18 and 28). Both camera
+representative times fall after both CM reads, so independent nearest-time
+selection offered the first subject for both expected riders. This also made the
+raw rows look like unassociated extras. This is not the fragmented-track case.
+
+For a shared clip with equal counts of expected unconfirmed riders and clear
+primary unknown subjects, review proposals now follow chronological one-to-one
+order. Each chosen subject must already be an eligible capture choice for that
+CM row. Tied times, missing choices, uncertain tracks, or unequal counts do not
+force an ordered pairing. Raw alternatives remain available and no identity is
+confirmed by this display ordering.
+
+The real Lap 8 proposal is now 6 at frame 18 and 5 at frame 28, both in 1954;
+the raw `?` rows are grouped behind Show grouped candidates. No detector reports,
+images, manual decisions or race times were changed for this fix. The local GUI
+was reopened on display :0 with 5 at frame 28 and its visible plate checked.
+225 unit tests and the shared-capture and original grouping GUI smokes pass.

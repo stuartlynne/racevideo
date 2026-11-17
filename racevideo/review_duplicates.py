@@ -10,8 +10,41 @@ def same_subject(candidate,confirmed):
         candidate.get('run_id')==confirmed.get('run_id'))
 
 
+def order_shared_suggestions(cells):
+    """Offer distinct chronological subjects for an equal-sized shared group.
+
+    This orders review choices only. Counts, identity and matching state remain
+    untouched. Extra/uncertain subjects or simultaneous stops stay ambiguous.
+    """
+    expected={};visual={}
+    for cell in cells:
+        if not cell['captures'] or cell['confirmed']:continue
+        candidate=cell['captures'][0];key=(cell['column'],candidate['clip_id'])
+        if cell['origin']=='CrossMgr' and cell.get('rider_lap') is not None and not cell['visual_count'] and candidate.get('number') in (None,'?'):
+            expected.setdefault(key,[]).append(cell)
+        elif cell['origin']=='Visual only' and cell['bib']=='?' and len(cell['captures'])==1:
+            visual.setdefault(key,[]).append(cell)
+    for key,parents in expected.items():
+        subjects=visual.get(key,[])
+        if len(parents)<2 or len(parents)!=len(subjects):continue
+        if any(not c['captures'][0].get('physical_key') or not c['captures'][0].get('navigation_primary') or c['captures'][0].get('uncertain',True) for c in subjects):continue
+        parents=sorted(parents,key=lambda c:c['at_ns'])
+        subjects=sorted(subjects,key=lambda c:c['at_ns'])
+        if len({c['at_ns'] for c in parents})!=len(parents) or len({c['at_ns'] for c in subjects})!=len(subjects):continue
+        choices=[]
+        for parent,subject in zip(parents,subjects):
+            index=next((i for i,c in enumerate(parent['captures']) if same_subject(c,subject['captures'][0])),None)
+            if index is None:break
+            choices.append((parent,index))
+        if len(choices)!=len(parents):continue
+        for parent,index in choices:
+            parent['captures'].insert(0,parent['captures'].pop(index))
+            parent['suggestion_ordered']=True
+
+
 def group(cells,seconds=30):
     if not math.isfinite(seconds) or not 0<=seconds<=120:raise ValueError('Duplicate grouping window must be 0–120 seconds')
+    order_shared_suggestions(cells)
     if not seconds:return cells,[]
     anchors=[c for c in cells if c['confirmed'] and c['origin']=='CrossMgr' and c.get('rider_lap') is not None]
     proposals={}

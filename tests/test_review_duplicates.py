@@ -63,3 +63,35 @@ class DuplicateReviewTests(unittest.TestCase):
             elif change=='different':unknown['captures'][0]['physical_key']='bike:12:motion:2'
             else:unknown['column']=10
             with self.subTest(change=change):self.assertFalse(group([anchor,unknown])[1])
+
+    def shared_group(self):
+        first,unknown=self.proposal();first.update(cell_key='six',bib='6',at_ns=100_000_000_000)
+        second=copy.deepcopy(first);second.update(cell_key='five',bib='5',at_ns=100_500_000_000)
+        later=copy.deepcopy(unknown);later.update(cell_key='later',at_ns=102_800_000_000)
+        later['captures'][0].update(key='bike:12:motion:2',physical_key='bike:12:motion:2')
+        unknown['at_ns']=102_000_000_000
+        for parent in (first,second):parent['captures']=[copy.deepcopy(unknown['captures'][0]),copy.deepcopy(later['captures'][0])]
+        return first,second,unknown,later
+
+    def test_shared_clip_offers_each_expected_rider_a_different_ordered_subject(self):
+        first,second,unknown,later=self.shared_group()
+        visible,grouped=group([first,second,unknown,later])
+        self.assertEqual(visible,[first,second]);self.assertEqual(len(grouped),2)
+        self.assertEqual(first['captures'][0]['physical_key'],'bike:12:motion:1')
+        self.assertEqual(second['captures'][0]['physical_key'],'bike:12:motion:2')
+        for parent in (first,second):
+            self.assertTrue(parent['suggestion_ordered']);self.assertFalse(parent['confirmed'])
+            self.assertEqual(parent['state'],'missing');self.assertEqual(parent['visual_count'],0)
+
+    def test_extra_or_simultaneous_subjects_do_not_force_an_ordered_pairing(self):
+        for variant in ('extra','simultaneous','outside-window','uncertain'):
+            first,second,unknown,later=self.shared_group();cells=[first,second,unknown,later]
+            if variant=='extra':
+                extra=copy.deepcopy(later);extra.update(cell_key='extra',at_ns=103_000_000_000)
+                extra['captures'][0].update(key='other',physical_key='other');cells.append(extra)
+            elif variant=='simultaneous':later['at_ns']=unknown['at_ns']
+            elif variant=='outside-window':second['captures']=second['captures'][:1]
+            else:later['captures'][0]['uncertain']=True
+            with self.subTest(variant=variant):
+                group(cells)
+                self.assertFalse(first.get('suggestion_ordered'));self.assertFalse(second.get('suggestion_ordered'))

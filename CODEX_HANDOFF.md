@@ -1,5 +1,14 @@
 # RaceVideo: start here on zbook9
 
+## November 17 shared-capture review positioning
+
+Lap 8's 6 and 5 are both in 1954, at display frames 18 and 28. Equal-sized groups
+of clear unknown subjects and expected riders now receive chronological one-to-one
+review suggestions; one nearest-time subject must not be reused for both riders.
+This is tentative display positioning, not an identity match. Ambiguous/unequal
+counts or tied times do not force pairing. See the Lap 8 section of
+[REVIEW_CAPTURE_CHOICES_2026-11-15.md](REVIEW_CAPTURE_CHOICES_2026-11-15.md).
+
 ## November 17 suggested-candidate display
 
 A unique primary, non-uncertain unidentified candidate already offered by one CM

@@ -437,6 +437,7 @@ class PassingsPanel:
             'Times are uncalibrated; an OCR candidate or stored CM passing is not proof of RFID detection.')
         if cell.get('grouped_candidates'):self.detail.set(self.detail.get()+f" {len(cell['grouped_candidates'])} nearby possible duplicates grouped; enable Show grouped to inspect them.")
         if cell.get('suggested_visual'):self.detail.set(self.detail.get()+' The unidentified visual candidate is grouped here as a suggestion only; identity is still unconfirmed.')
+        if cell.get('suggestion_ordered'):self.detail.set(self.detail.get()+' Shared capture: subject order follows CrossMgr passing order; verify the bib before confirming.')
         if cell.get('grouped_under'):self.detail.set(self.detail.get()+f" Possible duplicate: {cell['group_reason']} ({cell['group_delta_seconds']:+.1f}s). Original CrossMgr data is retained.")
         self.capture_picker.configure(values=[f"Clip {r['clip_id']} · "+('nearby bike · '+r.get('number','?') if r.get('candidate') else 'matching bib'+(' ✓' if r.get('confirmed') else ' ?') if r.get('ordinal') is not None and r.get('number') not in (None,'?') else 'unidentified bike' if r.get('ordinal') is not None else 'nearby time candidate') for r in self.capture_rows])
         if self.capture_rows:
