@@ -223,6 +223,13 @@ def compare_event(connection, event_id, tolerance=3.0, offset=0.0, category='All
     columns = [dict(label='Start / pre-lap', start_ns=event['start_ns'])] + [dict(label=f"Lap {p['rider_lap']}", start_ns=p['at_ns'], leader_bib=p['bib']) for p in boundaries]
     clips = [dict(r) for r in connection.execute('SELECT id,started_ns,ended_ns FROM clips WHERE started_ns<=? AND ended_ns>=? ORDER BY started_ns',
                 (event['end_ns']+shift+margin,event['start_ns']+shift-margin))]
+    clip_bounds={c['id']:c for c in clips}
+    def clip_distance(clip,target):
+        return max(clip['started_ns']-target,target-clip['ended_ns'],0)
+    # A cached motion index is not identity evidence. In particular, do not
+    # promote a previous rider's indexed clip over an unindexed next capture.
+    # Keep alternatives, but flag a clip substantially nearer another CM read.
+    clip_nearest={c['id']:min((clip_distance(c,p['at_ns']+shift) for p in scored_passings),default=0) for c in clips}
     from .bike_evidence import collect
     # Apply the same matching window to evidence as to candidate clips. In a
     # running race end_ns is the latest read, so a confirmed frame just after
@@ -268,7 +275,17 @@ def compare_event(connection, event_id, tolerance=3.0, offset=0.0, category='All
             if not physical or physical in seen_bikes or abs(v['passage_ns']-target)>margin:continue
             seen_bikes.add(physical)
             nearby.append(dict(v,ordinal=v.get('passage_ordinal',v['ordinal']),candidate=True,target_ns=target))
-        if not matched:candidates=nearby+[c for c in candidates if c['clip_id'] not in {v['clip_id'] for v in nearby}]
+        if not matched:
+            candidates=nearby+[c for c in candidates if c['clip_id'] not in {v['clip_id'] for v in nearby}]
+            def candidate_rank(v):
+                bounds=clip_bounds[v['clip_id']]
+                distance=clip_distance(bounds,target)
+                other=owners.get(group_key(v)) if v.get('physical_key') else None
+                return (other is not None and other!=i,
+                    distance>clip_nearest[v['clip_id']]+250_000_000,
+                    distance,not v.get('navigation_primary',False),v.get('uncertain',False),
+                    abs(v.get('passage_ns',(bounds['started_ns']+bounds['ended_ns'])//2)-target))
+            candidates.sort(key=candidate_rank)
         for v in matched:
             v['ambiguous']=len(alternatives.get((v['clip_id'],v['encounter_key']),()))>1
         cell=dict(p, cell_key=f"cm:{p['id']}", column=bisect.bisect_right(times,p['at_ns']), name=riders[p['bib']]['name'],

@@ -11,6 +11,22 @@ class MotionPositionTests(unittest.TestCase):
     def setUp(self):
         self.f=fixtures.ReviewPositionTests();self.f.setUp();self.c=self.f.c;self.path=self.f.path
     def tearDown(self):self.f.tearDown()
+    def test_velocity_bridges_brief_silhouette_loss_without_creating_another_bike(self):
+        frames=[]
+        for i in range(50):
+            image=Image.new('RGB',(320,180),(i*4,)*3);buffer=io.BytesIO();image.save(buffer,'JPEG')
+            frames.append(storage.Frame(1_000_000_000+i*33_333_333,i*33_333_333,i,'1/30',buffer.getvalue()))
+        clip=storage.save_clip(self.c,frames,frames[10].received_ns,'test',320,180,'test')
+        def blobs(image,background):
+            i=round(image.getpixel((0,0))/4)
+            if not (4<=i<=18 or 32<=i<=36):return []
+            x=.05+(i-4)*.027
+            return [dict(x=x,area=100,box=(x*160-8,25,x*160+8,70))]
+        with patch('racevideo.motion_position.subjects',side_effect=blobs):
+            report=scan(self.c,clip,storage.frame_index(self.c,clip),frames[20].received_ns)
+        self.assertEqual(len(report['passages']),1)
+        self.assertLessEqual(report['passages'][0]['first_ordinal'],4)
+        self.assertGreaterEqual(report['passages'][0]['last_ordinal'],36)
     def test_empty_expected_time_finds_centered_rider_and_caches_both_passages(self):
         clip=self.f.clip();index=storage.frame_index(self.c,clip)
         result=locate(self.path,self.c,clip,index,dict(target_ns=index[0]['received_ns'],bib='4'))

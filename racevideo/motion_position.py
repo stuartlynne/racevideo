@@ -36,8 +36,12 @@ def scan(c,clip,index,target_ns,cancel=lambda:False):
         active=[t for t in active if stamp-t[-1]['ns']<=gap]
         edges=[]
         for ti,track in enumerate(active):
+            predicted=track[-1]['x']
+            if len(track)>1:
+                previous,last=track[-2:];elapsed=last['ns']-previous['ns']
+                if elapsed>0:predicted+=(last['x']-previous['x'])*(stamp-last['ns'])/elapsed
             for bi,box in enumerate(boxes):
-                distance=abs(box['x']-track[-1]['x'])
+                distance=abs(box['x']-predicted)
                 if distance<.35:edges.append((distance,ti,bi))
         used_tracks=set();used_boxes=set()
         for _,ti,bi in sorted(edges):
@@ -70,7 +74,7 @@ def scan(c,clip,index,target_ns,cancel=lambda:False):
             first_ordinal=min(p['ordinal'] for p in points),last_ordinal=max(p['ordinal'] for p in points),
             points=points,numbers=[],confirmed=False,uncertain=len(track)<2))
     passages.sort(key=lambda p:p['ordinal'])
-    return dict(source='motion',policy='motion-preview-v1',approximate=True,partial=partial,passages=passages,
+    return dict(source='motion',policy='motion-preview-v2',approximate=True,partial=partial,passages=passages,
         start_ns=index[indices[0]]['received_ns'],end_ns=index[indices[-1]]['received_ns'],
         decoded_frames=len(decoded),milliseconds=(time.perf_counter()-started)*1000)
 
@@ -83,8 +87,8 @@ def locate(path,c,clip,index,hint,cancel=lambda:False):
     report=json.loads(existing['report']) if existing else None
     if not report or not report.get('passages'):
         empty=c.execute("SELECT report FROM bike_analyses WHERE clip_id=? AND state='inconclusive' ORDER BY id DESC LIMIT 1",(clip,)).fetchone()
-        if empty and json.loads(empty['report']).get('policy')=='motion-preview-v1':report=json.loads(empty['report'])
-    usable=bool(report and (report.get('passages') or report.get('policy')=='motion-preview-v1') and
+        if empty and json.loads(empty['report']).get('policy') in ('motion-preview-v1','motion-preview-v2'):report=json.loads(empty['report'])
+    usable=bool(report and (report.get('passages') or report.get('policy') in ('motion-preview-v1','motion-preview-v2')) and
         (not report.get('partial') or report.get('start_ns',0)<=target_ns<=report.get('end_ns',0)))
     if not usable:
         writer=storage.connect(path)

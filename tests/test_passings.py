@@ -112,6 +112,35 @@ class PassingsTests(unittest.TestCase):
         self.assertTrue(next(c for c in cells if c['bib']=='7' and c.get('seconds')==65)['confirmed'])
         self.assertEqual(len([c for c in cells if c['bib']=='?']),1)
 
+    def test_unindexed_next_capture_beats_previous_riders_indexed_candidates(self):
+        previous=self.clip(61)
+        with self.c:
+            self.c.execute('UPDATE clips SET ended_ns=? WHERE id=?',(self.start+63_400_000_000,previous))
+            for ordinal in range(4):
+                stamp=self.start+61_000_000_000+ordinal*800_000_000
+                self.c.execute('UPDATE frames SET received_ns=?,monotonic_ns=? WHERE clip_id=? AND ordinal=?',(stamp,stamp,previous,ordinal))
+        self.index_bikes(previous,2)
+        following=self.clip(67)
+        cells=passings.compare_event(self.c,self.event)['cells']
+        expected=next(c for c in cells if c['bib']=='7' and c.get('seconds')==65)
+        self.assertEqual(expected['captures'][0]['clip_id'],following)
+        self.assertTrue(any(c['clip_id']==previous for c in expected['captures']))
+        self.assertEqual(expected['state'],'missing')
+        self.assertFalse(expected['confirmed'])
+
+    def test_one_capture_can_remain_a_candidate_for_two_close_passings(self):
+        shared=self.clip(60)
+        with self.c:
+            self.c.execute('UPDATE clips SET ended_ns=? WHERE id=?',(self.start+66_000_000_000,shared))
+            for ordinal in range(4):
+                stamp=self.start+60_000_000_000+ordinal*2_000_000_000
+                self.c.execute('UPDATE frames SET received_ns=?,monotonic_ns=? WHERE clip_id=? AND ordinal=?',(stamp,stamp,shared,ordinal))
+        self.index_bikes(shared,2)
+        cells=passings.compare_event(self.c,self.event)['cells']
+        for bib,seconds in [('24',60),('7',65)]:
+            expected=next(c for c in cells if c['bib']==bib and c.get('seconds')==seconds)
+            self.assertEqual(expected['captures'][0]['clip_id'],shared)
+
     def test_ignore_does_not_hide_other_bike_sharing_an_ocr_encounter_label(self):
         import json
         from racevideo import passing_review

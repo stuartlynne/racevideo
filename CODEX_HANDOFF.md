@@ -1,5 +1,19 @@
 # RaceVideo: start here on zbook9
 
+## November 17 finish-review correction
+
+See [REVIEW_CAPTURE_CHOICES_2026-11-15.md](REVIEW_CAPTURE_CHOICES_2026-11-15.md).
+The final Elite riders 6, 5, 2 are in separate captures 1968, 1969, 1970. Indexed
+motion candidates used to outrank the appropriate unindexed next clip. Ranking now
+considers all capture types and nearby competing CM times without confirming
+identity. Motion preview v2 predicts across brief silhouette loss; v1 audit
+reports remain valid. Only two unreviewed clips in whiskey's writable clone were
+reindexed. Do not regenerate reviewed track identifiers indiscriminately.
+The protected 299 GiB import and test clone are on `/raid4tb/sl/racevideo/`, linked
+under local `data/imports/zbook9/2026-11-17` and `data/field-tests/2026-11-15`.
+`~/.local/bin/racevideo-sunday-review` opens the local archived review; no OCR batch
+was run during import. This local launcher is independent of laptop launchers.
+
 ## November 14 visual-only review update
 
 See [CROSSMGR_VIDEO_CORRECTIONS.md](CROSSMGR_VIDEO_CORRECTIONS.md). CrossMgr
