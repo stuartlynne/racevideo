@@ -68,6 +68,35 @@ class DuplicateReviewTests(unittest.TestCase):
         visible,grouped=group([anchor,other,unknown])
         self.assertEqual(len(visible),3);self.assertFalse(grouped)
 
+    def test_outside_roster_ocr_on_the_same_suggested_track_is_a_conflict_not_another_rider(self):
+        anchor,extra=self.proposal();anchor['bib']='60';extra.update(bib='9',state='extra',alternative_bibs=['9'])
+        anchor['captures'][0]['number']='9';extra['captures'][0]['number']='9'
+        visible,grouped=group([anchor,extra])
+        self.assertEqual(visible,[anchor]);self.assertEqual(grouped,[extra])
+        self.assertEqual(anchor['suggested_ocr_conflicts'],['9'])
+        self.assertFalse(anchor['confirmed']);self.assertEqual(anchor['state'],'missing')
+        self.assertEqual(anchor['visual_count'],0)
+        self.assertEqual(extra['bib'],'9');self.assertEqual(extra['state'],'extra')
+        self.assertIn('unconfirmed',extra['group_reason'])
+
+    def test_outside_roster_rider_on_a_different_or_ambiguous_track_stays_separate(self):
+        for variant in ('different-track','two-expected','confirmed-extra','roster-alternative'):
+            anchor,extra=self.proposal();extra.update(bib='9',state='extra')
+            cells=[anchor,extra]
+            if variant=='different-track':extra['captures'][0]['physical_key']='another-bike'
+            elif variant=='two-expected':
+                other=copy.deepcopy(anchor);other.update(cell_key='other',bib='2');cells.append(other)
+            elif variant=='confirmed-extra':extra['confirmed']=True
+            else:extra.update(alternative_bibs=['9','7'],outside_roster_only=False)
+            with self.subTest(variant=variant):self.assertEqual(group(cells)[1],[])
+
+    def test_multiple_outside_roster_readings_on_one_track_remain_alternatives(self):
+        anchor,extra=self.proposal();extra.update(bib='9 / 90',state='extra',alternative_bibs=['9','90'],outside_roster_only=True)
+        extra['captures'].append(copy.deepcopy(extra['captures'][0]))
+        visible,grouped=group([anchor,extra])
+        self.assertEqual(visible,[anchor]);self.assertEqual(grouped,[extra])
+        self.assertEqual(anchor['suggested_ocr_conflicts'],['9','90'])
+
     def test_uncertain_secondary_named_and_different_subject_evidence_stays_visible(self):
         for change in ('uncertain','secondary','named','different','other-lap'):
             anchor,unknown=self.proposal()

@@ -286,6 +286,7 @@ class CompactPassings:
             cell=panel.selected_cell
             appearance=cell.get('appearance',{}).get('rankings',{}).get('hybrid',[])[:3]
             extra=('\nAppearance suggests: '+', '.join(m['bib'] for m in appearance)+' · review required') if appearance else ''
+            if cell.get('suggested_ocr_conflicts'):extra+='\nOCR read '+', '.join(cell['suggested_ocr_conflicts'])+' · outside roster; bib '+cell['bib']+' unconfirmed'
             if (model.get('appearance') or {}).get('state')=='stale':extra='\nAppearance results need refresh after review changes.'
             self.detail.configure(text=cell['bib']+' · '+cell['name']+(' · visual candidate; identity unconfirmed' if cell.get('suggested_visual') else ' · no nearby saved capture' if not cell['captures'] else '')+extra)
         else:self.detail.configure(text='Click a bib to review its capture.')

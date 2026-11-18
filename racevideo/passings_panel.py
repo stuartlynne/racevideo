@@ -439,7 +439,9 @@ class PassingsPanel:
             ('Other OCR alternatives on this track: '+', '.join(cell['alternative_bibs'])+'. ' if cell.get('alternative_bibs') else '')+
             'Times are uncalibrated; an OCR candidate or stored CM passing is not proof of RFID detection.')
         if cell.get('grouped_candidates'):self.detail.set(self.detail.get()+f" {len(cell['grouped_candidates'])} nearby possible duplicates grouped; enable Show grouped to inspect them.")
-        if cell.get('suggested_visual'):self.detail.set(self.detail.get()+' The unidentified visual candidate is grouped here as a suggestion only; identity is still unconfirmed.')
+        if cell.get('suggested_ocr_conflicts'):
+            self.detail.set(self.detail.get()+' OCR read '+', '.join(cell['suggested_ocr_conflicts'])+' (outside event roster) on this same physical passage. Suggested bib '+cell['bib']+' is still unconfirmed; review the plate before confirming.')
+        elif cell.get('suggested_visual'):self.detail.set(self.detail.get()+' The unidentified visual candidate is grouped here as a suggestion only; identity is still unconfirmed.')
         if cell.get('suggestion_ordered'):self.detail.set(self.detail.get()+' Shared capture: subject order follows CrossMgr passing order; verify the bib before confirming.')
         if cell.get('appearance'):
             matches=cell['appearance']['rankings']['hybrid'][:3]

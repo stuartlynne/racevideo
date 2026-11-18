@@ -1,5 +1,18 @@
 # RaceVideo: start here on zbook9
 
+## November 18: out-of-roster OCR on an already offered track
+
+Elite 60's Lap 6 (clip 1927) and Lap 8 (1958) each had a partial/rotated OCR 9
+on the very same physical track already offered to the missing CM 60 row. The
+display had grouped only `?` proposals, so 9 incorrectly consumed an extra row.
+Unique clear proposals now group outside-roster OCR alternatives under their
+existing CM suggestion, with an explicit OCR conflict warning. 60 stays missing /
+unconfirmed; no 9-to-60 correction is written. Show grouped exposes the original
+red 9 evidence. Different tracks, ambiguous ownership, human-confirmed extras and
+alternatives containing a roster bib remain separate. Unconfirmed extra rows now
+open at the physical centre frame, retaining `evidence_ordinal` for the original
+OCR image. No reindex or database mutation is needed for this read-time change.
+
 ## November 18: Elite appearance experiment implemented locally
 
 See [APPEARANCE_RECOGNITION.md](APPEARANCE_RECOGNITION.md) for setup, CLI, metrics,

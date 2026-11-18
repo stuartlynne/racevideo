@@ -324,13 +324,16 @@ def compare_event(connection, event_id, tolerance=3.0, offset=0.0, category='All
             cell['bib']=' / '.join(cell['alternative_bibs'])
             cell['ambiguous']=True
             cell['captures'].append(v);cell['visual_count']+=1
+            cell['outside_roster_only']=all(n not in riders and n!='?' for n in cell['alternative_bibs'])
             continue
+        if not v['confirmed'] and v.get('passage_ordinal') is not None:
+            v['evidence_ordinal']=v['ordinal'];v['ordinal']=v['passage_ordinal']
         stamp=v.get('passage_ns',(v['first_ns']+v['last_ns'])//2)-shift
         cell=dict(bib=bib,passing_order=v.get('passing_order'),cell_key='visual:'+v['key'],at_ns=stamp,column=bisect.bisect_right(times,stamp),
             name=riders.get(bib,{}).get('name',('Unidentified moving subject' if v.get('candidate_kind')=='motion' else 'Unidentified bike') if bib=='?' else 'Not in this event'), categories=memberships.get(bib,[]),
             state='extra' if outside else 'video_only',confirmed=v['confirmed'],
             ambiguous=len(alternatives.get((v['clip_id'],v['encounter_key']),()))>1,
-            captures=[v],visual_count=1,origin='Visual only',provenance='Human review' if v['confirmed'] else 'Uncertain bike candidate' if v.get('uncertain') else ('Motion candidate' if v.get('candidate_kind')=='motion' else 'Bike candidate') if bib=='?' else 'OCR candidate',rider_lap=None)
+            captures=[v],visual_count=1,origin='Visual only',outside_roster_only=outside,provenance='Human review' if v['confirmed'] else 'Uncertain bike candidate' if v.get('uncertain') else ('Motion candidate' if v.get('candidate_kind')=='motion' else 'Bike candidate') if bib=='?' else 'OCR candidate',rider_lap=None)
         cells.append(cell)
         cell['alternative_bibs']=[bib];orphan_groups[group]=cell
     cells.sort(key=lambda c:(c.get('sort_ns',c['at_ns']),c.get('passing_order') or 1000,c['bib'],c['origin']))

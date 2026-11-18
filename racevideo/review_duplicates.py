@@ -80,14 +80,17 @@ def group(cells,seconds=30):
                     known=anchor['captures'][:anchor['visual_count']]
                     if all(any(same_subject(v,k) for k in known) for v in cell['captures']):
                         target=anchor;reason='Unconfirmed OCR candidate for the same observed subject';break
-            if target is None and cell['origin']=='Visual only' and cell['bib']=='?' and len(cell['captures'])==1:
+            if target is None and cell['origin']=='Visual only' and (cell['bib']=='?' or cell.get('state')=='extra' and cell.get('outside_roster_only',True)) and cell['captures']:
                 candidate=cell['captures'][0]
-                choices=proposals.get((candidate['clip_id'],candidate.get('physical_key')),[])
+                choices=proposals.get((candidate['clip_id'],candidate.get('physical_key')),[]) if all(same_subject(v,candidate) for v in cell['captures']) else []
                 if len(choices)==1:
                     anchor=choices[0]
                     if anchor['column']==cell['column'] and abs(anchor['at_ns']-cell['at_ns'])<=seconds*1e9:
                         target=anchor;reason='Suggested visual candidate already offered by this CrossMgr row; bib remains unconfirmed'
                         anchor['suggested_visual']=True
+                        if cell['bib']!='?':
+                            anchor['suggested_ocr_conflicts']=sorted(set(anchor.get('suggested_ocr_conflicts',[])+cell.get('alternative_bibs',[cell['bib']])))
+                            reason=f"OCR {cell['bib']} is outside the event roster on the physical track already offered for {anchor['bib']}; identity remains unconfirmed"
         if target is None:visible.append(cell);continue
         cell['grouped_under']=target['cell_key'];cell['group_reason']=reason
         cell['group_delta_seconds']=(cell['at_ns']-target['at_ns'])/1e9

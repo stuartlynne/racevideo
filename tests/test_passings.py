@@ -165,6 +165,25 @@ class PassingsTests(unittest.TestCase):
         outside=[c for c in model['cells'] if c['bib']=='?' and c['captures'][0].get('in_finish_zone') is False]
         self.assertEqual(len(outside),1)
 
+    def test_wrong_outside_roster_ocr_is_grouped_with_the_same_unconfirmed_suggestion(self):
+        import json
+        clip=self.clip(60,'9');analysis=self.index_bikes(clip)
+        report=json.loads(self.c.execute('SELECT report FROM bike_analyses WHERE id=?',(analysis,)).fetchone()[0])
+        report['passages'][0]['uncertain']=False
+        with self.c:
+            self.c.execute('UPDATE bike_analyses SET report=? WHERE id=?',(json.dumps(report),analysis))
+            self.c.execute('UPDATE ocr_observations SET ordinal=3')
+        model=passings.compare_event(self.c,self.event)
+        expected=next(c for c in model['cells'] if c['bib']=='24' and c.get('seconds')==60)
+        self.assertEqual(expected['suggested_ocr_conflicts'],['9'])
+        self.assertEqual(expected['state'],'missing');self.assertFalse(expected['confirmed'])
+        self.assertFalse(any(c['bib']=='9' for c in model['cells']))
+        raw=next(c for c in model['grouped_cells'] if c['bib']=='9')
+        self.assertEqual(raw['grouped_under'],expected['cell_key'])
+        self.assertEqual(raw['captures'][0]['ordinal'],1)
+        self.assertEqual(raw['captures'][0]['evidence_ordinal'],3)
+        self.assertEqual(self.c.execute('SELECT number,ordinal FROM ocr_observations').fetchone()[:],('9',3))
+
     def test_ignore_does_not_hide_other_bike_sharing_an_ocr_encounter_label(self):
         import json
         from racevideo import passing_review

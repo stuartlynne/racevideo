@@ -183,3 +183,25 @@ preimages are in `tracking-v4-applied/`. All five human-review/history table has
 are unchanged. Elite currently has 201 default rows, including 34 unknowns, with
 all 19 confirmed cells still present. These aggregate counts are operational
 checks, not an assertion that every remaining track/identity is correct.
+
+## OCR 9 duplicated the 60 review proposal in laps 6 and 8
+
+OCR observations 3158 (clip 1927, 3 supported frames) and 3171 (1958, 5 frames)
+read a small partial/rotated patch as 9. Both belong to the exact primary physical
+tracks already offered under CM 60 in their respective laps. There is no scored
+9 in this event. The prior grouping policy handled unread `?` proposals but left
+named outside-roster OCR as a separate visual-only rider, duplicating the passage.
+
+Grouping now includes outside-roster alternatives on a unique, clear primary
+proposal for the same track and lap. The original 9 values/crops remain untouched
+and inspectable through Show grouped / weak candidates. Parent 60 stays yellow,
+missing and unconfirmed, with a visible OCR conflict warning. No automatic
+replacement, confirmation, appearance training or timing update occurs.
+
+An outside-roster rider on another track, a shared/ambiguous proposal, an accepted
+human extra, or a mixed alternative containing an actual roster bib is not hidden
+by this rule. Source roster exclusion alone is insufficient to group a row.
+Unconfirmed extra review frames also use the physical centre, with the original
+best OCR ordinal retained separately, avoiding a centre-frame box over a later
+OCR frame. Real 1927/1958 checks give display frame 20 for each proposal and no
+separate default 9 rows; raw and manual/history tables are unchanged.
