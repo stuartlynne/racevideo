@@ -152,6 +152,9 @@ def main():
             compact=app.compact_passings;panel=compact.panel
             assert panel.window.state()=='withdrawn' and panel.category.get()=='Women'
             assert abs(app.video_area.sashpos(0)-390)<=2
+            app.saved_session['compact_view']['width']=0
+            app.toggle_compact_passings();root.update()
+            assert app.video_area.sashpos(0)>=260,'Collapsed saved pane hid passings after reopening'
             print('Compact passings GUI passed: current-race snapshot, bib grid click opens capture with video passing overlay, confirm/undo/add from main, pop-out retention, date/event/category selection, offline hides stale live grid, hide/reopen, session and pane-width restoration')
     finally:
         if app:app.close()

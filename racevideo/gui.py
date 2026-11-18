@@ -1061,7 +1061,9 @@ class ReviewWindow:
                 self.compact_passings=CompactPassings(self,self.video_area)
             compact=self.compact_passings;compact.visible=True
             if str(compact.frame) not in self.video_area.panes():self.video_area.insert(0,compact.frame,weight=0)
-            self.video_area.sashpos(0,self.saved_session.get('compact_view',{}).get('width',min(440,max(260,self.root.winfo_width()//3))))
+            width=self.saved_session.get('compact_view',{}).get('width',440)
+            if not isinstance(width,(int,float)) or width<260:width=440
+            self.video_area.sashpos(0,min(width,max(260,self.root.winfo_width()-320)))
             compact.signature=None
         elif self.compact_passings:
             compact=self.compact_passings;compact.visible=False
