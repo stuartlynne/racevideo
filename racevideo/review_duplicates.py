@@ -44,8 +44,24 @@ def order_shared_suggestions(cells):
 
 def group(cells,seconds=30):
     if not math.isfinite(seconds) or not 0<=seconds<=120:raise ValueError('Duplicate grouping window must be 0–120 seconds')
-    order_shared_suggestions(cells)
     if not seconds:return cells,[]
+    secondary=[];main=[]
+    for cell in cells:
+        if cell['origin']=='Visual only' and not cell['confirmed'] and cell['captures'] and all(v.get('review_secondary') for v in cell['captures']):secondary.append(cell)
+        else:main.append(cell)
+    # These are detector observations, not additional race positions. Keep them
+    # inspectable under a nearby stop, including named OCR on a weak track.
+    deferred=[]
+    for cell in secondary:
+        clip=cell['captures'][0]['clip_id']
+        anchors=[a for a in main if any(v['clip_id']==clip for v in a['captures'])]
+        if not anchors:main.append(cell);continue
+        anchor=min(anchors,key=lambda a:abs(a['at_ns']-cell['at_ns']))
+        cell.update(grouped_under=anchor['cell_key'],group_reason='Weak or overlapping detector track; retained for inspection, not counted as another rider',
+            group_delta_seconds=(cell['at_ns']-anchor['at_ns'])/1e9)
+        anchor.setdefault('grouped_candidates',[]).append(cell);deferred.append(cell)
+    cells=main
+    order_shared_suggestions(cells)
     anchors=[c for c in cells if c['confirmed'] and c['origin']=='CrossMgr' and c.get('rider_lap') is not None]
     proposals={}
     for cell in cells:
@@ -76,4 +92,4 @@ def group(cells,seconds=30):
         cell['grouped_under']=target['cell_key'];cell['group_reason']=reason
         cell['group_delta_seconds']=(cell['at_ns']-target['at_ns'])/1e9
         target.setdefault('grouped_candidates',[]).append(cell);grouped.append(cell)
-    return visible,grouped
+    return visible,grouped+deferred

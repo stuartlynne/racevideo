@@ -248,6 +248,7 @@ def compare_event(connection, event_id, tolerance=3.0, offset=0.0, category='All
     for i,p in enumerate(scored_passings):
         target=p['at_ns']+shift
         for j,v in enumerate(evidence):
+            if v.get('review_secondary') and not v['confirmed']:continue
             if p['bib']!=v['number']: continue
             distance = max(v['first_ns']-target, target-v['last_ns'], 0)
             if distance<=margin: edges.append((not v['confirmed'],distance,i,j))

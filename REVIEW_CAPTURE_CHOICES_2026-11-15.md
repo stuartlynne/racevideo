@@ -113,3 +113,37 @@ The real proposal is now 60 at frame 20; the walker remains separately reviewabl
 at frame 5. No images, detector IDs, operator decisions or CM data were edited.
 228 tests and a finish-zone GUI smoke pass. The local :0 review was reopened
 on 60's cyclist candidate. This is geometric ranking, not a semantic bike detector.
+
+## Completed Sunday OCR exposed detector-track proliferation
+
+The local batch covered all 828 Sunday clips and 51,873 frames without failures.
+It produced 1,187 OCR observations in 420 clips; these are candidate counts, not
+accuracy or participant totals. Full-frame object detections were saved alongside
+OCR, permitting tracking to be rebuilt without another neural inference run.
+
+Recall-v2 treated every bicycle box down to confidence 0.15 as a possible track.
+Overlapping boxes on bicycle parts and stationary background objects generated
+many independent tracks. Clip 1850 alone had 75 raw tracks; Elite had 2,260 `?`
+rows. The earlier primary-stop heuristic affected navigation, but did not prevent
+all those low-quality tracks from becoming independent table rows.
+
+Passage-v3 tracks confidence >=0.4 bicycle proposals after suppressing nested
+boxes, uses sustained moving trajectories as primary stops, and groups the weak
+raw tracks for optional inspection. Original analysis IDs and raw track keys are
+retained. Weak-only temporal intervals still get an unresolved stop. Two close
+riders and an exit followed by a later return are explicitly tested. Weak OCR
+cannot independently mark a CrossMgr passing matched; human reviews stay visible.
+
+All 828 local derived bike reports were rebuilt with `tools/rebuild_bike_tracks.py`.
+Elite now has 215 default rows, including 53 unknowns (previously 2,435 / 2,260).
+All 19 confirmed table entries were retained; hashes of the five human review and
+history tables were unchanged. Before/after derived reports and summary live in
+`/raid4tb/sl/racevideo/tests/2026-11-15/tracking-v3-applied/`. The protected original,
+images, OCR observations, CrossMgr cache and operator decisions were untouched.
+
+Real checks: clip 1954 retains two primary riders at ordinals 17 and 27; clips
+1958, 1968, 1969 and 1970 each have one primary stop. Clip 1850 has six proposed
+primary tracks rather than 75 default rows; its overview shows multiple close
+riders. The remaining proposals are not asserted to be perfectly deduplicated.
+Occluded riders and detector dropouts remain uncertain, and raw evidence can be
+expanded using Show grouped / weak candidates.

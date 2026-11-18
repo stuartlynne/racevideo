@@ -58,6 +58,8 @@ def collect(connection,start,end,clip_id=None,event_id=None):
                 passage_ns=frame[0],passage_ordinal=entry['ordinal'],navigation_primary=entry.get('navigation_primary',False),passing_order=entry.get('passing_order'),uncertain=entry.get('uncertain',False))
             common['in_finish_zone']=crosses_finish_zone(entry,roi,clip['width'],clip['height'])
             common['candidate_kind']='motion' if nav['source']=='motion' else 'bicycle'
+            common['review_secondary']=entry.get('review_secondary',False)
+            common['grouped_track']=entry.get('grouped_track')
             if not rows:
                 rows=[dict(key=physical,number='?',first_ns=frame[0],last_ns=frame[0],ordinal=entry['ordinal'],
                     clip_id=clip['id'],confirmed=False,confidence=None,status='bike candidate',run_id=None,

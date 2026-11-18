@@ -1,4 +1,4 @@
-import unittest
+import unittest,json
 from unittest.mock import patch
 import test_passings as fixtures
 from racevideo import bike_index,service
@@ -11,7 +11,10 @@ class BikeBatchTests(unittest.TestCase):
     def test_event_index_skips_current_policy_queues_old_and_missing_and_can_stop(self):
         f=self.f
         current=f.clip(75);old=f.clip(80);missing=f.clip(85);outside=f.clip(300)
-        f.index_bikes(current)
+        ident=f.index_bikes(current)
+        report=json.loads(f.c.execute('SELECT report FROM bike_analyses WHERE id=?',(ident,)).fetchone()[0])
+        report['policy']='passage-v3'
+        with f.c:f.c.execute('UPDATE bike_analyses SET report=? WHERE id=?',(json.dumps(report),ident))
         bike_index.save(f.c,old,dict(source='detector',passages=[]))
         with patch.object(service,'neural_runtime',return_value=('/dummy/python','cpu')),patch.object(service,'launch_worker') as launch:
             runs=service.start_bikes(f.path,event_id=f.event)

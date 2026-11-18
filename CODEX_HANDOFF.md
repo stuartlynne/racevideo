@@ -1,5 +1,30 @@
 # RaceVideo: start here on zbook9
 
+## Local Sunday OCR and passage tracking cleanup
+
+The Nov 15 batch has completed locally: 828 clips / 51,873 frames, no errors.
+The writable database is `/raid4tb/sl/racevideo/tests/2026-11-15/racevideo.sqlite3`;
+the protected source remains in `/raid4tb/sl/racevideo/imports/zbook9/2026-11-17/`.
+CPU reports are in the test directory's `ocr-local-cpu/`. No AMD GPU runtime was used.
+
+The former recall-v2 detector turned low-confidence wheel/body/background boxes
+into thousands of separate passings. New `passage-v3` tracking retains raw keys
+but uses sustained, confidence-filtered trajectories for the primary stops.
+Weak-only intervals retain one unresolved stop; separate returns and simultaneous
+riders remain independent. Raw/weak tracks are inspectable via Show grouped /
+weak candidates. OCR on a secondary track cannot create a CM match by itself.
+
+`python -m tools.rebuild_bike_tracks DATABASE REPORT_DIRECTORY --audit AUDIT_DIRECTORY
+--event EVENT_ID` previews a rebuild from saved detections; `--apply` updates only
+derived reports. It preserves existing analysis/track keys and stores preimages.
+The local Sunday set was rebuilt with this tool: Elite unknown rows fell from
+2,260 to 53, all 19 confirmed table entries remained, and review/history table
+digests were unchanged. Audit/preimages: `tracking-v3-applied/` in the test folder.
+This is not a measured rider-detection accuracy result; occlusion and weak-only
+groups can still merge or fragment. No capture, OCR evidence, CMN or manual
+review records were deleted. Source changes must be deployed on zbook9 before
+using the new policy there; the laptop was not changed by this local rebuild.
+
 ## November 17 finish-zone candidate preference
 
 Capture 1958 contains a walker and 60. The saved trigger frame places 60 inside

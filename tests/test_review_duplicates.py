@@ -34,6 +34,20 @@ class DuplicateReviewTests(unittest.TestCase):
         cells=[self.anchor(),row('extra',at=110)]
         self.assertEqual(group(cells,0),(cells,[]))
 
+    def test_weak_detector_rows_are_inspectable_without_adding_race_positions(self):
+        anchor=self.anchor()
+        weak=row('weak',bib='?',at=101,origin='Visual only',captures=[dict(clip_id=869,review_secondary=True)])
+        visible,grouped=group([anchor,weak])
+        self.assertEqual(visible,[anchor]);self.assertEqual(grouped,[weak])
+        self.assertEqual(weak['grouped_under'],anchor['cell_key'])
+        self.assertIn('Weak',weak['group_reason'])
+        self.assertFalse(weak['confirmed'])
+
+    def test_human_review_keeps_weak_detector_evidence_visible(self):
+        anchor=self.anchor()
+        weak=row('review',bib='15',at=101,confirmed=True,origin='Visual only',captures=[dict(clip_id=869,review_secondary=True)])
+        self.assertEqual(group([anchor,weak])[0],[anchor,weak])
+
     def proposal(self):
         candidate=dict(clip_id=869,key='bike:12:motion:1',physical_key='bike:12:motion:1',number='?',navigation_primary=True,uncertain=False)
         anchor=row('expected',lap=9,captures=[candidate]);anchor['visual_count']=0;anchor['state']='missing'

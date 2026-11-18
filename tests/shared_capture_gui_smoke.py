@@ -22,7 +22,11 @@ def main():
         f.cache(f.source)
         clip=f.clip(61.5);analysis=f.index_bikes(clip,2)
         report=json.loads(f.c.execute('SELECT report FROM bike_analyses WHERE id=?',(analysis,)).fetchone()[0])
-        for candidate in report['passages']:candidate['uncertain']=False
+        for candidate in report['passages']:
+            candidate['uncertain']=False;candidate['review_secondary']=False
+        weak=copy.deepcopy(report['passages'][0])
+        weak.update(key='wheel-fragment',review_secondary=True,uncertain=True)
+        report['passages'].append(weak)
         with f.c:f.c.execute('UPDATE bike_analyses SET report=? WHERE id=?',(json.dumps(report),analysis))
         live=dict(path='/events/20261108-Test/test.cmn',day='2026-11-08',payload=copy.deepcopy(f.source))
         with patch.object(Configuration,'load',return_value=f.config),patch.object(Client,'fetch_live',return_value=live):
@@ -38,10 +42,10 @@ def main():
             view=app.compact_passings;panel=view.panel
             expected=next(c for c in panel.model['cells'] if c['bib']=='7' and c.get('seconds')==60.65)
             assert expected['suggested_visual'] and not expected['confirmed'] and expected['state']=='missing'
-            assert len(panel.model['grouped_cells'])==2
+            assert len(panel.model['grouped_cells'])==3
             wait(lambda:len([c for c in view.locations.values() if c['bib']=='?'])==0)
             check=next(child for child in view.selector.winfo_children() if child.winfo_class()=='TCheckbutton')
-            check.invoke();wait(lambda:len([c for c in view.locations.values() if c['bib']=='?'])==2)
+            check.invoke();wait(lambda:len([c for c in view.locations.values() if c['bib']=='?'])==3)
             assert any(c.get('grouped_under')==expected['cell_key'] for c in view.locations.values())
             check.invoke();wait(lambda:len([c for c in view.locations.values() if c['bib']=='?'])==0)
             first=next(c for c in panel.model['cells'] if c['bib']=='24' and c.get('seconds')==60)

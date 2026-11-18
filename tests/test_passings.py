@@ -69,6 +69,17 @@ class PassingsTests(unittest.TestCase):
         self.assertEqual(len([c for c in model['cells'] if c['state']=='missing']),5)
         self.assertEqual(len([c for c in passings.compare_event(self.c,self.event,category='Women')['cells'] if c['bib']=='?']),2)
 
+    def test_ocr_on_weak_detector_debris_cannot_create_a_crossmgr_match(self):
+        import json
+        clip=self.clip(60,'24');analysis=self.index_bikes(clip)
+        report=json.loads(self.c.execute('SELECT report FROM bike_analyses WHERE id=?',(analysis,)).fetchone()[0])
+        report['passages'][0]['review_secondary']=True
+        with self.c:self.c.execute('UPDATE bike_analyses SET report=? WHERE id=?',(json.dumps(report),analysis))
+        model=passings.compare_event(self.c,self.event)
+        expected=next(c for c in model['cells'] if c['origin']=='CrossMgr' and c['bib']=='24' and c['seconds']==60)
+        self.assertEqual(expected['state'],'missing');self.assertFalse(expected['confirmed'])
+        self.assertTrue(any(c['bib']=='24' for c in model['grouped_cells']))
+
     def test_ignore_one_detected_bike_is_audited_hidden_and_individually_restorable(self):
         from racevideo import passing_review
         clip=self.clip(80);self.index_bikes(clip,2)

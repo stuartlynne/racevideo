@@ -20,7 +20,7 @@ def overlap(a,b):
     return inter/union if union else 0
 
 
-def build(rows,width,height):
+def _raw_build(rows,width,height):
     tracks=[];active=[]
     for row in rows:
         objects=[]
@@ -66,6 +66,17 @@ def build(rows,width,height):
         warning='Estimated bike passages; occlusion can merge or fragment tracks. A return is a new passage, not the same lap.')
 
 
+def build(rows,width,height):
+    """Keep weak detections for audit, but navigate by sustained bicycle tracks."""
+    report=_raw_build(rows,width,height)
+    return clean_tracks(report,rows,width,height)
+
+
+def clean_tracks(report,rows,width,height):
+    from .track_cleanup import clean
+    return clean(report,rows,width,height,_raw_build)
+
+
 def save(connection,clip,report,source_run_id=None,analysis_id=None,commit=True):
     with connection if commit else nullcontext():
         if analysis_id:
@@ -76,6 +87,9 @@ def save(connection,clip,report,source_run_id=None,analysis_id=None,commit=True)
 
 def primary_stops(entries):
     """Prioritize sustained tracks for navigation; retain every raw candidate."""
+    if any('review_secondary' in e for e in entries):
+        return sorted((e for e in entries if not e.get('review_secondary') or e.get('confirmed')),
+            key=lambda e:(e['ordinal'],e.get('passing_order') or 1000,e['key']))
     islands=[]
     for entry in sorted(entries,key=lambda e:e['first_ordinal']):
         if not islands or entry['first_ordinal']>islands[-1]['end']+3:

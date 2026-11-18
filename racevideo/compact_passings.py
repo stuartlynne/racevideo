@@ -73,7 +73,7 @@ class CompactPassings:
         self.import_button=ttk.Button(row,text='Import date',style='Compact.TButton',command=lambda:self.archive('import'));self.import_button.pack(side='left')
         self.event_picker=ttk.Combobox(self.archive_controls,state='readonly');self.event_picker.pack(fill='x',pady=2);self.event_picker.bind('<<ComboboxSelected>>',self.choose_event)
         self.category_picker=ttk.Combobox(self.selector,textvariable=panel.category,state='readonly');self.category_picker.pack(fill='x');self.category_picker.bind('<<ComboboxSelected>>',self.choose_category)
-        ttk.Checkbutton(self.selector,text='Show grouped candidates',variable=panel.show_grouped,command=panel.toggle_grouped).pack(anchor='w')
+        ttk.Checkbutton(self.selector,text='Show grouped / weak candidates',variable=panel.show_grouped,command=panel.toggle_grouped).pack(anchor='w')
         self.update_mode_controls()
         self.correct_number=ttk.Entry(self.actions,textvariable=panel.review_number,width=5);self.correct_number.pack(side='left',padx=3)
         self.correct_number.bind('<Return>',lambda e:self.action('corrected'))
