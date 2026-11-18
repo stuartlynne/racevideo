@@ -21,6 +21,7 @@ class CompactPassings:
         bar=ttk.Frame(self.frame);bar.pack(fill='x')
         ttk.Checkbutton(bar,text='Current CrossMgr race',variable=self.follow,command=self.follow_changed).pack(side='left')
         ttk.Button(bar,text='Pop out',style='Compact.TButton',command=app.show_event_passings).pack(side='right')
+        ttk.Button(bar,text='Appearance',style='Compact.TButton',command=lambda:self.panel.open_appearance_report() if self.panel else None).pack(side='right')
         from .crossmgr_client import Configuration
         target_row=ttk.Frame(self.frame);target_row.pack(fill='x',padx=4)
         ttk.Label(target_row,text='MCP target:').pack(side='left')
@@ -281,7 +282,12 @@ class CompactPassings:
             self.last_selected=selected
         if self.restore_scroll:
             self.canvas.xview_moveto(self.restore_scroll.get('x',0));self.canvas.yview_moveto(self.restore_scroll.get('y',0));self.restore_scroll=None
-        if panel.selected_cell:self.detail.configure(text=panel.selected_cell['bib']+' · '+panel.selected_cell['name']+(' · visual candidate; identity unconfirmed' if panel.selected_cell.get('suggested_visual') else ' · no nearby saved capture' if not panel.selected_cell['captures'] else ''))
+        if panel.selected_cell:
+            cell=panel.selected_cell
+            appearance=cell.get('appearance',{}).get('rankings',{}).get('hybrid',[])[:3]
+            extra=('\nAppearance suggests: '+', '.join(m['bib'] for m in appearance)+' · review required') if appearance else ''
+            if (model.get('appearance') or {}).get('state')=='stale':extra='\nAppearance results need refresh after review changes.'
+            self.detail.configure(text=cell['bib']+' · '+cell['name']+(' · visual candidate; identity unconfirmed' if cell.get('suggested_visual') else ' · no nearby saved capture' if not cell['captures'] else '')+extra)
         else:self.detail.configure(text='Click a bib to review its capture.')
         self.app.performance.observe('compact_passings_draw_ms',(time.perf_counter()-drawing_started)*1000)
 

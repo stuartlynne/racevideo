@@ -362,6 +362,8 @@ def compare_event(connection, event_id, tolerance=3.0, offset=0.0, category='All
     for cell in cells+grouped_cells:
         clips={r['clip_id'] for r in cell['captures']}
         cell['video_timings']=[r for (key,visual),r in timings.items() if key==cell['cell_key'] and r['bib']==cell['bib'] and r['clip_id'] in clips]
+    from .appearance import attach
+    appearance=attach(connection,event_id,cells+grouped_cells)
     return dict(event=event,columns=columns,cells=cells,grouped_cells=grouped_cells,duplicate_seconds=duplicate_seconds,ignored_cells=ignored_cells,review_reconciliations=resolution['reconciliations'],bike_coverage=coverage,categories=sorted(set(c for cs in memberships.values() for c in cs)),
-                tolerance=tolerance,offset=offset,bike_jobs=bike_jobs,**history,source_imported_ns=connection.execute('SELECT imported_ns FROM race_sources WHERE id=?',(source,)).fetchone()[0],
+                tolerance=tolerance,offset=offset,bike_jobs=bike_jobs,appearance=appearance,**history,source_imported_ns=connection.execute('SELECT imported_ns FROM race_sources WHERE id=?',(source,)).fetchone()[0],
                 warning='Bike candidates include uncertain detections; ? is not proof of a rider or identity. Missing CrossMgr entries remain for review, never automatic DNF. Category filter retains unidentified bikes and overall race lap boundaries.')

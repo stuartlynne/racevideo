@@ -12,6 +12,10 @@ recompression and no FFmpeg command-line subprocess are required. PyAV provides
 FFmpeg's native V4L2 capture; Pillow handles preview/thumbnail decoding; Tk handles
 the interface. This version requires a camera with **MJPEG** output.
 
+An optional [rider appearance experiment](APPEARANCE_RECOGNITION.md) adds image
+comparisons and top-three bib suggestions to archived passings. It runs separately
+on CPU and preserves operator confirmations and race times.
+
 ## Agent service
 
 The independent [racevideo_mcp service](MCP_SERVICE.md) exposes saved recordings,

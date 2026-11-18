@@ -1,8 +1,9 @@
 # Rider recognition, remote cameras and GPS timing: next-session notes
 
 Discussion following local review of the November 15, 2026 event.
-These are design notes and proposed experiments, not implemented capabilities.
-Next work: evaluate appearance-assisted rider recognition using Sunday's data.
+These are design notes and proposed experiments. A first Elite appearance
+experiment is now implemented: see [APPEARANCE_RECOGNITION.md](APPEARANCE_RECOGNITION.md)
+for actual results and limits. Remote camera/timing hardware remains untested.
 
 ## Intended use and race profiles
 

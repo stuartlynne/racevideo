@@ -92,6 +92,7 @@ class PassingsPanel:
         ttk.Checkbutton(controls,text='Show grouped',variable=self.show_grouped,command=self.toggle_grouped).pack(side='left',padx=4)
         ttk.Button(controls,text='Index event bikes',command=lambda:self.request('index_bikes')).pack(side='left',padx=3)
         ttk.Button(controls,text='Stop indexing',command=lambda:self.request('stop_bikes')).pack(side='left',padx=3)
+        ttk.Button(controls,text='Appearance report',command=self.open_appearance_report).pack(side='left',padx=3)
         ttk.Label(self.window,text='Green: bib/time match · Yellow: needs visual review · Red: visual bib outside event roster\nColumns follow the overall race leader; each column is independently ordered by passing time. Start reads are separate.',padding=8).pack(fill='x')
         area=ttk.Frame(self.window);area.pack(fill='both',expand=True)
         self.header_canvas=tk.Canvas(area,height=44,background='#dce3eb',highlightthickness=0)
@@ -298,6 +299,8 @@ class PassingsPanel:
                     reconciled=self.model.get('review_reconciliations',[])
                     if reconciled:self.status.set(self.status.get()+f" {len(reconciled)} review associations reconciled automatically; saved manual evidence retained.")
                     if self.model.get('grouped_cells'):self.status.set(self.status.get()+f" {len(self.model['grouped_cells'])} visual suggestions/possible duplicates grouped; Show grouped to inspect.")
+                    appearance=self.model.get('appearance')
+                    if appearance:self.status.set(self.status.get()+(' Appearance suggestions available (experimental).' if appearance['state']=='complete' else ' Appearance results need refreshing; the saved report remains available.'))
                 else:
                     self.event_id=None;self.event_name.set('');self.status.set('No cached events for this date. Use Import / refresh CMNs to load the date from the configured base.')
                 time_signature=(self.event_id,self.model['event']['start_ns'],self.model['offset']) if self.model else None
@@ -438,6 +441,9 @@ class PassingsPanel:
         if cell.get('grouped_candidates'):self.detail.set(self.detail.get()+f" {len(cell['grouped_candidates'])} nearby possible duplicates grouped; enable Show grouped to inspect them.")
         if cell.get('suggested_visual'):self.detail.set(self.detail.get()+' The unidentified visual candidate is grouped here as a suggestion only; identity is still unconfirmed.')
         if cell.get('suggestion_ordered'):self.detail.set(self.detail.get()+' Shared capture: subject order follows CrossMgr passing order; verify the bib before confirming.')
+        if cell.get('appearance'):
+            matches=cell['appearance']['rankings']['hybrid'][:3]
+            self.detail.set(self.detail.get()+' Appearance suggestions: '+', '.join(f"{m['bib']} ({m['score']:.2f})" for m in matches)+'. Similarities, not identity confidence; no confirmation is recorded.')
         if cell.get('grouped_under'):self.detail.set(self.detail.get()+f" Possible duplicate: {cell['group_reason']} ({cell['group_delta_seconds']:+.1f}s). Original CrossMgr data is retained.")
         self.capture_picker.configure(values=[f"Clip {r['clip_id']} · "+('nearby bike · '+r.get('number','?') if r.get('candidate') else 'matching bib'+(' ✓' if r.get('confirmed') else ' ?') if r.get('ordinal') is not None and r.get('number') not in (None,'?') else 'unidentified bike' if r.get('ordinal') is not None else 'nearby time candidate') for r in self.capture_rows])
         if self.capture_rows:
@@ -445,6 +451,19 @@ class PassingsPanel:
             self.capture_picker.current(index)
             if open_first:self.open_capture(index)
         else:self.capture_picker.set('No capture in the selected time window')
+
+    def open_appearance_report(self):
+        from pathlib import Path
+        from tkinter import messagebox
+        import webbrowser
+        result=self.model.get('appearance') if self.model else None
+        if not result or not result.get('report'):
+            messagebox.showinfo('Rider appearance','No appearance experiment has been run for this event.',parent=self.app.root);return
+        path=Path(result['report'])
+        if not path.is_file():
+            messagebox.showinfo('Rider appearance','The saved appearance report is unavailable on this system.',parent=self.app.root);return
+        cell=self.selected_cell or {};subject=cell.get('appearance',{}).get('subject_id')
+        webbrowser.open(path.as_uri()+('#'+subject if subject else ''))
 
     def open_capture(self,index):
         if not 0<=index<len(self.capture_rows):return

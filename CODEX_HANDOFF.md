@@ -1,13 +1,29 @@
 # RaceVideo: start here on zbook9
 
-## Next session: appearance-assisted rider recognition
+## November 18: Elite appearance experiment implemented locally
+
+See [APPEARANCE_RECOGNITION.md](APPEARANCE_RECOGNITION.md) for setup, CLI, metrics,
+artifact paths and boundaries. CPU OpenVINO embedding + colour comparison ran
+only on Sunday's Elite event 11: 162 tracked passages plus two manual references,
+8 skipped candidates, 309 image views, about 83 seconds. Five held-out manual
+repeats ranked correctly; combined retrieval achieved 22/23 first and 23/23
+top-three matches on separate OCR-labelled proxy checks. This is a small pilot.
+
+The local sidebar has an Appearance button and advisory bib suggestions. The
+post-race gallery may use later references; evaluation uses only earlier captures
+and excludes the whole query capture. Confirmations and times remain unchanged.
+A 301 confirmation in clip 1861 conflicts with visible/OCR 300; it is flagged and
+excluded from seeding, not corrected automatically. Review changes invalidate
+suggestions until rerun. No deployment to zbook9. Preserve the track-order tests.
+
+## Design background: appearance-assisted rider recognition
 
 See [RIDER_RECOGNITION_AND_REMOTE_CAMERAS.md](RIDER_RECOGNITION_AND_REMOTE_CAMERAS.md)
 for the agreed experiment, cyclocross/road/crit profiles, current dataset and
 regression baseline, candidate libraries, remote Pi/x86 camera-node options,
 measured MJPEG bandwidth, and the PPS LED beacon using the existing 12 V
-LiFePO4-backed RFID boxes. Recognition is the next task; no appearance model,
-remote node or timing beacon has been implemented or benchmarked yet.
+LiFePO4-backed RFID boxes. The first appearance experiment is described above;
+remote camera nodes and timing beacons remain design work.
 
 ## Lap 2 correction: test rider order, not just candidate counts
 
