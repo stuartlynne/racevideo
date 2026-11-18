@@ -1,5 +1,14 @@
 # RaceVideo: start here on zbook9
 
+## Next session: appearance-assisted rider recognition
+
+See [RIDER_RECOGNITION_AND_REMOTE_CAMERAS.md](RIDER_RECOGNITION_AND_REMOTE_CAMERAS.md)
+for the agreed experiment, cyclocross/road/crit profiles, current dataset and
+regression baseline, candidate libraries, remote Pi/x86 camera-node options,
+measured MJPEG bandwidth, and the PPS LED beacon using the existing 12 V
+LiFePO4-backed RFID boxes. Recognition is the next task; no appearance model,
+remote node or timing beacon has been implemented or benchmarked yet.
+
 ## Lap 2 correction: test rider order, not just candidate counts
 
 The passage-v3 change reduced clutter but still left seven proposed stops for
