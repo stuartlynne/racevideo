@@ -290,6 +290,8 @@ def compare_event(connection, event_id, tolerance=3.0, offset=0.0, category='All
             candidates.sort(key=candidate_rank)
         for v in matched:
             v['ambiguous']=len(alternatives.get((v['clip_id'],v['encounter_key']),()))>1
+            if not v['confirmed'] and v.get('passage_ordinal') is not None:
+                v['evidence_ordinal']=v['ordinal'];v['ordinal']=v['passage_ordinal']
         cell=dict(p, cell_key=f"cm:{p['id']}", column=bisect.bisect_right(times,p['at_ns']), name=riders[p['bib']]['name'],
             categories=memberships.get(p['bib'],[]), state='matched' if matched else 'missing',
             confirmed=any(v['confirmed'] for v in matched), ambiguous=any(v.get('ambiguous') for v in matched),

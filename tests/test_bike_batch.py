@@ -13,7 +13,7 @@ class BikeBatchTests(unittest.TestCase):
         current=f.clip(75);old=f.clip(80);missing=f.clip(85);outside=f.clip(300)
         ident=f.index_bikes(current)
         report=json.loads(f.c.execute('SELECT report FROM bike_analyses WHERE id=?',(ident,)).fetchone()[0])
-        report['policy']='passage-v3'
+        report['policy']='passage-v4'
         with f.c:f.c.execute('UPDATE bike_analyses SET report=? WHERE id=?',(json.dumps(report),ident))
         bike_index.save(f.c,old,dict(source='detector',passages=[]))
         with patch.object(service,'neural_runtime',return_value=('/dummy/python','cpu')),patch.object(service,'launch_worker') as launch:

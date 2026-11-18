@@ -147,3 +147,39 @@ primary tracks rather than 75 default rows; its overview shows multiple close
 riders. The remaining proposals are not asserted to be perfectly deduplicated.
 Occluded riders and detector dropouts remain uncertain, and raw evidence can be
 expanded using Show grouped / weak candidates.
+
+## Lap 2 regression: five riders in one long capture (1872)
+
+The v3 row reduction alone was inadequate. Seven strong tracks still included
+exit-only fragments of the first two riders, and 5/6 OCR was missing from the
+table despite repeated high-confidence raw reads. The label tracker tried to
+follow tiny glyphs moving much farther between frames than their own dimensions.
+
+V4 uses trajectories crossing or approaching the centre as primary stops. Boxes
+first detected moving away beyond the line stay in raw evidence; a return after
+exiting and approaching riders at a clip boundary remain separate review targets.
+Physical rider trajectories now associate repeated OCR patches instead of relying
+on glyph continuity. Qualification requires at least three different frames and
+non-stationary patches. Multiple rotations of one frame are not multiple votes;
+6/9 and 60/09 alternatives remain ambiguous rather than automatically resolved.
+
+For clip 1872, actual primary review ordinals are 20, 24, 42, 55, 79 (display
+21, 25, 43, 56, 80), corresponding to 5, 6, 2, 1, 60. Table positions retain CM
+order. Rider 1 remains an unconfirmed suggested identity: only one strong raw 1
+read exists, on a different trajectory, so no repeated 1 OCR is manufactured.
+5 is supported across 10 frames; 6 across 6 frames. Four independently qualified
+OCR numbers now anchor the other four bikes; the remaining CM row offers the
+fourth physical bike instead of repeating the first bike's frame.
+
+The real saved per-frame detections are now a regression fixture. The integration
+test asserts the five table rows in the expected order, distinct review positions,
+no extra unknowns, and no automatic manual confirmation. Display defaults for
+unconfirmed matches now use the physical centre frame; the underlying best OCR
+evidence frame and crop are retained.
+
+828 derived reports were rebuilt locally; 77 newly supported observations were
+appended to their original OCR runs, leaving old observations intact. Audit and
+preimages are in `tracking-v4-applied/`. All five human-review/history table hashes
+are unchanged. Elite currently has 201 default rows, including 34 unknowns, with
+all 19 confirmed cells still present. These aggregate counts are operational
+checks, not an assertion that every remaining track/identity is correct.

@@ -76,6 +76,22 @@ class OCRImportTests(unittest.TestCase):
         import_clip(self.c,report)
         self.assertEqual(self.c.execute('SELECT number FROM ocr_observations').fetchone()[0],'24')
         self.assertEqual([r['id'] for r in storage.browse_clips(self.c,bibs=('24',))],[self.clip])
+
+    def test_physical_consensus_appends_missing_reads_once_and_preserves_human_decisions(self):
+        from racevideo.ocr_import import append_physical_consensus
+        report=copy.deepcopy(self.report);report['encounters']=[]
+        for i,row in enumerate(report['results']):
+            row['readings'][0].update(text='5',quad=[[10+i*10,10],[30+i*10,10],[30+i*10,35],[10+i*10,35]])
+        import_clip(self.c,report)
+        bib_review.decide(self.path,self.clip,decision='manual',number='24',ordinal=1)
+        before=[tuple(r) for r in self.c.execute('SELECT * FROM bib_reviews')]
+        run=self.c.execute('SELECT id FROM ocr_runs').fetchone()[0]
+        bikes=dict(passages=[dict(key='detected:1',review_secondary=False,points=[dict(ordinal=i,box=[i*10,0,70+i*10,70]) for i in range(3)])])
+        with self.c:self.assertEqual(append_physical_consensus(self.c,run,report,bikes),1)
+        with self.c:self.assertEqual(append_physical_consensus(self.c,run,report,bikes),0)
+        self.assertEqual([tuple(r) for r in self.c.execute('SELECT * FROM bib_reviews')],before)
+        row=self.c.execute('SELECT number,frame_count,encounter_key FROM ocr_observations').fetchone()
+        self.assertEqual(tuple(row),('5',3,'testbatch:1:track:physical:detected:1'))
     def test_import_rerun_keeps_operator_correction_and_does_not_duplicate_sighting(self):
         import_clip(self.c,self.report);oid=self.c.execute('SELECT id FROM ocr_observations').fetchone()[0]
         bib_review.decide(self.path,self.clip,observation_id=oid,decision='corrected',number='155')

@@ -28,9 +28,23 @@ def agreement(first,second):
     return sum(hits)/len(hits) if hits else 0
 
 
+def crossing_or_approach(entry,line):
+    xs=[(p['box'][0]+p['box'][2])/2 for p in entry['points']]
+    if min(xs)<=line<=max(xs):return True
+    # A real rider approaching the line at the end of a clip remains a stop.
+    # Only tracks first observed moving away on the far side are exit fragments.
+    return xs[-1]>xs[0] and max(xs)<line or xs[-1]<xs[0] and min(xs)>line
+
+
 def clean(report,rows,width,height,track):
     report=copy.deepcopy(report)
     entries=report['passages']
+    for entry in entries:
+        if entry.get('raw_points'):
+            entry['points']=entry.pop('raw_points')
+            points=entry['points'];center=min(points,key=lambda p:abs((p['box'][0]+p['box'][2])/2-width/2))
+            entry.update(first_ordinal=points[0]['ordinal'],last_ordinal=points[-1]['ordinal'],ordinal=center['ordinal'],box=center['box'])
+        entry.pop('unresolved_interval',None)
     # A weak box may support an existing track later; it must not start dozens
     # of equally authoritative tracks on wheels, limbs or the background.
     filtered=[]
@@ -43,7 +57,9 @@ def clean(report,rows,width,height,track):
             objects.append(obj)
         filtered.append(dict(row,objects=objects))
     strong=track(filtered,width,height)['passages']
-    strong=[e for e in strong if len(e['points'])>=3 and not e['uncertain']]
+    # An exit fragment seen only beyond the line is not another crossing.
+    # Keep it in raw evidence, but do not count it again as a primary stop.
+    strong=[e for e in strong if len(e['points'])>=3 and not e['uncertain'] and crossing_or_approach(e,width/2)]
     for entry in entries:
         entry['review_secondary']=True
         entry.pop('grouped_track',None)
@@ -80,6 +96,6 @@ def clean(report,rows,width,height,track):
         choices=[(agreement(entry,parent),parent) for parent in selected]
         score,parent=max(choices,key=lambda t:t[0],default=(0,None))
         if parent is not None and score>=.6:entry['grouped_track']=parent['key']
-    report.update(policy='passage-v3',primary_tracks=len(selected),secondary_tracks=len(entries)-len(selected),
+    report.update(policy='passage-v4',primary_tracks=len(selected),secondary_tracks=len(entries)-len(selected),
         warning='Sustained bicycle trajectories are review stops; weak and overlapping raw tracks remain inspectable as grouped candidates.')
     return report

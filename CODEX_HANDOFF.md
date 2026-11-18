@@ -1,5 +1,35 @@
 # RaceVideo: start here on zbook9
 
+## Lap 2 correction: test rider order, not just candidate counts
+
+The passage-v3 change reduced clutter but still left seven proposed stops for
+five riders in capture 1872. Two proposals were exit-only fragments of bikes
+already seen crossing the centre. In addition, raw OCR had repeated small 5/6
+reads which the glyph-motion tracker failed to assemble into encounters.
+
+Passage-v4 excludes exit-only fragments from the primary crossing list while
+retaining approaching/incomplete and weak-only evidence. `rider_encounters.py`
+joins small label reads through physical bike trajectories, requiring three
+distinct frames and actual label movement, retaining orientation alternatives.
+No start-list or expected bib is used for this OCR association. Missing camera
+identity still stays unconfirmed. Unconfirmed matched review opens at the bike's
+centre position; the original best OCR frame remains in `evidence_ordinal`.
+
+Actual Elite Lap 2 is now 5, 6, 2, 1, 60 at display frames 21, 25, 43, 56, 80
+in clip 1872, without intervening unknown rows. 1 has insufficient OCR support
+and remains a yellow CM suggestion at the fourth physical rider. The saved
+detections (no JPEGs/names; rebased timestamps) are a real regression fixture
+in `tests/fixtures/elite-lap2-1872.json`. Tests assert table order, separate review
+frames, and no manufactured confirmation, as well as the two-rider clip 1954.
+
+Local reports were rebuilt using `tools.rebuild_bike_tracks --recover-consensus
+--apply` (plus database/results/audit/event arguments). Existing observations were
+retained, 77 supported observations appended, IDs preserved, and manual/history
+table digests unchanged. Audit/preimages and appended observation IDs are in
+`tracking-v4-applied/` under the local test directory. No inference rerun, camera,
+CrossMgr, or laptop deployment was involved. The earlier v3 counts below are
+historical and are not proof of rider-detection accuracy.
+
 ## Local Sunday OCR and passage tracking cleanup
 
 The Nov 15 batch has completed locally: 828 clips / 51,873 frames, no errors.

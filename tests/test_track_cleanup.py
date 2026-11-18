@@ -17,7 +17,7 @@ class TrackCleanupTests(unittest.TestCase):
         report=build(rows,2000,1000)
         self.assertGreater(len(report['passages']),1)
         self.assertEqual(len(primary_stops(report['passages'])),1)
-        self.assertEqual(report['policy'],'passage-v3')
+        self.assertEqual(report['policy'],'passage-v4')
         self.assertTrue(any(e['review_secondary'] for e in report['passages']))
 
     def test_two_close_riders_are_separate_despite_overlapping_boxes(self):
@@ -37,3 +37,15 @@ class TrackCleanupTests(unittest.TestCase):
         stops=primary_stops(build(rows,2000,1000)['passages'])
         self.assertEqual(len(stops),1)
         self.assertTrue(stops[0]['unresolved_interval'])
+
+    def test_exit_only_fragment_does_not_count_as_another_line_crossing(self):
+        # First track crosses the centre, then loses detection. A partial box
+        # reappears beyond the line, too distant to join the old raw tracker.
+        rows=[frame(i,[(.9,[200+i*120,200,600+i*120,650])]) for i in range(10)]
+        rows += [frame(i,[]) for i in range(10,20)]
+        rows += [frame(i,[(.9,[1400+(i-20)*80,200,1700+(i-20)*80,650])]) for i in range(20,24)]
+        report=build(rows,2000,1000)
+        # Separate weak-only intervals remain available, but an exit fragment
+        # overlapping a crossing trajectory must not create another primary.
+        crossing=[e for e in primary_stops(report['passages']) if not e.get('unresolved_interval')]
+        self.assertEqual(len(crossing),1)

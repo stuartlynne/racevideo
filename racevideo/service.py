@@ -161,7 +161,7 @@ def start_bikes(path,clip_id=None,*,event_id=None,offset=0):
             from .bike_index import completed_analysis
             for row in c.execute('SELECT id FROM clips WHERE started_ns<=? AND ended_ns>=? ORDER BY started_ns,id',(event['end_ns']+shift,event['start_ns']+shift)):
                 last=completed_analysis(c,row['id'])
-                if last is None or json.loads(last['report']).get('policy')!='passage-v3':clips.append(row['id'])
+                if last is None or json.loads(last['report']).get('policy')!='passage-v4':clips.append(row['id'])
         else:
             if not c.execute('SELECT 1 FROM clips WHERE id=?',(clip_id,)).fetchone():raise ValueError('Capture no longer exists')
             clips=[clip_id]

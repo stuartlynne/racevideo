@@ -149,6 +149,7 @@ def navigation(connection,clip):
             if r.get('bike_box'):
                 a,b,c,d=r['bike_box'];box=[a*w,b*h,c*w,d*h]
             candidates=[]
+            physical=next((entry for entry in entries if (r.get('encounter_key') or '').endswith(':track:physical:'+entry['key'])),None)
             for entry in entries:
                 if entry['key'].startswith('manual:'):continue
                 if not entry['first_ordinal']-2<=r['ordinal']<=entry['last_ordinal']+2:continue
@@ -165,8 +166,8 @@ def navigation(connection,clip):
                     else:candidates.append((0,entry))
             primary=[pair for pair in candidates if pair[1]['key'] in primary_keys]
             if not box and len(primary)==1:candidates=primary
-            if len(candidates)==1 or box and candidates:
-                entry=max(candidates,key=lambda pair:pair[0])[1]
+            if physical is not None or len(candidates)==1 or box and candidates:
+                entry=physical if physical is not None else max(candidates,key=lambda pair:pair[0])[1]
                 entry['numbers'].append(r['number']);entry['confirmed']|=bool(r.get('decision'))
                 entry['source_keys'].append('review:'+str(r['review_id']) if r.get('decision') else 'ocr:'+str(r['observation_id']))
                 if order:entry['passing_order']=order

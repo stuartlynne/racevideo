@@ -126,3 +126,46 @@ def import_directory(path,directory):
         with c:c.execute("UPDATE ocr_batches SET updated_ns=?,state=?,completed_clips=? WHERE id=?",(time.time_ns(),'complete' if total==len(manifest['clips']) else 'active',total,manifest['batch_id']))
         return dict(batch_id=manifest['batch_id'],prepared=prepared,newly_imported=count,completed=total,total=len(manifest['clips']))
     finally:c.close()
+
+
+def append_physical_consensus(connection,run,report,bikes):
+    """Recover previously unjoined reads, retaining old evidence and reviews.
+
+    Caller owns the transaction. Never replace an observation already backed by
+    the same bib/time interval; new encounters use their physical track key.
+    """
+    import cv2
+    import numpy as np
+    from .rider_encounters import summarize
+    from .plate_selection import crop_quad
+    clip=report['clip'];added=0;prefix=f'{report["batch_id"]}:{clip}:track:'
+    times={r['ordinal']:r['received_ns'] for r in report['results']}
+    for encounter in summarize(report['results'],bikes):
+        key=prefix+encounter['track']
+        for alternative in encounter['consensus']['alternatives']:
+            number=alternative['number'];support={}
+            for view in encounter['views']:
+                for reading in view['readings']:
+                    if reading['text']==number and (view['ordinal'] not in support or reading['score']>support[view['ordinal']]['score']):
+                        support[view['ordinal']]=dict(reading,ordinal=view['ordinal'])
+            first=min(times[n] for n in support);last=max(times[n] for n in support)
+            if connection.execute('''SELECT 1 FROM ocr_observations WHERE run_id=? AND number=?
+                AND (encounter_key=? OR (first_ns<=? AND last_ns>=?))''',(run,number,key,last,first)).fetchone():continue
+            best=max(support.values(),key=lambda r:r['score']);ordinal=best['ordinal']
+            image=cv2.imdecode(np.frombuffer(storage.read_frame(connection,clip,ordinal),np.uint8),cv2.IMREAD_COLOR)
+            patch=crop_quad(image,best['quad'])
+            if patch is None:continue
+            patch=np.ascontiguousarray(np.rot90(patch,best['rotation']//90))
+            ok,evidence=cv2.imencode('.jpg',patch)
+            if not ok:raise ValueError('Cannot encode recovered OCR evidence')
+            status='ambiguous' if encounter['consensus']['status']=='ambiguous' else 'repeated'
+            connection.execute('''INSERT INTO ocr_observations(run_id,number,first_ns,last_ns,frame_count,confidence,
+                ordinal,quad,evidence,status,encounter_key) VALUES(?,?,?,?,?,?,?,?,?,?,?)''',
+                (run,number,first,last,len(support),round(best['score']*100),ordinal,json.dumps(best['quad']),evidence.tobytes(),status,key))
+            added+=1
+    if added:
+        summary=json.loads(connection.execute('SELECT summary FROM ocr_runs WHERE id=?',(run,)).fetchone()[0])
+        summary.update(observations=connection.execute('SELECT count(*) FROM ocr_observations WHERE run_id=?',(run,)).fetchone()[0],
+            consensus_policy='physical-v1',recovered_physical_observations=summary.get('recovered_physical_observations',0)+added)
+        connection.execute('UPDATE ocr_runs SET summary=? WHERE id=?',(json.dumps(summary),run))
+    return added

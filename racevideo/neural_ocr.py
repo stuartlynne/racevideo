@@ -90,10 +90,15 @@ class Scanner:
             rows.append(dict(clip=clip,ordinal=ordinal,received_ns=received,monotonic_ns=monotonic,method='riders960',readings=readings,objects=objects))
             if progress and ordinal%30==0:progress(ordinal,len(index))
         if len(index)!=metadata['frame_count']:raise ValueError('Clip/frame count mismatch')
-        encounters=summarize(rows,maximum_gap=8,image_size=(metadata['width'],metadata['height']))
         proposal=(retention.propose(rows,presence_flags,trim) if motion else retention.from_objects(rows,trim,(w,h))) if trim['mode']!='off' else None
         from .bike_index import build
         bikes=build(rows,w,h)
+        from .rider_encounters import summarize as summarize_riders
+        physical=summarize_riders(rows,bikes)
+        # Retain text-only fallback evidence outside reliable bike trajectories.
+        covered={(v['ordinal'],r['text']) for e in physical for v in e['views'] for r in v['readings']}
+        fallback=summarize(rows,maximum_gap=8,image_size=(metadata['width'],metadata['height']))
+        encounters=physical+[e for e in fallback if not any((v['ordinal'],r['text']) in covered for v in e['views'] for r in v['readings'])]
         return dict(state='complete',bike_index=bikes,retention_proposal=proposal,device=self.device,clip=clip,source_clip=metadata,frames=len(index),wall_seconds=time.perf_counter()-start,
                     cpu_seconds=time.process_time()-cpu,regions=regions_count,detections=detections_count,
                     results=rows,encounters=encounters)
